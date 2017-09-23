@@ -23,6 +23,10 @@ const Item = db.define('Item', {
     type: Sequelize.STRING,
     allowNull: false
   },
+  image: {
+    type: Sequelize.STRING,
+    allowNull: true
+  },
   brand: {
     type: Sequelize.STRING,
     allowNull: false
@@ -32,7 +36,7 @@ const Item = db.define('Item', {
     allowNull: false
   },
   size: {
-    type: Sequelize.INTEGER,
+    type: Sequelize.STRING,
     allowNull: false
   },
   sex: {
@@ -41,23 +45,33 @@ const Item = db.define('Item', {
   },
   tag: {
     type: Sequelize.STRING,
-    allowNull: false
+    allowNull: true
   },
   status: {
     type: Sequelize.STRING,
-    allowNull: false
+    allowNull: true
   },
 }, {
   timestamps: false
 })
 
 const Rent_trx = db.define('Rent_trx', { 
+  //person selling
+  renteeId: {
+    type: Sequelize.INTEGER,
+    allowNull: false
+  },
+  //person renting 
+  renterID: {
+    type: Sequelize.INTEGER,
+    allowNull: false
+  },
   startDate: {
-    type: Sequelize.DATE,
+    type: Sequelize.DATEONLY,
     allowNull: false
   },
   endDate: {
-    type: Sequelize.DATE,
+    type: Sequelize.DATEONLY,
     allowNull: false
   },
 }, {
@@ -68,8 +82,8 @@ User.hasMany(Item, { foreignKey: { name: 'rentee_id' }, onDelete: 'CASCADE' })
 Item.belongsTo(User, { foreignKey: { name: 'rentee_id' }, onDelete: 'CASCADE' })
 
 Rent_trx.belongsTo(Item, {foreignKey: {name: 'item_id'}, onDelete:'CASCADE'})
-User.hasOne(Rent_trx, {foreignKey: {name: 'renter_id'}, onDelete:'CASCADE'})
-User.hasOne(Rent_trx, {foreignKey: {name: 'rentee_id'}, onDelete:'CASCADE'})
+// User.hasOne(Rent_trx, {foreignKey: {name: 'renter_id'}, onDelete:'CASCADE'})
+// User.hasOne(Rent_trx, {foreignKey: {name: 'rentee_id'}, onDelete:'CASCADE'})
 
 
 
