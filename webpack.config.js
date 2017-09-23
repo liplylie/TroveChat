@@ -27,4 +27,26 @@ webpackConfig.module.loaders.push({
   loaders: ['style-loader', 'css-loader'],
 });
 
+// webpackConfig.module.loaders.push({
+//   rules: [
+//     {
+//       test: /\.(png|jpg|gif)$/,
+//       use: [
+//         {
+//           loader: 'file-loader',
+//           options: {}  
+//         }
+//       ]
+//     }
+//   ]
+// });
+
+webpackConfig.module.loaders.push({
+  test: /\.(png|jpg|gif)$/,
+  loader: 'file-loader',
+  options: {}  
+});
+
+
+
 module.exports = webpackConfig;
