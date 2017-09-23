@@ -1,0 +1,21 @@
+.active {
+  font-weight: bold;
+}
+
+.nav {
+  font-size: 20px;
+  text-decoration: none;
+  padding: 15px 0px 15px 0px;
+  background-color: black;
+  
+}
+
+a {
+  /* padding-right: 25px; */
+  text-decoration: none !important;
+  color: white;
+}
+
+.logo {
+  text-align: center;
+}
