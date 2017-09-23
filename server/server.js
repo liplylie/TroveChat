@@ -2,6 +2,8 @@ const express = require('express');
 const parser = require('body-parser');
 const morgan = require('morgan');
 const path = require('path');
+const db = require('../db/db');
+require('../db/model/dataModel')
 
 const PORT = 3000;
 
