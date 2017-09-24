@@ -37,7 +37,10 @@ const Item = db.define('Item', {
     allowNull: false
   },
   price: {
-    type: Sequelize.DECIMAL,
+    type: Sequelize.FLOAT,
+    validate: {
+      isDecimal: true 
+    },
     allowNull: false
   },
   size: {
@@ -91,8 +94,6 @@ Item.hasOne(Rent_trx, {foreignKey: {name: 'item_id'}, onDelete:'CASCADE'})
 // User.hasOne(Rent_trx, {foreignKey: {name: 'renter_id'}, onDelete:'CASCADE'})
 // User.hasOne(Rent_trx, {foreignKey: {name: 'rentee_id'}, onDelete:'CASCADE'})
 
-
-
 db.sync({force: true})
 .then(() => seed(User, userData, "User"))
 .then(() => seed(Item, itemData, "Item"))
@@ -100,25 +101,6 @@ db.sync({force: true})
 .catch(err => {
     console.log('seeding error in model')
 })
-
-// User.sync({force: true})
-// .then(() => seed(User, userData, "User"))
-// .catch(err => {
-//       console.log('seeding error in model: ', err)
-// })
-
-// Item.sync({force: true})
-// .then(() => seed(Item, itemData, "Item"))
-// .catch(err => {
-//   console.log('seeding error in model: ', err)
-// })
-
-// Rent_trx.sync({force: true})
-// .then(() => seed(Rent_trx, rentedData, "Rent_trx"))
-// .catch(err => {
-//   console.log('seeding error in model: ', err)
-// })
-
 
 module.exports = {
   User,
