@@ -4,8 +4,8 @@ import { NavLink, Route, Link } from 'react-router-dom';
 class NavBar extends Component {
   render() {
     return (
-        <nav className="navbar navbar-expand-lg bg-black">
-          <a className="navbar-brand bg-logo" href="/">TROVE</a>
+        <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+          <a id='bg-logo'className="navbar-brand" href="/">TROVE</a>
           <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>

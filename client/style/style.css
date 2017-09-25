@@ -1,6 +1,6 @@
-body {
+/* body {
   background-color: black;
-}
+} */
 
 .test {
   background-color: red;
@@ -15,7 +15,7 @@ body {
   background-color: black
 }
 
-.bg-logo {
+#bg-logo {
   color: #cdb287
 }
 
