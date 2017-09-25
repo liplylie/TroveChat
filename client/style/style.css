@@ -2,9 +2,22 @@
   background-color: black;
 } */
 
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
 .test {
   background-color: red;
   text-align: center;
+}
+
+hr {
+  /* border: 2px solid #bdbdbd; */
+  border-top: 0px;
+  border-bottom: 1px solid 	#5f5037;
+  box-sizing: border-box;
 }
 
 .active {
@@ -16,7 +29,15 @@
 }
 
 #bg-logo {
-  color: #cdb287
+  color: #cdb287;
+  font-weight: bold;
+  font-size: 28px;
+}
+
+.bg-logo {
+  color: #cdb287;
+  font-weight: bold;
+  font-size: 22px;
 }
 
 .nav {
@@ -24,6 +45,10 @@
   text-decoration: none;
   padding: 15px 0px 15px 0px;
   background-color: black;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+  color: white;
 }
 
 a {
@@ -38,10 +63,17 @@ a {
 
 .input-sm {
   padding: .3rem .75rem;
+  background-color: #242424;
+  color: #515151;
+}
+
+.btn-section {
+  padding: .1rem .3rem;
+  line-height: 1.2;
 }
 
 .btn-color {
-  border-color: #cdb287;
+  border-color: black;
   color: #cdb287;
 }
 
@@ -51,6 +83,53 @@ a {
   color: #343a40;
 }
 
+.search-section {
+  padding-right: 15px;
+}
+
+.login {
+  padding-left: 0px;
+}
+
+/* ------ Footer ------*/
+
 .footer {
-  padding-top: 60px;
+  padding: 35px 36px 40px 36px;
+}
+
+.footer-section {
+  padding-bottom: 30px;
+}
+
+.footer-title {
+  color:	#f9f9f9;
+}
+
+.footer-list {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  color: #717171;
+}
+
+.footer-input-sm {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: .3rem .75rem;
+  background-color: #242424;
+  color: #515151;
+}
+
+.footer-rights {
+  color: 	#5f5037;
+}
+
+.footer-address {
+  color: 	#5f5037;
+  text-align: right;
+}
+
+.social {
+  font-size: 32px;
+  padding: 20px 20px 10px 0px;
+  color: #323232;
 }
