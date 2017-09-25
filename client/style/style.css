@@ -1,9 +1,22 @@
 body {
-  background-color: #343a40;
+  background-color: black;
+}
+
+.test {
+  background-color: red;
+  text-align: center;
 }
 
 .active {
   font-weight: bold;
+}
+
+.bg-black {
+  background-color: black
+}
+
+.bg-logo {
+  color: #cdb287
 }
 
 .nav {
@@ -11,7 +24,6 @@ body {
   text-decoration: none;
   padding: 15px 0px 15px 0px;
   background-color: black;
-  
 }
 
 a {
@@ -29,12 +41,16 @@ a {
 }
 
 .btn-color {
-  border-color: #FFF7AE;
-  color: #FFF7AE;
+  border-color: #cdb287;
+  color: #cdb287;
 }
 
 .btn-color:hover {
-  background-color: #FFF7AE;
-  border-color: #FFF7AE;
+  background-color: #cdb287;
+  border-color: #cdb287;
   color: #343a40;
+}
+
+.footer {
+  padding-top: 60px;
 }
