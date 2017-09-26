@@ -12,7 +12,8 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      allItems: []
+      allItems: [],
+
     }
     this.fetch = this.fetch.bind(this);
   }
@@ -20,12 +21,13 @@ class App extends Component {
   componentDidMount() {
     this.fetch();
   }
+  
 
   fetch() {
     axios.get('/api')
     .then(items => {
       this.setState({ allItems: items.data });
-      console.log('Items:', this.state.allItems);
+      // console.log('Items:', this.state.allItems);
     })
     .catch(err => {
       console.log('Fetch err:', err);
@@ -40,7 +42,8 @@ class App extends Component {
           <Route exact path='/' component={() => (<Home />)} />
           <Route exact path='/men' component={() => (
             <Men passItems={this.state.allItems} />)} />
-          <Route exact path='/women' component={() => (<Women />)} />
+          <Route exact path='/women' component={() => (
+            <Women passItems={this.state.allItems} />)} />
           <Route exact path='/login' component={() => (<Login />)} />
           <Footer />
         </div>

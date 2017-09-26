@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 
-class MenItem extends Component {
+class WomenItem extends Component {
   render() {
     return (
       <div>
-        {!this.props.passItem ? null : this.props.passItem.sex === 'M' ?
+        {!this.props.passItem ? null : this.props.passItem.sex === 'F' ?
         this.props.passItem.itemname : null }
       </div>
     );
@@ -12,4 +12,4 @@ class MenItem extends Component {
 }
 
 
-export default MenItem;
+export default WomenItem;
