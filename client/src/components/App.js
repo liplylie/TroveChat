@@ -7,6 +7,8 @@ import Men from './Men';
 import Women from './Women';
 import Login from './Login';
 import Footer from './Footer';
+import Dashboard from './Dashboard';
+import Wardrobe from './Wardrobe';
 
 class App extends Component {
   constructor(props) {
@@ -44,6 +46,8 @@ class App extends Component {
             <Men passItems={this.state.allItems} />)} />
           <Route exact path='/women' component={() => (
             <Women passItems={this.state.allItems} />)} />
+          <Route exact path='/account' component={() => (<Dashboard />)} />
+          <Route exact path='/wardrobe' component={() => (<Wardrobe />)} />
           <Route exact path='/login' component={() => (<Login />)} />
           <Footer />
         </div>
