@@ -25,7 +25,7 @@ class NavBar extends Component {
             <form className="form-inline my-2 my-lg-0 search-section">
               <input className="form-control mr-sm-2 input-sm" type="text" placeholder="Search"></input>
               {/* <i className="material-icons btn btn-outline-success  btn-sm btn-color " type="submit">search</i> */}
-              <button className="btn btn-outline-success my-2 my-sm-0 btn-sm btn-color btn-section" type="submit"><i className="material-icons">search</i></button>
+              <button className="btn btn-outline-success my-2 my-sm-0 btn-sm nav-btn-color nav-btn-section" type="submit"><i className="material-icons">search</i></button>
             </form>
             <NavLink exact activeClassName="active"  className="nav-link login" to='/login' >
                 LOGIN / REGISTER

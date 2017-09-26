@@ -8,11 +8,6 @@ ul {
   margin: 0;
 }
 
-.test {
-  background-color: red;
-  text-align: center;
-}
-
 hr {
   /* border: 2px solid #bdbdbd; */
   border-top: 0px;
@@ -67,20 +62,23 @@ a {
   color: #515151;
 }
 
-.btn-section {
-  padding: .1rem .3rem;
-  line-height: 1.2;
+.input-sm:focus {
+  background-color: #242424;
+  color: lightgray;
 }
 
-.btn-color {
+.nav-btn-color {
+  padding: .1rem .3rem;
+  line-height: 1.2;
   border-color: black;
   color: #cdb287;
 }
 
-.btn-color:hover {
+.nav-btn-color:hover {
   background-color: #cdb287;
   border-color: #cdb287;
   color: #343a40;
+  cursor: pointer;
 }
 
 .search-section {
@@ -89,6 +87,80 @@ a {
 
 .login {
   padding-left: 0px;
+}
+
+/* ------ Login / Register ------*/
+
+.signin-section {
+  background-image: url('./Landing2.jpeg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  box-shadow: inset 0 0 0 1000px rgba(48,48,48,.9);
+  padding-bottom: 70px;
+}
+
+.log-reg-section {
+  text-align: center;
+  padding: 30px 0px 30px 0px;
+  font-size: 24px;
+  color: white;
+  font-weight: bold;
+}
+
+.log-reg-title {
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.signin-input {
+  background-color: transparent;
+  border-color: #848484;
+}
+
+.signin-input:focus {
+  background-color: transparent;
+  color: lightgray;
+}
+
+.signin-input-title {
+  color: #848484;
+}
+
+.signin-input-area-title {
+  padding-top: 25px;
+}
+
+.signin {
+  background-color: transparent;
+  height: 380px;
+  margin-right: auto;
+  margin-bottom: 30px;
+  margin-left: auto;
+  box-shadow: inset 0 0 0 1000px rgba(24,24,24,.7);
+  border-radius: 10px;
+  padding: 40px 30px 40px 30px;
+}
+
+.register {
+  background-color: transparent;
+  margin-right: auto;
+  margin-left: auto;
+  box-shadow: inset 0 0 0 1000px rgba(24,24,24,.7);
+  border-radius: 10px;
+  padding: 40px 30px 40px 30px;
+}
+
+.signin-btn-color {
+  background: #cdb287;
+  color: white;
+  cursor: pointer;
+}
+
+.signin-btn-color:hover {
+  background: #5f5037;
+  color: white;
+  cursor: pointer;
 }
 
 /* ------ Footer ------*/
@@ -117,6 +189,11 @@ a {
   padding: .3rem .75rem;
   background-color: #242424;
   color: #515151;
+}
+
+.footer-input-sm:focus {
+  background-color: #242424;
+  color: lightgray;
 }
 
 .footer-rights {
