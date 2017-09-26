@@ -1,7 +1,7 @@
 module.exports = [
   //items belonging to user 1
   {
-    rentee_id: 2,
+    rentee_id: 1,
     itemname: 'WOOL BOMBER JACKET WITH APPLIQUES',
     image: 'https://media.gucci.com/style/DarkGray_Center_0_0_1200x1200/1491471014/474727_X5T33_6564_001_100_0000_Light-Wool-bomber-jacket-with-appliqus.jpg',
     brand: 'Gucci',
@@ -12,7 +12,7 @@ module.exports = [
     status: 'Available'
   },
   {
-    rentee_id: 2,
+    rentee_id: 1,
     itemname: 'TEDDY LIGHTWEIGHT "LOVE" JACKET IN MULTICOLOR VISCOSE',
     image: 'https://cdn.yoox.biz/34/34711326BR_13_f.jpg',
     brand: 'Saint Laurent',
@@ -23,7 +23,7 @@ module.exports = [
     status: 'Available'
   },
   {
-    rentee_id: 2,
+    rentee_id: 1,
     itemname: 'LANDSCAPE JACQUARD JERSEY T-SHIRT',
     image: 'https://assets.prada.com/content/dam/prada-ecommerce/images/details/UJN443_1NOG_F0124_S_172-1.jpg/_jcr_content/renditions/original',
     brand: 'Prada',
@@ -34,7 +34,7 @@ module.exports = [
     status: 'Available'
   },
   {
-    rentee_id: 2,
+    rentee_id: 1,
     itemname: 'BLACK T-SHIRT WITH MULTICOLOR PATCHES',
     image: 'https://images.www.fendi.com/images/hbc/h94/8835962437662/FY0682A5CFF0QA1_01_MediumSize#product-medium',
     brand: 'Fendi Roma',
@@ -45,7 +45,7 @@ module.exports = [
     status: 'Available'
   },
   {
-    rentee_id: 2,
+    rentee_id: 1,
     itemname: 'ARMY PARKA WITH SHEARLING LINING',
     image: 'http://us.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton-army-parka-with-shearling-lining-ready-to-wear--HDK05WANU652_PM2_Front%20view.jpg?wid=1214&hei=1214',
     brand: 'Louis Vuitton',
@@ -56,7 +56,7 @@ module.exports = [
     status: 'Available'
   },
   {
-    rentee_id: 2,
+    rentee_id: 1,
     itemname: 'GUCCI COCO CAPITAN LOGO T-SHIRT',
     image: 'https://media.gucci.com/style/DarkGray_Center_0_0_1200x1200/1498151717/493117_X3H99_9823_001_100_0000_Light-Gucci-Coco-Capitn-logo-T-shirt.jpg',
     brand: 'Gucci',
@@ -67,7 +67,7 @@ module.exports = [
     status: 'Available'
   },
   {
-    rentee_id: 2,
+    rentee_id: 1,
     itemname: 'THE ICONIC G-1 BOMBER JACKET',
     image: 'http://www.ralphlauren.com/graphics/product_images/pPOLO2-26489740_lifestyle_dt.jpg',
     brand: 'Ralph Lauren',
@@ -79,7 +79,7 @@ module.exports = [
   },
 
   {
-    rentee_id: 1,
+    rentee_id: 2,
     itemname: 'EMBROIDERED CLUNY LACE DRESS',
     image: 'https://media.gucci.com/style/DarkGray_Center_0_0_1200x1200/1494617411/475282_ZJD16_4920_001_100_0000_Light-Embroidered-cluny-lace-dress.jpg',
     brand: 'Gucci',
@@ -90,7 +90,7 @@ module.exports = [
     status: 'Available'
   },
   {
-    rentee_id: 1,
+    rentee_id: 2,
     itemname: 'JERSEY SHIRTDRESS WITH LUREX TRIM',
     image: 'https://media.gucci.com/style/DarkGray_Center_0_0_1200x1200/1481113806/467505_X5R17_1048_001_100_0000_Light-Jersey-shirtdress-with-lurex-trim.jpg',
     brand: 'Gucci',
@@ -101,7 +101,7 @@ module.exports = [
     status: 'Available'
   },
   {
-    rentee_id: 1,
+    rentee_id: 2,
     itemname: 'BUTTERFLY PRINT SHIRT WITH RUFFLE DETAIL',
     image: 'https://media.gucci.com/style/DarkGray_Center_0_0_1200x1200/1500916510/493596_ZJQ84_1868_001_100_0000_Light-Butterfly-print-shirt-with-ruffle-detail.jpg',
     brand: 'Gucci',
@@ -112,7 +112,7 @@ module.exports = [
     status: 'Available'
   },
   {
-    rentee_id: 1,
+    rentee_id: 2,
     itemname: 'BLACK LACE ONE SHOULDER ASYMMETRICAL MINI DRESS',
     image: 'https://cdn.yoox.biz/34/34711296WG_13_f.jpg',
     brand: 'Saint Laurent',
@@ -123,7 +123,7 @@ module.exports = [
     status: 'Available'
   },
   {
-    rentee_id: 1,
+    rentee_id: 2,
     itemname: 'CHEVRON OVER COAT',
     image: 'https://images.www.fendi.com/images/hcf/h18/8839427588126/FF8426A0MVF03N9_01_MediumSize#product-medium',
     brand: 'Fendi Roma',
@@ -134,7 +134,7 @@ module.exports = [
     status: 'Available'
   },
   {
-    rentee_id: 1,
+    rentee_id: 2,
     itemname: 'GRAPHIC CHAIN PRINTED SHIRT',
     image: 'http://us.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton-graphic-chain-printed-shirt-ready-to-wear--FDBL02DJD620_PM2_Front%20view.jpg?wid=1214&hei=1214',
     brand: 'Louis Vuitton',
@@ -145,7 +145,7 @@ module.exports = [
     status: 'Available'
   },
   {
-    rentee_id: 1,
+    rentee_id: 2,
     itemname: 'WOOL JACQUARD PULLOVER',
     image: 'http://us.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton-wool-jacquard-pullover-ready-to-wear--FDKL55FBZ001_PM2_Front%20view.jpg?wid=1214&hei=1214',
     brand: 'Louis Vuitton',
