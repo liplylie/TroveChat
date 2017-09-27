@@ -4,7 +4,7 @@ import Loading from './Loading';
 class WomenItem extends Component {
   render() {
     return (
-      <div className='col-md-3 wow bounceIn animated'>
+      <div className='col-md-3 wow fadeIn animated'>
         <div className='list-section-wrap'>
           <div className='list-section-picture'>
             <img src={this.props.passItem.image}></img>
