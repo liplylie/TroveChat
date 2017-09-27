@@ -7,11 +7,11 @@ const userData = require('../../seeding/userSeedData');
 
 
 const User = db.define('User', {
-  username: {
+  userName: {
     type: Sequelize.STRING,
     allowNull: false
   },
-  password: {
+  userEmail: {
     type: Sequelize.STRING,
     allowNull: false
   },
