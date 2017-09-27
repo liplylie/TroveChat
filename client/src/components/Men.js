@@ -7,10 +7,6 @@ class Men extends Component {
     super(props);
   }
 
-  itemClickHandler() {
-    
-  }
-
   render() {
     return (
       <div className='list-section'>
@@ -20,7 +16,7 @@ class Men extends Component {
         <div className='row'>
           {!this.props.passItems ? <Loading /> : this.props.passItems.map(item => 
             { if(item.sex === 'M') {
-              return <MenItem passItem={item} key={item.id}/>}
+              return <MenItem passItem={item} key={item.id} />}
             }
           ).reverse()}
         </div>

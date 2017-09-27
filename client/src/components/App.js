@@ -10,6 +10,7 @@ import Footer from './Footer';
 import Dashboard from './Dashboard';
 import Wardrobe from './Wardrobe';
 import firebase, {auth} from '../firebase';
+import Item from './Item';
 
 class App extends Component {
   constructor(props) {
@@ -118,6 +119,7 @@ class App extends Component {
           <Route exact path='/account' component={() => (<Dashboard />)} />
           <Route exact path='/wardrobe' component={() => (<Wardrobe />)} />
           <Route exact path='/login' component={() => (<Login login={this.authWithEmailPassword} signUp={this.signUp}/>)} />
+          <Route exact path='/item/:item_id' component={() => (<Item />)} />
           <Footer />
         </div>
       </BrowserRouter>
