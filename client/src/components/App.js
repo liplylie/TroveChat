@@ -43,7 +43,7 @@ class App extends Component {
 
   //Add login event
   authWithEmailPassword() {
-    alert('login button clicked');
+    // alert('login button clicked');
     const email = document.getElementById('txtEmail').value;
     const pw = document.getElementById('txtPassword').value;
     
@@ -56,7 +56,7 @@ class App extends Component {
           authenticated: true,
           user: result.user
         })
-        console.log('setting state in authWithEmailPassword, authenticated: ', this.state.authenticated);
+        console.log('state on login: ', this.state.authenticated);
       })
       .catch(err => console.log(err.message));
 
@@ -65,14 +65,14 @@ class App extends Component {
   }
 
   logout() {
-    alert('logout function evoked');
+    // alert('logout function evoked');
     auth.signOut()
       .then(() => {
         this.setState({
           authenticated: false,
           user: null
         })
-        console.log('setting state in logout, authenticated: ', this.state.authenticated);        
+        console.log('state on logout: ', this.state.authenticated);        
       })
   }
 
