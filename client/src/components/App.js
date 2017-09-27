@@ -110,8 +110,7 @@ class App extends Component {
       <BrowserRouter>
         <div>
           <NavBar authenticated={this.state.authenticated} logout={this.logout}/>
-          <Route exact path='/' component={() => (<Home />)} />
-          {/* <Route exact path='/logout' component={() => (<Home />)} /> */}
+          <Route exact path='/' component={() => (<Home passItems={this.state.allItems} />)} />
           <Route exact path='/men' component={() => (
             <Men passItems={this.state.allItems} />)} />
           <Route exact path='/women' component={() => (
