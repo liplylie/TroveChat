@@ -1,42 +1,10 @@
 import React, { Component } from 'react';
-import * as firebase from 'firebase'
 
 class Login extends Component {
 
   constructor(props) {
     super(props)
-
-    this.state = {
-      txtEmail: '',
-      txtPassword: ''
-    }
-
-    // this.authWithEmailPassword = this.authWithEmailPassword.bind(this);
-    // const txtEmail = document.getElementById('txtEmail');
-    // const txtPassword = document.getElementById('txtPassword');
-    // const btnLogin = document.getElementById('btnLogin');
-    // btnLogin.addEventListener('click', e => {
-    //   //Get email and pass
-    //   const email = txtEmail.value;
-    //   const pass = txtPassword.value;
-    //   const authDomain = firebase.auth();
-    //   //Sign in
-    //   auth.signInWithEmailAndPassword(email, pass)
-    //     .then(() => console.log('login button worked'))
-    //     .catch(err => console.log(err.message));
-    
-    
-    // });
   }
-
-  
-  //Add login event
-
-    
-  
-
-  
-  
 
   render() {
     return (

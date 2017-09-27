@@ -16,14 +16,14 @@ class App extends Component {
     super(props);
     this.state = {
       allItems: [],
-
-      username: '',
-      authenticated: false,
+      authenticated: null,
       user: null
     }
+
     this.fetch = this.fetch.bind(this);
     this.authWithEmailPassword = this.authWithEmailPassword.bind(this);
     this.signUp = this.signUp.bind(this);
+    this.logout = this.logout.bind(this);
 
   }
 
@@ -32,6 +32,9 @@ class App extends Component {
     auth.onAuthStateChanged((user) => {
       if(user) {
         console.log(user);
+        this.setState({
+          authenticated: true
+        })
       } else {
         console.log('not logged in')
       }
@@ -46,11 +49,31 @@ class App extends Component {
     
     const authDomain = firebase.auth();
     auth.signInWithEmailAndPassword(email, pw)
-      .then(() => console.log('login button worked'))
+      .then((result) => {
+        console.log('login button worked')
+        // document.getElementsByClassName('act-link').style.display = '';
+        this.setState({
+          authenticated: true,
+          user: result.user
+        })
+        console.log('setting state in authWithEmailPassword, authenticated: ', this.state.authenticated);
+      })
       .catch(err => console.log(err.message));
 
     document.getElementById('txtEmail').value = '';
     document.getElementById('txtPassword').value = '';
+  }
+
+  logout() {
+    alert('logout function evoked');
+    auth.signOut()
+      .then(() => {
+        this.setState({
+          authenticated: false,
+          user: null
+        })
+        console.log('setting state in logout, authenticated: ', this.state.authenticated);        
+      })
   }
 
   //Sign up
@@ -86,8 +109,9 @@ class App extends Component {
     return (
       <BrowserRouter>
         <div>
-          <NavBar authenticated={this.state.authenticated}/>
+          <NavBar authenticated={this.state.authenticated} logout={this.logout}/>
           <Route exact path='/' component={() => (<Home />)} />
+          {/* <Route exact path='/logout' component={() => (<Home />)} /> */}
           <Route exact path='/men' component={() => (
             <Men passItems={this.state.allItems} />)} />
           <Route exact path='/women' component={() => (

@@ -31,16 +31,21 @@ class NavBar extends Component {
               {/* <i className="material-icons btn btn-outline-success  btn-sm btn-color " type="submit">search</i> */}
               <button className="btn btn-outline-success my-2 my-sm-0 btn-sm nav-btn-color nav-btn-section" type="submit"><i className="material-icons">search</i></button>
             </form>
+            <NavLink exact activeClassName="active"  className="act-link" to='/account' >
+                ACCOUNT
+            </NavLink>
             
             {/* Check if user logged in */}
             {!this.props.authenticated ?
-              <NavLink exact activeClassName="active"  className="nav-link login" to='/login' >
+              <NavLink exact activeClassName="active"  className="nav-link login" to='/login'>
                   LOGIN / REGISTER
               </NavLink>
               :
-              <NavLink exact activeClassName="active"  className="nav-link login" to='/account' >
-                ACCOUNT
+              (
+              <NavLink exact activeClassName="active"  className="nav-link logout" to='/' onClick={() => this.props.logout()}>
+                  LOGOUT
               </NavLink>
+              )
             }
           </div>
         </nav>
