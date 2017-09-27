@@ -14,10 +14,6 @@ const User = db.define('User', {
   userEmail: {
     type: Sequelize.STRING,
     allowNull: false
-  },
-  sex: {
-    type: Sequelize.STRING,
-    allowNull: false
   }
 }, {
   timestamps: false
@@ -111,3 +107,4 @@ module.exports = {
   Item,
   Rent_trx
 }
+
