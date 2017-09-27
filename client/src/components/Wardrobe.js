@@ -7,7 +7,7 @@ class Wardrobe extends Component {
   render() {
     return (
       <div>
-
+        THIS IS Wardrobe
         <Popup />
       </div>
     );
