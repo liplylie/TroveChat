@@ -7,12 +7,16 @@ import Men from './Men';
 import Women from './Women';
 import Login from './Login';
 import Footer from './Footer';
+import firebase, {auth} from '../firebase';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      allItems: []
+      allItems: [],
+      username: '',
+      authenticated: false,
+      user: null
     }
     this.fetch = this.fetch.bind(this);
   }
@@ -36,7 +40,7 @@ class App extends Component {
     return (
       <BrowserRouter>
         <div>
-          <NavBar />
+          <NavBar authenticated={this.state.authenticated}/>
           <Route exact path='/' component={() => (<Home />)} />
           <Route exact path='/men' component={() => (
             <Men passItems={this.state.allItems} />)} />
