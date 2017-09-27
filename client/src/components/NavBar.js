@@ -38,8 +38,8 @@ class NavBar extends Component {
               </NavLink>
               :
               (
-                <div>
-                  <NavLink exact activeClassName="active"  className="act-link" to='/account' >
+                <div className='row'>
+                  <NavLink exact activeClassName="active"  className="nav-link" to='/account' >
                     ACCOUNT
                   </NavLink>
                   <NavLink exact activeClassName="active"  className="nav-link logout" to='/' onClick={() => this.props.logout()}>

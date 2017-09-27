@@ -116,7 +116,7 @@ class App extends Component {
           <Route exact path='/women' component={() => (
             <Women passItems={this.state.allItems} />)} />
           <Route exact path='/account' component={() => (<Dashboard />)} />
-          <Route exact path='/wardrobe' component={() => (<Wardrobe />)} />
+          {/* <Route exact path='/wardrobe' component={() => (<Wardrobe />)} /> */}
           <Route exact path='/login' component={() => (<Login login={this.authWithEmailPassword} signUp={this.signUp}/>)} />
           <Footer />
         </div>
