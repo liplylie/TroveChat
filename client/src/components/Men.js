@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import MenItem from './MenItem';
+import Loading from './Loading';
 
 class Men extends Component {
   constructor(props) {
@@ -8,10 +9,17 @@ class Men extends Component {
 
   render() {
     return (
-      <div>
-      {this.props.passItems.map(item => 
-        <MenItem passItem={item} key={item.id}/>
-      )}
+      <div className='list-section'>
+        <div className='list-section-title'>
+          <span>MEN</span>
+        </div>
+        <div className='row'>
+          {!this.props.passItems ? <Loading /> : this.props.passItems.map(item => 
+            { if(item.sex === 'M') {
+              return <MenItem passItem={item} key={item.id}/>}
+            }
+          ).reverse()}
+        </div>
       </div>
     );
   }
