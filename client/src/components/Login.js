@@ -1,6 +1,22 @@
 import React, { Component } from 'react';
+import * as firebase from 'firebase'
 
 class Login extends Component {
+
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      txtEmail: '',
+      txtPassword: ''
+    }
+
+    
+  }
+
+  
+  
+
   render() {
     return (
       <div className='signin-section'>
@@ -14,16 +30,18 @@ class Login extends Component {
               <br></br>
               <div className='signin-input-area-title'>
                 <span className='signin-input-title'>EMAIL ADDRESS*</span>
-                <input className="form-control signin-input" type="text"></input>
+                <input id="txtEmail" className="form-control signin-input" type="text"></input>
               </div>
               <div className='signin-input-area-title'>
                 <span className='signin-input-title'>PASSWORD*</span>
-                <input className="form-control signin-input" type="text"></input>
+                <input id="txtPassword" className="form-control signin-input" type="text"></input>
               </div>
               <span className='signin-input-title'>Forget your password?</span>
               <br></br>
               <div className='signin-input-area-title'>
-                <button className="btn signin-btn-color btn-lg btn-block" type="submit">LOGIN</button>
+                <button id="btnLogin" className="btn signin-btn-color btn-lg btn-block" type="submit"
+                onClick={() => this.props.login()}
+                >LOGIN</button>
               </div>
             </div>
             <div className='col-md-5 register'>
@@ -31,24 +49,26 @@ class Login extends Component {
               <br></br>
               <div className='signin-input-area-title'>
                 <span className='signin-input-title'>NAME*</span>
-                <input className="form-control signin-input" type="text"></input>
+                <input id="newName" className="form-control signin-input" type="text"></input>
               </div>
               <div className='signin-input-area-title'>
                 <span className='signin-input-title'>EMAIL ADDRESS*</span>
-                <input className="form-control signin-input" type="text"></input>
+                <input id="newEmail" className="form-control signin-input" type="text"></input>
               </div>
               <div className='signin-input-area-title'>
                 <span className='signin-input-title'>PASSWORD*</span>
-                <input className="form-control signin-input" type="text"></input>
+                <input id="newPw" className="form-control signin-input" type="text"></input>
               </div>
               <div className='signin-input-area-title'>
                 <span className='signin-input-title'>CONFIRM PASSWORD*</span>
-                <input className="form-control signin-input" type="text"></input>
+                <input id="confPw" className="form-control signin-input" type="text"></input>
               </div>
               <span className='signin-input-title'>By registering your details you agree to our Terms and Conditions and privacy and cookie policy</span>
               <br></br>
               <div className='signin-input-area-title'>
-                <button className="btn signin-btn-color btn-lg btn-block" type="submit">REGISTER</button>
+                <button 
+                onClick={() => this.props.signUp()}
+                className="btn signin-btn-color btn-lg btn-block" type="submit">REGISTER</button>
               </div>
             </div>
           </div>
