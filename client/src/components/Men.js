@@ -7,6 +7,10 @@ class Men extends Component {
     super(props);
   }
 
+  itemClickHandler() {
+    
+  }
+
   render() {
     return (
       <div className='list-section'>
