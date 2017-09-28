@@ -18,7 +18,8 @@ class App extends Component {
     this.state = {
       allItems: [],
       authenticated: null,
-      user: null
+      user: null,
+      sqlUser: null
     }
 
     this.fetch = this.fetch.bind(this);
@@ -44,62 +45,80 @@ class App extends Component {
 
   //Add login event
   authWithEmailPassword() {
-    // alert('login button clicked');
     const email = document.getElementById('txtEmail').value;
     const pw = document.getElementById('txtPassword').value;
-    
+    const userData = null;
     const authDomain = firebase.auth();
+
     auth.signInWithEmailAndPassword(email, pw)
       .then((result) => {
-        console.log('login button worked')
-        // document.getElementsByClassName('act-link').style.display = '';
-        this.setState({
-          authenticated: true,
-          user: result.user
+        console.log('logged in')
+        axios.get(`/api/user/${email}`)
+        .then(({data}) => {
+          const userData = data;
+          this.setState({
+            authenticated: true,
+            user: result,
+            sqlUser: userData
+          })
         })
-        console.log('state on login: ', this.state.authenticated);
+        .catch(err => console.log('error in axios: ', err.message));
       })
-      .catch(err => console.log(err.message));
+      .catch(err => alert(err.message));
 
     document.getElementById('txtEmail').value = '';
     document.getElementById('txtPassword').value = '';
   }
 
   logout() {
-    // alert('logout function evoked');
     auth.signOut()
       .then(() => {
+        console.log('signed out')
         this.setState({
           authenticated: false,
-          user: null
+          user: null,
+          sqlUser: null
         })
-        console.log('state on logout: ', this.state.authenticated);        
+        console.log('state on logout: ', this.state);        
       })
+      .catch(err => alert(err.message));
   }
 
   //Sign up
   signUp () {
+    const newName = document.getElementById('newName').value;
     const newEmail = document.getElementById('newEmail').value;
     const newPw = document.getElementById('newPw').value;
     const confPw = document.getElementById('confPw').value;
 
     if (newPw === confPw) {
       auth.createUserWithEmailAndPassword(newEmail, newPw)
-        .then(() => {
-          console.log('created user')
+        .then((result) => {
+          console.log('signed up')
+          axios.post('/api/user', {
+            userName: newName,
+            userEmail: newEmail
+          })
+          .then(({data}) => {
+            this.setState({
+              authenticated: true,
+              user: result,
+              sqlUser: data
+            })
+            alert('Account successfully created!')
+          })
+          .catch(err => alert(err.message));
         })
-        .catch(err => console.log(err.message));
+        .catch(err => alert(err.message));
     } else {
       alert('Please make sure both passwords match');
     }
   }
   
-
   fetch() {
     axios.get('/api')
     .then(items => {
       this.setState({ allItems: items.data });
-      // console.log('Items:', this.state.allItems);
     })
     .catch(err => {
       console.log('Fetch err:', err);
@@ -107,6 +126,7 @@ class App extends Component {
   }
 
   render() {
+    console.log('this is state in render: ', this.state);
     return (
       <BrowserRouter>
         <div>
@@ -116,8 +136,7 @@ class App extends Component {
             <Men passItems={this.state.allItems} />)} />
           <Route exact path='/women' component={() => (
             <Women passItems={this.state.allItems} />)} />
-          <Route exact path='/account' component={() => (<Dashboard />)} />
-          {/* <Route exact path='/wardrobe' component={() => (<Wardrobe />)} /> */}
+          <Route exact path='/account' component={() => (<Dashboard sqlUser={this.state.sqlUser}/>)} />
           <Route exact path='/login' component={() => (<Login login={this.authWithEmailPassword} signUp={this.signUp}/>)} />
           <Route exact path='/item/:item_id' component={() => (<Item />)} />
           <Footer />
