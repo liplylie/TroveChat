@@ -303,10 +303,45 @@ hr {
 
 .dashboard {
   background-color: #f5f5f5;
+  display: flex;
+  min-height: 342px;
+}
+
+.dashboard-title {
+  font-weight: bold;
+  font-size: 24px;
+  color: #4a4a4a;
+  padding-bottom: 20px;
+}
+
+.my-account-section {
+  min-width: 270px;
+}
+
+.account-info-title span {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.account-section-title {
+  padding-bottom: 20px;
+}
+
+.account-section-title span{
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.account-info-description {
+  font-size: 14px;
+}
+
+.account-info{
+  display: block;
 }
 
 .dashboard-wrap {
-  padding: 40px 40px 40px 40px;
+  padding: 40px 36px 40px 36px;
 }
 
 .dashboard-link {
