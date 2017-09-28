@@ -14,5 +14,5 @@ class Upload extends Component {
     );
   }
 }
-// Testing gitkraken
+
 export default Upload;
