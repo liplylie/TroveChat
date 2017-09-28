@@ -15,10 +15,10 @@ class Item extends Component {
   }
 
   render() {
-    {console.log('pass')}
+    console.log('state', this.state)
     return (
       <div>
-        <p> i'm here </p>
+        <p> {this.props.someProp} </p>
         <DateRangePicker
           daySize={this.state.daySize}
           minimumNights={this.state.minimumNights}
@@ -27,7 +27,7 @@ class Item extends Component {
           onDatesChange={({ startDate, endDate }) => this.setState({ startDate, endDate })} // PropTypes.func.isRequired,
           focusedInput={this.state.focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
           onFocusChange={focusedInput => this.setState({ focusedInput })} // PropTypes.func.isRequired,
-        />
+          />
       </div>
     )
   }

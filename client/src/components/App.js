@@ -142,7 +142,7 @@ class App extends Component {
             <Women passItems={this.state.allItems} />)} />
           <Route exact path='/account' component={() => (<Dashboard sqlUser={this.state.sqlUser}/>)} />
           <Route exact path='/login' component={() => (<Login authenticated={this.state.authenticated} login={this.authWithEmailPassword} signUp={this.signUp}/>)} />
-          <Route exact path='/item/:item_id' component={() => (<Item />)} />
+          <Route exact path='/item/:item_id' render={() => <Item someProp={'wook'} />} />
           <Footer />
         </div>
       </BrowserRouter>
