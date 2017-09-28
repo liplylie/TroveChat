@@ -33,9 +33,14 @@ class App extends Component {
     this.fetch();
     auth.onAuthStateChanged((user) => {
       if(user) {
-        console.log(user);
-        this.setState({
-          authenticated: true
+        console.log(user.email);
+        axios.get(`/api/user/${user.email}`)
+        .then(({data}) => {
+          this.setState({
+            authenticated: true,
+            user: user,
+            sqlUser: data
+          })
         })
       } else {
         console.log('not logged in')
@@ -55,11 +60,10 @@ class App extends Component {
         console.log('logged in')
         axios.get(`/api/user/${email}`)
         .then(({data}) => {
-          const userData = data;
           this.setState({
             authenticated: true,
             user: result,
-            sqlUser: userData
+            sqlUser: data
           })
         })
         .catch(err => console.log('error in axios: ', err.message));
