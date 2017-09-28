@@ -33,18 +33,18 @@ hr {
 
 /* ------ Nav Bar ------*/
 
-.nav {
+/* .nav {
   font-size: 20px;
   text-decoration: none;
   padding: 15px 0px 15px 0px;
   background-color: black;
-}
+} */
 
 .navbar-dark .navbar-nav .nav-link {
   color: white;
 }
 
-a {
+.navbar a {
   text-decoration: none !important;
   color: white;
 }
@@ -298,6 +298,22 @@ a {
   color: white;
   cursor: pointer;
 }
+
+/* ------ Dashboard ------*/
+
+.dashboard {
+  background-color: #f5f5f5;
+}
+
+.dashboard-wrap {
+  padding: 40px 40px 40px 40px;
+}
+
+.dashboard-link {
+  display: block;
+}
+
+
 
 /* ------ Footer ------*/
 

@@ -38,7 +38,7 @@ class NavBar extends Component {
               </NavLink>
               :
               (
-                <div>
+                <div className='row'>
                   <NavLink exact activeClassName="active"  className="nav-link" to='/account' >
                     ACCOUNT
                   </NavLink>
