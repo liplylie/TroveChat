@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { BrowserRouter,Redirect, Route, Link } from 'react-router-dom';
 
 class Login extends Component {
 
@@ -7,6 +8,10 @@ class Login extends Component {
   }
 
   render() {
+    // Redirect if authenticated
+    if(this.props.authenticated) {
+      return <Redirect to='/' />;
+    }
     return (
       <div className='signin-section'>
         <div className='container'>
@@ -23,7 +28,7 @@ class Login extends Component {
               </div>
               <div className='signin-input-area-title'>
                 <span className='signin-input-title'>PASSWORD*</span>
-                <input id="txtPassword" className="form-control signin-input" type="text"></input>
+                <input id="txtPassword" className="form-control signin-input" type="password"></input>
               </div>
               <span className='signin-input-title'>Forget your password?</span>
               <br></br>
@@ -46,11 +51,11 @@ class Login extends Component {
               </div>
               <div className='signin-input-area-title'>
                 <span className='signin-input-title'>PASSWORD*</span>
-                <input id="newPw" className="form-control signin-input" type="text"></input>
+                <input id="newPw" className="form-control signin-input" type="password"></input>
               </div>
               <div className='signin-input-area-title'>
                 <span className='signin-input-title'>CONFIRM PASSWORD*</span>
-                <input id="confPw" className="form-control signin-input" type="text"></input>
+                <input id="confPw" className="form-control signin-input" type="password"></input>
               </div>
               <span className='signin-input-title'>By registering your details you agree to our Terms and Conditions and privacy and cookie policy</span>
               <br></br>

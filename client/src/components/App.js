@@ -141,7 +141,7 @@ class App extends Component {
           <Route exact path='/women' component={() => (
             <Women passItems={this.state.allItems} />)} />
           <Route exact path='/account' component={() => (<Dashboard sqlUser={this.state.sqlUser}/>)} />
-          <Route exact path='/login' component={() => (<Login login={this.authWithEmailPassword} signUp={this.signUp}/>)} />
+          <Route exact path='/login' component={() => (<Login authenticated={this.state.authenticated} login={this.authWithEmailPassword} signUp={this.signUp}/>)} />
           <Route exact path='/item/:item_id' component={() => (<Item />)} />
           <Footer />
         </div>
