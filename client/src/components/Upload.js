@@ -15,6 +15,7 @@ class Upload extends Component {
       price: 0.0,
       size: '',
       sex: '',
+      image: '',
       status: 'Available'
     }
     this.handleDelete = this.handleDelete.bind(this);
@@ -68,6 +69,7 @@ class Upload extends Component {
     axios.post('/api', {
       rentee_id: this.state.rentee_id,
       itemname: this.state.itemname,
+      image: this.state.image,
       brand: this.state.brand,
       price: this.state.price,
       size: this.state.size,
@@ -98,6 +100,9 @@ class Upload extends Component {
           </div>
           <div><input type="text" placeholder="Retail Price" ref="input" 
           onChange = { (e) => {this.handleInput('price', parseFloat(e.target.value).toFixed(2)) }}/>
+          </div>
+          <div><input type="text" placeholder="Image URL" ref="input" 
+          onChange = { (e) => {this.handleInput('image', e.target.value) }}/>
           </div>
           <div>
             Size:
