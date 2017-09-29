@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { DateRangePicker, SingleDatePicker, DayPickerRangeController } from 'react-dates';
 
-
 class Item extends Component {
   constructor(props) {
     super(props);
@@ -13,6 +12,15 @@ class Item extends Component {
       daySize: 30,
       itemInfo: this.props.location.params.itemInfo
     }
+  }
+
+  componentWillMount() {
+    const script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = "path/to/instafeed.min.js";
+    script.async = true;
+
+    document.body.appendChild(script);
   }
 
   render() {
@@ -47,6 +55,10 @@ class Item extends Component {
           {/* make this look pretty */}
           <span> {this.state.itemInfo.tag} </span> 
         </div>
+        <div>
+          <button type="button">Rent</button>
+        </div>
+        <div id="instafeed"></div>
       </div>
     )
   }
