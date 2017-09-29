@@ -3,31 +3,50 @@ import { DateRangePicker, SingleDatePicker, DayPickerRangeController } from 'rea
 
 
 class Item extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       startDate: null,
       endDate: null,
       focusedInput: null,
       minimumNights: 7,
       daySize: 30,
+      itemInfo: this.props.location.params.itemInfo
     }
   }
 
   render() {
-    console.log('state', this.state)
     return (
       <div>
-        <p> {this.props.someProp} </p>
+        <img src={this.state.itemInfo.image} width="400" />
+        <div>
+          <span> {this.state.itemInfo.brand} </span>
+        </div>
+        <div>
+          <span> {this.state.itemInfo.itemname} </span>
+        </div>
+        <div>
+          <span> {this.state.itemInfo.size} </span>
+        </div>
+        <div>
+          <span> {this.state.itemInfo.price} </span>
+        </div>
+        
+        {/* get user's id in here too */}
+
         <DateRangePicker
           daySize={this.state.daySize}
           minimumNights={this.state.minimumNights}
-          startDate={this.state.startDate} // momentPropTypes.momentObj or null,
-          endDate={this.state.endDate} // momentPropTypes.momentObj or null,
-          onDatesChange={({ startDate, endDate }) => this.setState({ startDate, endDate })} // PropTypes.func.isRequired,
-          focusedInput={this.state.focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
-          onFocusChange={focusedInput => this.setState({ focusedInput })} // PropTypes.func.isRequired,
+          startDate={this.state.startDate} 
+          endDate={this.state.endDate} 
+          onDatesChange={({ startDate, endDate }) => this.setState({ startDate, endDate })} 
+          focusedInput={this.state.focusedInput} 
+          onFocusChange={focusedInput => this.setState({ focusedInput })} 
           />
+        <div>
+          {/* make this look pretty */}
+          <span> {this.state.itemInfo.tag} </span> 
+        </div>
       </div>
     )
   }
