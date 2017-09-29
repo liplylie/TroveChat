@@ -1,6 +1,8 @@
 const router = require('express').Router();
 const itemCtrl = require('../controller/itemCtrl');
 const userCtrl = require('../controller/userCtrl');
+const paymentCtrl = require('../controller/paymentCtrl')
+
 
 router.route('/')
   .get(itemCtrl.fetchAll)
@@ -12,6 +14,8 @@ router.route('/user')
 router.route('/user/:userEmail')
   .get(userCtrl.getUser);
 
-
+router.route('/women/payment')
+  .get(paymentCtrl.getMsg)
+  .post(paymentCtrl.postCharge)
 
 module.exports = router;

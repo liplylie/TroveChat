@@ -30,8 +30,10 @@
     "react-image": "^1.0.1",
     "react-popup": "^0.8.0",
     "react-router-dom": "^4.2.2",
+    "react-stripe-checkout": "^2.6.3",
     "react-tag-input": "^4.7.2",
     "sequelize": "^4.10.0",
+    "stripe": "^5.1.0",
     "style-loader": "^0.18.2",
     "webpack": "^3.6.0"
   },
