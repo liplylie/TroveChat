@@ -30,7 +30,7 @@ class Item extends Component {
         <div>
           <span> {this.state.itemInfo.brand} </span>
         </div>
-        <div>
+        <div onClick={() => this.props.location.params.addToCart(this.state.itemInfo)}>
           <span> {this.state.itemInfo.itemname} </span>
         </div>
         <div>

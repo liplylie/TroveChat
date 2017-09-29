@@ -17,6 +17,7 @@ class App extends Component {
     super(props);
     this.state = {
       allItems: [],
+      cart: [],
       authenticated: null,
       user: null,
       sqlUser: null
@@ -26,7 +27,7 @@ class App extends Component {
     this.authWithEmailPassword = this.authWithEmailPassword.bind(this);
     this.signUp = this.signUp.bind(this);
     this.logout = this.logout.bind(this);
-
+    this.handleAddToCart = this.handleAddToCart.bind(this);
   }
 
   componentDidMount() {
@@ -129,6 +130,18 @@ class App extends Component {
     })
   }
 
+  handleAddToCart(item) {
+    alert('function invoked');
+    console.log('this is the item: ', item)
+    let currCart = this.state.cart;
+    currCart.push(item);
+
+    this.setState({
+      cart: currCart
+    })
+    console.log('cart after adding item: ', this.state.cart);
+  }
+
   render() {
     console.log('this is state in render: ', this.state);
     return (
@@ -138,7 +151,7 @@ class App extends Component {
           <Switch>
             <Route exact path='/' component={() => (<Home passItems={this.state.allItems} />)} />
             <Route exact path='/men' component={() => (
-              <Men passItems={this.state.allItems} />)} />
+              <Men passItems={this.state.allItems} addToCart={this.handleAddToCart}/>)} />
             <Route exact path='/women' component={() => (
               <Women passItems={this.state.allItems} />)} />
             <Route exact path='/account' component={() => (<Dashboard sqlUser={this.state.sqlUser} passItems={this.state.allItems}/>)} />

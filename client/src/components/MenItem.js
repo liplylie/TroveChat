@@ -11,7 +11,7 @@ class MenItem extends Component {
   render() {
     return (
       <div className='col-md-3 wow fadeIn animated'>
-        <Link to={{pathname: `/item/${this.props.passItem.id}`, params: {itemInfo: this.props.passItem}}}>
+        <Link to={{pathname: `/item/${this.props.passItem.id}`, params: {itemInfo: this.props.passItem, addToCart: this.props.addToCart}}}>
           <div className='list-section-wrap'>
             <div className='list-section-picture'>
                 <img src={this.props.passItem.image} ></img>
