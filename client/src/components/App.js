@@ -144,7 +144,7 @@ class App extends Component {
             <Route exact path='/account' component={() => (<Dashboard sqlUser={this.state.sqlUser} passItems={this.state.allItems}/>)} />
             <Route exact path='/wardrobe' component={() => (<Dashboard sqlUser={this.state.sqlUser} passItems={this.state.allItems}/>)} />
             <Route exact path='/login' component={() => (<Login authenticated={this.state.authenticated} login={this.authWithEmailPassword} signUp={this.signUp}/>)} />
-            <Route exact path='/item/:item_id' render={() => <Item someProp={'wook'} />} />
+            <Route exact path='/item/:item_id' component={Item} />
             <Route render={function() {
 								return <p> Not Found </p>
 							}} />
