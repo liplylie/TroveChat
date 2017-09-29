@@ -1,3 +1,6 @@
+a {
+  text-decoration: none !important;
+}
 
 ul {
   list-style-type: none;
@@ -45,7 +48,6 @@ hr {
 }
 
 .navbar a {
-  text-decoration: none !important;
   color: white;
 }
 
@@ -318,6 +320,10 @@ hr {
   min-width: 270px;
 }
 
+.my-account-section a {
+  color: #cdb287;
+}
+
 .account-info-title span {
   font-size: 18px;
   font-weight: bold;
@@ -348,7 +354,53 @@ hr {
   display: block;
 }
 
+/* ------ Wardrobe ------ */
 
+.upload-section{
+  margin-right: auto;
+  margin-left: auto;
+  padding: 40px 40px 40px 40px;
+  width: 100%;
+  background-color: transparent;
+  /* box-shadow: inset 0 0 0 1000px rgba(24,24,24,.7); */
+  border-radius: 20px;
+}
+
+.tag-input input {
+  display: block;
+  width: 100%;
+  padding: .5rem .75rem;
+  font-size: 1rem;
+  line-height: 1.25;
+  color: #495057;
+  background-color: #fff;
+  background-image: none;
+  background-clip: padding-box;
+  border: 1px solid rgba(0,0,0,.15);
+  border-radius: .25rem;
+  transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+
+.single-item {
+  padding: 5px 5px 5px 5px;
+  border-radius: 5px;
+  background-color: #F0ECEC;
+  box-shadow: 0 2px 3px 0 rgba(225,225,225,0.50);
+  margin-bottom: 8px;
+  color: #717171;
+}
+
+.wardrobe-btn-color {
+  background: #cdb287;
+  color: white;
+  cursor: pointer;
+}
+
+.wardrobe-btn-color:hover {
+  background: #5f5037;
+  color: white;
+  cursor: pointer;
+}
 
 /* ------ Footer ------*/
 

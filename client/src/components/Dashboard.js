@@ -35,8 +35,8 @@ class Dashboard extends Component {
               </div>
               <div>
                 {!this.props.sqlUser ? <Loading /> : <Route exact path='/account' component={() => (<AccountInfo sqlUser={this.props.sqlUser} />)} /> }
-                <Route path='/wardrobe' component={() => (<Wardrobe passUser={this.props.sqlUser}
-                  passItems={this.props.passItems} />)} />
+                {!this.props.sqlUser || !this.props.passItems ? <Loading /> : <Route path='/wardrobe' component={() => (<Wardrobe passUser={this.props.sqlUser}
+                  passItems={this.props.passItems} />)} />}
               </div>
             </div>
           </div>
