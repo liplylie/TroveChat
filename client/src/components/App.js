@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route, Link } from 'react-router-dom';
+import { HashRouter, BrowserRouter, Switch, Route, Link } from 'react-router-dom';
 import axios from 'axios';
 import NavBar from './NavBar';
 import Home from './Home';
@@ -135,15 +135,20 @@ class App extends Component {
       <BrowserRouter>
         <div>
           <NavBar authenticated={this.state.authenticated} logout={this.logout}/>
-          <Route exact path='/' component={() => (<Home passItems={this.state.allItems} />)} />
-          <Route exact path='/men' component={() => (
-            <Men passItems={this.state.allItems} />)} />
-          <Route exact path='/women' component={() => (
-            <Women passItems={this.state.allItems} />)} />
-          <Route exact path='/account' component={() => (
-            <Dashboard sqlUser={this.state.sqlUser} passItems={this.state.allItems} />)} />
-          <Route exact path='/login' component={() => (<Login authenticated={this.state.authenticated} login={this.authWithEmailPassword} signUp={this.signUp}/>)} />
-          <Route exact path='/item/:item_id' render={() => <Item someProp={'wook'} />} />
+          <Switch>
+            <Route exact path='/' component={() => (<Home passItems={this.state.allItems} />)} />
+            <Route exact path='/men' component={() => (
+              <Men passItems={this.state.allItems} />)} />
+            <Route exact path='/women' component={() => (
+              <Women passItems={this.state.allItems} />)} />
+            <Route exact path='/account' component={() => (<Dashboard sqlUser={this.state.sqlUser} passItems={this.state.allItems}/>)} />
+            <Route exact path='/wardrobe' component={() => (<Dashboard sqlUser={this.state.sqlUser} passItems={this.state.allItems}/>)} />
+            <Route exact path='/login' component={() => (<Login authenticated={this.state.authenticated} login={this.authWithEmailPassword} signUp={this.signUp}/>)} />
+            <Route exact path='/item/:item_id' render={() => <Item someProp={'wook'} />} />
+            <Route render={function() {
+								return <p> Not Found </p>
+							}} />
+          </Switch>
           <Footer />
         </div>
       </BrowserRouter>

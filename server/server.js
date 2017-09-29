@@ -14,6 +14,9 @@ const app = express()
 .use(morgan('dev'))
 .use('/api', route)
 .use(express.static(path.resolve(__dirname, '../client/static')))
+.get('/*', function (req, res) {
+  res.sendFile(path.join(__dirname, '../client/static', 'index.html'));
+})
 .listen(PORT, function(){
   console.log(`Listening on port ${PORT}`)
 })

@@ -34,12 +34,8 @@ class Dashboard extends Component {
                 <span>MY DASHBOARD</span>
               </div>
               <div>
-                {!this.props.sqlUser ? <Route render={function() {
-                alert('You are not login!')
-								return <p> Please login!</p>}} /> : <Route exact path='/account' component={() => (<AccountInfo sqlUser={this.props.sqlUser} />)} /> }
-                <Route exact path='/wardrobe' component={() => (
-                  <Wardrobe 
-                  passUser={this.props.sqlUser}
+                {!this.props.sqlUser ? <Loading /> : <Route exact path='/account' component={() => (<AccountInfo sqlUser={this.props.sqlUser} />)} /> }
+                <Route path='/wardrobe' component={() => (<Wardrobe passUser={this.props.sqlUser}
                   passItems={this.props.passItems} />)} />
               </div>
             </div>
