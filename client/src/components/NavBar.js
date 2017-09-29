@@ -45,6 +45,10 @@ class NavBar extends Component {
                   <NavLink exact activeClassName="active"  className="nav-link" to='/account' >
                     ACCOUNT
                   </NavLink>
+                    <a>
+                      <img className="cart-icon" src={require('../../style/bag.jpg')} />
+                    </a>
+                    {/* <span>Bag</span> */}
                   <NavLink exact activeClassName="active"  className="nav-link logout" to='/' onClick={() => this.props.logout()}>
                     LOGOUT
                   </NavLink>

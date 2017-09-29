@@ -88,6 +88,11 @@ hr {
   padding-left: 0px;
 }
 
+.cart-icon {
+  width: 50px;
+  height: auto;
+}
+
 /* ------ Feature ------*/
 
 .feature-section {
