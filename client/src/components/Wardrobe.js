@@ -11,14 +11,15 @@ class Wardrobe extends Component {
   }
 
   render() {
+    console.log('this is wardobe: ', this.props.passItems)
     return (
       <div>
-        {!this.props.passItems ? <Loading /> : this.props.passItems.map(item => 
+        {this.props.passItems.map(item => 
           { if(item.rentee_id === this.props.passUser.id) {
-            return <div key={item.id}>{item.itemname}</div> }
+            return <div className="single-item" key={item.id}>{item.itemname}</div> }
           }
         )}
-        <div><button type="button" onClick={this.openModal.bind(this)}>Upload </button> </div>
+        <div><button className="btn wardrobe-btn-color" type="button" onClick={this.openModal.bind(this)}>Upload </button> </div>
       </div>
     );
   }

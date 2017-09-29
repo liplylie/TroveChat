@@ -88,47 +88,56 @@ class Upload extends Component {
   render(){
     const { text,onRequestClose } = this.props;
     const { tags, suggestions } = this.state;    
+    const modalStyle = {
+      overlay: {
+        backgroundColor : 'transparent'
+      },
+      content: {
+        margin: '10% auto',
+        borderRadius: '6px'
+      }
+    }
     return (
-       <Modal
-          onRequestClose={onRequestClose}
-          effect={Effect.SlideFromBottom}>
-          <div><input type="text" placeholder="Brand" ref="input" 
+       <Modal onRequestClose={onRequestClose} effect={Effect.SlideFromBottom} style={modalStyle} >
+         <div className='upload-section'>
+          <div><input className='form-control' type="text" placeholder="Brand" ref="input" 
           onChange = { (e) => {this.handleInput('brand', e.target.value) }} />
           </div>
-          <div><input type="text" placeholder="Item Name" ref="input" 
+          <div><input className='form-control' type="text" placeholder="Item Name" ref="input" 
           onChange = { (e) => {this.handleInput('itemname', e.target.value) }}/>
           </div>
-          <div><input type="text" placeholder="Retail Price" ref="input" 
+          <div><input className='form-control' type="text" placeholder="Retail Price" ref="input" 
           onChange = { (e) => {this.handleInput('price', parseFloat(e.target.value).toFixed(2)) }}/>
           </div>
-          <div><input type="text" placeholder="Image URL" ref="input" 
+          <div><input className='form-control' type="text" placeholder="Image URL" ref="input" 
           onChange = { (e) => {this.handleInput('image', e.target.value) }}/>
           </div>
           <div>
             Size:
-            <button type="button"
+            <button className="btn btn-secondary btn-sm" type="button"
             onClick = { () => {this.handleInput('size', 'Small') }}>S</button>
-            <button type="button"
+            <button className="btn btn-secondary btn-sm" type="button"
             onClick = { () => {this.handleInput('size', 'Medium') }}>M</button>
-            <button type="button"
+            <button className="btn btn-secondary btn-sm" type="button"
             onClick = { () => {this.handleInput('size', 'Large') }}>L</button>
           </div>
           <div>
             Sex:
-            <button type="button"
+            <button className="btn btn-secondary btn-sm" type="button"
             onClick = { () => {this.handleInput('sex', 'M') }}>M</button>
-            <button type="button"
+            <button className="btn btn-secondary btn-sm" type="button"
             onClick = { () => {this.handleInput('sex', 'F') }}>F</button>
           </div>
-          <div>
+          <div className='tag-input'>
             <ReactTags tags={tags}
                 suggestions={suggestions}
                 handleDelete={this.handleDelete}
                 handleAddition={this.handleAddition}
                 handleDrag={this.handleDrag} />
           </div>
-          <button
+          <button className="btn wardrobe-btn-color"
           onClick={ () => { this.handlePost(); ModalManager.close(); }}>Upload</button>
+        </div>
        </Modal>
     );
   }
