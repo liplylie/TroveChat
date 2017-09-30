@@ -38,9 +38,9 @@ const Checkout = ({ label, name, description, amount }) =>
     amount={fromDolToCent(amount)}
     token={onToken(amount, description)}
     currency={CURRENCY}
+    billingAddress={true}
+    shippingAddress={true}
     stripeKey={'pk_test_BtldIkOgEzoxf2fN7T8fxsMO'}
   />
 
 export default Checkout;
-// {/* billingAddress={true}
-// shippingAddress={true} */}
