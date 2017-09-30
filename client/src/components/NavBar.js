@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { NavLink, Route, Link } from 'react-router-dom';
 import Scroll from './Scroll';
+import Checkout from './Checkout';
+import moment from 'moment';
 
 class NavBar extends Component {
   constructor(props) {
@@ -11,7 +13,15 @@ class NavBar extends Component {
     }
 
     this.showCart = this.showCart.bind(this);
-  } 
+  }
+
+  totalPrice(cart) {
+    var totalPrice = 0;
+    for (var i = 0; i < cart.length; i++) {
+      totalPrice += cart[i].price;
+    }
+    return totalPrice;
+  }
 
   showCart(e) {
     this.setState({
@@ -85,7 +95,16 @@ class NavBar extends Component {
                         {items}
                       </Scroll>
                       <div className="checkout">
-                        <button className={this.state.cart.length > 0 ? "checkout-btn" : "checkout-btn-disabled"} type="button">CHECKOUT</button>
+                        <p className={this.state.cart.length > 0 ? "checkout-btn" : "checkout-btn-disabled"}>
+                          {/* {console.log('cart stuff', this.state)} */}
+                          {/* {console.log('date diff', moment(this.state.cart.endDate))} */}
+                          <Checkout
+                            label={'Give me yo money'}
+                            name={'Hey there, hottie'}
+                            description={'Trove'}
+                            amount={this.totalPrice(this.state.cart)} //in dollars
+                          />
+                        </p>
                       </div>
                     </div>
                   <NavLink exact activeClassName="active"  className="nav-link logout" to='/' onClick={() => this.props.logout()}>
