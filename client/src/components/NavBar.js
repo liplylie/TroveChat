@@ -87,7 +87,7 @@ class NavBar extends Component {
                   <NavLink exact activeClassName="active"  className="nav-link" to='/account' >
                   <i className="fa fa-suitcase cart-icon" aria-hidden="true"></i>ACCOUNT
                   </NavLink>
-                    <a className='nav-link' activeClassName="active" onClick={() => this.showCart()}>
+                    <a className='nav-link' onClick={() => this.showCart()}>
                       <i className="fa fa-shopping-cart cart-icon" aria-hidden="true"></i>CART
                     </a>
                     <div className={this.state.viewCart ? "cart active" : "cart"}>
