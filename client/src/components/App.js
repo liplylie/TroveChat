@@ -18,7 +18,7 @@ class App extends Component {
     super(props);
     this.state = {
       allItems: [],
-      cart: [],
+      cart: JSON.parse(localStorage.getItem('cart')) || [],
       startDate: null,
       endDate: null,
       authenticated: null,
@@ -168,7 +168,9 @@ class App extends Component {
       currCart.push(item);
       this.setState({
         cart: currCart
-      })
+      },() => {
+        localStorage.setItem('cart', JSON.stringify(this.state.cart))
+      });
     }
     console.log('cart after adding item: ', this.state.cart);
   }
@@ -180,7 +182,9 @@ class App extends Component {
     currCart.splice(removeItemIndex, 1);
     this.setState({
       cart: currCart
-    })
+    },() => {
+      localStorage.setItem('cart', JSON.stringify(this.state.cart))
+    });
   }
 
   render() {
