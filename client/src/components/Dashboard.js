@@ -9,7 +9,6 @@ import Loading from './Loading';
 class Dashboard extends Component {
 
   render() {
-    console.log('this is Dashboard: ', this.props.sqlUser)
     return (
       <BrowserRouter>
         <div className='dashboard'>

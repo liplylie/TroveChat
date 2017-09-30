@@ -11,7 +11,6 @@ class Wardrobe extends Component {
   }
 
   render() {
-    console.log('this is wardobe: ', this.props.passItems)
     return (
       <div>
         {this.props.passItems.map(item => 

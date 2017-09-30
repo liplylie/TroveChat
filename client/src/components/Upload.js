@@ -94,41 +94,42 @@ class Upload extends Component {
       },
       content: {
         margin: '10% auto',
-        borderRadius: '6px'
+        borderRadius: '6px',
+        width: '500px'
       }
     }
     return (
        <Modal onRequestClose={onRequestClose} effect={Effect.SlideFromBottom} style={modalStyle} >
          <div className='upload-section'>
-          <div><input className='form-control' type="text" placeholder="Brand" ref="input" 
+          <div className='upload-input'><input className='form-control' type="text" placeholder="Brand" ref="input" 
           onChange = { (e) => {this.handleInput('brand', e.target.value) }} />
           </div>
-          <div><input className='form-control' type="text" placeholder="Item Name" ref="input" 
+          <div className='input-group upload-input'><input className='form-control' type="text" placeholder="Item Name" ref="input" 
           onChange = { (e) => {this.handleInput('itemname', e.target.value) }}/>
           </div>
-          <div><input className='form-control' type="text" placeholder="Retail Price" ref="input" 
+          <div className='input-group upload-input'><input className='form-control' type="text" placeholder="Retail Price" ref="input" 
           onChange = { (e) => {this.handleInput('price', parseFloat(e.target.value).toFixed(2)) }}/>
           </div>
-          <div><input className='form-control' type="text" placeholder="Image URL" ref="input" 
+          <div className='input-group upload-input'><input className='form-control' type="text" placeholder="Image URL" ref="input" 
           onChange = { (e) => {this.handleInput('image', e.target.value) }}/>
           </div>
-          <div>
+          <div className='upload-input'>
             Size:
-            <button className="btn btn-secondary btn-sm" type="button"
+            <button className="btn btn-secondary btn-sm upload-btn" type="button"
             onClick = { () => {this.handleInput('size', 'Small') }}>S</button>
-            <button className="btn btn-secondary btn-sm" type="button"
+            <button className="btn btn-secondary btn-sm upload-btn" type="button"
             onClick = { () => {this.handleInput('size', 'Medium') }}>M</button>
-            <button className="btn btn-secondary btn-sm" type="button"
+            <button className="btn btn-secondary btn-sm upload-btn" type="button"
             onClick = { () => {this.handleInput('size', 'Large') }}>L</button>
           </div>
-          <div>
+          <div className='upload-input'>
             Sex:
-            <button className="btn btn-secondary btn-sm" type="button"
+            <button className="btn btn-secondary btn-sm upload-btn" type="button"
             onClick = { () => {this.handleInput('sex', 'M') }}>M</button>
-            <button className="btn btn-secondary btn-sm" type="button"
+            <button className="btn btn-secondary btn-sm upload-btn" type="button"
             onClick = { () => {this.handleInput('sex', 'F') }}>F</button>
           </div>
-          <div className='tag-input'>
+          <div className='upload-input tag-input'>
             <ReactTags tags={tags}
                 suggestions={suggestions}
                 handleDelete={this.handleDelete}

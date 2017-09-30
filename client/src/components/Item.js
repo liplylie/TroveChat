@@ -16,40 +16,47 @@ class Item extends Component {
 
   render() {
     return (
-      <div>
-        <img src={this.state.itemInfo.image} width="400" />
-        <div>
-          <span> {this.state.itemInfo.brand} </span>
+        <div className='row'>
+          <div className='col-md-5 item-image-section'>
+            <img src={this.state.itemInfo.image} />
+          </div>
+          <div className='col-md-5 item-info-section'>
+            <div className='item-brand'>
+              <span> {this.state.itemInfo.brand} </span>
+            </div>
+            <div className='item-title' onClick={() => this.props.location.params.addToCart(this.state.itemInfo)}>
+              <span> {this.state.itemInfo.itemname} </span>
+            </div>
+            <hr className="col-md-12"></hr>
+            <div className='item-price'>
+              <span> ${this.state.itemInfo.price} </span>
+            </div>
+            <div className='item-size'>
+              <span> {this.state.itemInfo.size} </span>
+            </div>
+            
+            {/* get user's id in here too */}
+            <div className='item-calendar'>
+              <DateRangePicker
+                daySize={this.state.daySize}
+                minimumNights={this.state.minimumNights}
+                startDate={this.state.startDate} 
+                endDate={this.state.endDate} 
+                onDatesChange={({ startDate, endDate }) => this.setState({ startDate, endDate })} 
+                focusedInput={this.state.focusedInput} 
+                onFocusChange={focusedInput => this.setState({ focusedInput })} 
+                />
+            </div>
+            <ul className='item-tags'>
+              {/* make this look pretty */}
+              <li><a href="#"> {this.state.itemInfo.tag} </a></li> 
+            </ul>
+            <div className='item-btn'>
+              <button className='btn btn-block item-btn-color' onClick={() => this.props.location.params.addToCart(this.state.itemInfo, this.state.startDate, this.state.endDate)} type="button">Rent</button>
+            </div>
+            <div id="instafeed"></div>
+          </div>
         </div>
-        <div>
-          <span> {this.state.itemInfo.itemname} </span>
-        </div>
-        <div>
-          <span> {this.state.itemInfo.size} </span>
-        </div>
-        <div>
-          <span> {this.state.itemInfo.price} </span>
-        </div>
-        
-        {/* get user's id in here too */}
-
-        <DateRangePicker
-          daySize={this.state.daySize}
-          minimumNights={this.state.minimumNights}
-          startDate={this.state.startDate} 
-          endDate={this.state.endDate} 
-          onDatesChange={({ startDate, endDate }) => this.setState({ startDate, endDate })} 
-          focusedInput={this.state.focusedInput} 
-          onFocusChange={focusedInput => this.setState({ focusedInput })} 
-          />
-        <div>
-          {/* make this look pretty */}
-          <span> {this.state.itemInfo.tag} </span> 
-        </div>
-        <div>
-          <button type="button" onClick={() => this.props.location.params.addToCart(this.state.itemInfo, this.state.startDate, this.state.endDate)}>Rent</button>
-        </div>
-      </div>
     )
   }
 }
