@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { NavLink} from 'react-router-dom';
 
 class Footer extends Component {
   render() {
@@ -11,8 +12,16 @@ class Footer extends Component {
           <div className='col-md-2'>
             <span className='footer-title'>BROWSER</span>
             <ul className="footer-list">
-              <li>Men</li>
-              <li>Women</li>
+              <li>
+              <NavLink exact activeClassName="active" to='/men' >
+                Men
+              </NavLink>
+              </li>
+              <li>
+              <NavLink exact activeClassName="active" to='/women' >
+                Women
+              </NavLink>
+              </li>
             </ul>
           </div>
           <div className='col-md-2'>
