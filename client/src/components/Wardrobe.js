@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { Modal, ModalManager, Effect } from 'react-dynamic-modal';
 import Upload from './Upload';
 import Loading from './Loading';
+import WardrobeItem from './WardrobeItem';
 
 class Wardrobe extends Component {
 
@@ -12,17 +13,18 @@ class Wardrobe extends Component {
 
   render() {
     return (
-      <div>
-        {this.props.passItems.map(item => 
-          { if(item.rentee_id === this.props.passUser.id) {
-            return <div className="single-item" key={item.id}>{item.itemname}</div> }
-          }
-        )}
-        <div><button className="btn wardrobe-btn-color" type="button" onClick={this.openModal.bind(this)}>Upload </button> </div>
+      <div className='list-section'>
+        <div className='row'>
+          {this.props.passItems.map(item => 
+            { if(item.rentee_id === this.props.passUser.id) {
+              return <WardrobeItem passItem={item} key={item.id} /> }
+            }
+          ).reverse()}
+          <div><button className="btn wardrobe-btn-color" type="button" onClick={this.openModal.bind(this)}>Upload </button> </div>
+        </div>
       </div>
     );
   }
 }
-
 
 export default Wardrobe;

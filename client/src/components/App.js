@@ -38,11 +38,18 @@ class App extends Component {
   }
 
   search() {
+
+    const res = [];
     const clone = this.state.allItems;
-    // Extremely strict search, could be optimized to be more broad..
-    const res = clone.filter(item => {
-      return item.itemname === this.state.searchInput;
-    });
+    const split = this.state.searchInput.split(' ');
+    for (let i = 0; i < clone.length; i++) {
+      for (let j = 0; j < split.length; j++) {
+        let checkThis = split[j].toLowerCase();
+        if (clone[i].itemname.toLowerCase().includes(checkThis)) {
+          res.push(clone[i]);
+        }
+      }
+    }
     this.state.searchRes = res;
   }
 
@@ -199,7 +206,8 @@ class App extends Component {
             <Route exact path='/wardrobe' component={() => (<Dashboard sqlUser={this.state.sqlUser} passItems={this.state.allItems}/>)} />
             <Route exact path='/login' component={() => (<Login authenticated={this.state.authenticated} login={this.authWithEmailPassword} signUp={this.signUp}/>)} />
             <Route exact path='/item/:item_id' component={Item} />
-            <Route exact path='/search' component={() => (<SearchResult passRes={this.state.searchRes} />)} />
+            <Route exact path='/search' component={() => (
+              <SearchResult passRes={this.state.searchRes} />)} />
             <Route render={function() {
 								return (
                   <div className='fourofour-section'>

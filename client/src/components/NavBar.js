@@ -58,7 +58,7 @@ class NavBar extends Component {
               </NavLink>
               </li>
             </ul>
-            {/* <form className="form-inline my-2 my-lg-0 search-section"> */}
+            <form className="form-inline my-2 my-lg-0 search-section">
               <input className="form-control mr-sm-2 input-sm" type="text" placeholder="Search"
               onChange = { (e) => {this.props.passHandleInput(e.target.value) }}></input>
               <NavLink exact activeClassName="active"  className="nav-link" to='/search'
@@ -68,7 +68,7 @@ class NavBar extends Component {
               {/* <i className="material-icons btn btn-outline-success  btn-sm btn-color " type="submit">search</i> */}
               {/* <button className="btn btn-outline-success my-2 my-sm-0 btn-sm nav-btn-color nav-btn-section" type="submit"
               onClick = { () => {this.search() }} ><i className="material-icons">search</i></button> */}
-            {/* </form> */}
+            </form>
             {/* Check if user logged in */}
             {!this.props.authenticated ?
               <NavLink exact activeClassName="active"  className="nav-link login" to='/login'>
