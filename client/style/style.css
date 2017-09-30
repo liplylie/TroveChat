@@ -73,6 +73,10 @@ hr {
   color: #cdb287;
 }
 
+.nav-btn-color:focus {
+  box-shadow: none;
+}
+
 .nav-btn-color:hover {
   background-color: #cdb287;
   border-color: #cdb287;
@@ -439,6 +443,21 @@ hr {
 }
 
 .upload-btn:hover {
+  background-color: #5f5037;
+  border-color: #5f5037;
+}
+
+.upload-btn:focus {
+  background-color: #5f5037;
+  border-color: #5f5037;
+}
+
+.upload-btn:active {
+  background-color: #5f5037;
+  border-color: #5f5037;
+}
+
+.upload-btn:visited {
   background-color: #5f5037;
   border-color: #5f5037;
 }

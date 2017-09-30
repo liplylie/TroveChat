@@ -52,7 +52,7 @@ class Item extends Component {
               <li><a href="#"> {this.state.itemInfo.tag} </a></li> 
             </ul>
             <div className='item-btn'>
-              <button className='btn btn-block item-btn-color' onClick={() => this.props.location.params.addToCart(this.state.itemInfo, this.state.startDate, this.state.endDate)} type="button">Rent</button>
+              <button className='btn btn-block item-btn-color' onClick={() => this.props.location.params.addToCart(this.state.itemInfo, this.state.startDate, this.state.endDate)} type="button">Add to Cart</button>
             </div>
           </div>
         </div>

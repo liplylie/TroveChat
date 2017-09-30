@@ -38,7 +38,6 @@ class NavBar extends Component {
 
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-black">
-          {/* <a id='bg-logo'className="navbar-brand" href="/">TROVE</a> */}
           <NavLink id='bg-logo' exact className="navbar-brand" to='/' >
           TROVE
           </NavLink>
@@ -63,11 +62,9 @@ class NavBar extends Component {
               onChange = { (e) => {this.props.passHandleInput(e.target.value) }}></input>
               <NavLink exact activeClassName="active"  className="nav-link" to='/search'
               onClick = { () => {this.props.passSearch()}} >
-                  Mark fix this :)
+              <button className="btn btn-outline-success my-2 my-sm-0 btn-sm nav-btn-color nav-btn-section" type="submit"
+              onClick = { () => {this.search() }} ><i className="material-icons">search</i></button>
               </NavLink>
-              {/* <i className="material-icons btn btn-outline-success  btn-sm btn-color " type="submit">search</i> */}
-              {/* <button className="btn btn-outline-success my-2 my-sm-0 btn-sm nav-btn-color nav-btn-section" type="submit"
-              onClick = { () => {this.search() }} ><i className="material-icons">search</i></button> */}
             </form>
             {/* Check if user logged in */}
             {!this.props.authenticated ?
@@ -80,7 +77,7 @@ class NavBar extends Component {
                   <NavLink exact activeClassName="active"  className="nav-link" to='/account' >
                   <i className="fa fa-suitcase cart-icon" aria-hidden="true"></i>ACCOUNT
                   </NavLink>
-                    <a onClick={() => this.showCart()}>
+                    <a className='nav-link' activeClassName="active" onClick={() => this.showCart()}>
                       <i className="fa fa-shopping-cart cart-icon" aria-hidden="true"></i>CART
                     </a>
                     <div className={this.state.viewCart ? "cart active" : "cart"}>
