@@ -15,6 +15,14 @@ class Item extends Component {
   }
 
   render() {
+    let allTags = JSON.parse(this.state.itemInfo.tag);
+    
+    let tags = allTags.map((tag, i) => {
+      return (
+        <li key={i}><a href="#"> {tag} </a></li>
+      )
+    });
+
     return (
         <div className='row'>
           <div className='col-md-5 item-image-section'>
@@ -49,7 +57,7 @@ class Item extends Component {
             </div>
             <ul className='item-tags'>
               {/* make this look pretty */}
-              <li><a href="#"> {this.state.itemInfo.tag} </a></li> 
+              {tags} 
             </ul>
             <div className='item-btn'>
               <button className='btn btn-block item-btn-color' onClick={() => this.props.location.params.addToCart(this.state.itemInfo, this.state.startDate, this.state.endDate)} type="button">Add to Cart</button>
