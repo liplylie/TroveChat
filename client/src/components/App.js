@@ -19,6 +19,8 @@ class App extends Component {
     this.state = {
       allItems: [],
       cart: [],
+      startDate: null,
+      endDate: null,
       authenticated: null,
       user: null,
       sqlUser: null,
@@ -32,6 +34,7 @@ class App extends Component {
     this.handleAddToCart = this.handleAddToCart.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
     this.search = this.search.bind(this);
+    this.removeFromCart = this.removeFromCart.bind(this);
   }
 
   search() {
@@ -147,16 +150,30 @@ class App extends Component {
     })
   }
 
-  handleAddToCart(item) {
-    alert('function invoked');
+  handleAddToCart(item, start, end) {
+    item.startDate = start;
+    item.endDate = end;
     console.log('this is the item: ', item)
     let currCart = this.state.cart;
-    currCart.push(item);
+    if (start === null || end === null) {
+      alert('Please specify rent dates!');
+    } else {
+      currCart.push(item);
+      this.setState({
+        cart: currCart
+      })
+    }
+    console.log('cart after adding item: ', this.state.cart);
+  }
 
+  removeFromCart(id) {
+    console.log('id: ', id)
+    let currCart = this.state.cart;
+    let removeItemIndex = currCart.findIndex((item => item.id === id)) 
+    currCart.splice(removeItemIndex, 1);
     this.setState({
       cart: currCart
     })
-    console.log('cart after adding item: ', this.state.cart);
   }
 
   render() {
@@ -169,13 +186,15 @@ class App extends Component {
           logout={this.logout}
           passItems={this.state.allItems}
           passHandleInput={this.handleSearch}
-          passSearch={this.search} />
+          passSearch={this.search}
+          cart={this.state.cart} 
+          remove={this.removeFromCart} />
           <Switch>
             <Route exact path='/' component={() => (<Home passItems={this.state.allItems} />)} />
             <Route exact path='/men' component={() => (
               <Men passItems={this.state.allItems} addToCart={this.handleAddToCart}/>)} />
             <Route exact path='/women' component={() => (
-              <Women passItems={this.state.allItems} />)} />
+              <Women passItems={this.state.allItems} addToCart={this.handleAddToCart}/>)} />
             <Route exact path='/account' component={() => (<Dashboard sqlUser={this.state.sqlUser} passItems={this.state.allItems}/>)} />
             <Route exact path='/wardrobe' component={() => (<Dashboard sqlUser={this.state.sqlUser} passItems={this.state.allItems}/>)} />
             <Route exact path='/login' component={() => (<Login authenticated={this.state.authenticated} login={this.authWithEmailPassword} signUp={this.signUp}/>)} />
