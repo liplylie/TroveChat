@@ -21,7 +21,7 @@ class Item extends Component {
         <div>
           <span> {this.state.itemInfo.brand} </span>
         </div>
-        <div onClick={() => this.props.location.params.addToCart(this.state.itemInfo)}>
+        <div>
           <span> {this.state.itemInfo.itemname} </span>
         </div>
         <div>
@@ -47,7 +47,7 @@ class Item extends Component {
           <span> {this.state.itemInfo.tag} </span> 
         </div>
         <div>
-          <button type="button">Rent</button>
+          <button type="button" onClick={() => this.props.location.params.addToCart(this.state.itemInfo, this.state.startDate, this.state.endDate)}>Rent</button>
         </div>
       </div>
     )

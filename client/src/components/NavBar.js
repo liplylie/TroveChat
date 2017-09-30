@@ -1,12 +1,41 @@
 import React, { Component } from 'react';
 import { NavLink, Route, Link } from 'react-router-dom';
+import Scroll from './Scroll';
 
 class NavBar extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      viewCart: false,
+      cart: this.props.cart
+    }
+
+    this.showCart = this.showCart.bind(this);
   } 
 
+  showCart(e) {
+    this.setState({
+      viewCart: !this.state.viewCart
+    })
+  }
+
   render() {
+    console.log('this is state in navbar: ', this.state);
+    let cartItems = this.state.cart.map(item => {
+      return (
+        <li className="cart-item" key={item.id}>
+          <img className="item-image" src={item.image}/>
+          <div className="item-info"> 
+            <p>{item.itemname}</p>
+            <p>{item.brand}</p>
+            <p>{item.price}</p>
+          </div>
+          <button id="checkout" type="button" onClick={() => this.props.remove(item.id)}>x</button>
+        </li>
+      )
+    });
+    let items = <ul className="cart-items">{cartItems}</ul>
+
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-black">
           {/* <a id='bg-logo'className="navbar-brand" href="/">TROVE</a> */}
@@ -51,10 +80,17 @@ class NavBar extends Component {
                   <NavLink exact activeClassName="active"  className="nav-link" to='/account' >
                     ACCOUNT
                   </NavLink>
-                    <a>
+                    <a onClick={() => this.showCart()}>
                       <img className="cart-icon" src={require('../../style/bag.jpg')} />
                     </a>
-                    {/* <span>Bag</span> */}
+                    <div className={this.state.viewCart ? "cart active" : "cart"}>
+                      <Scroll>
+                        {items}
+                      </Scroll>
+                      <div className="checkout">
+                        <button className={this.state.cart.length > 0 ? "checkout-btn" : "checkout-btn-disabled"} type="button">CHECKOUT</button>
+                      </div>
+                    </div>
                   <NavLink exact activeClassName="active"  className="nav-link logout" to='/' onClick={() => this.props.logout()}>
                     LOGOUT
                   </NavLink>
