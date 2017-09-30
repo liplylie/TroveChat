@@ -11,6 +11,7 @@ import Dashboard from './Dashboard';
 import Wardrobe from './Wardrobe';
 import firebase, {auth} from '../firebase';
 import Item from './Item';
+import SearchResult from './SearchResult';
 
 class App extends Component {
   constructor(props) {
@@ -20,14 +21,30 @@ class App extends Component {
       cart: [],
       authenticated: null,
       user: null,
-      sqlUser: null
+      sqlUser: null,
+      searchInput: '',
+      searchRes: []
     }
-
     this.fetch = this.fetch.bind(this);
     this.authWithEmailPassword = this.authWithEmailPassword.bind(this);
     this.signUp = this.signUp.bind(this);
     this.logout = this.logout.bind(this);
     this.handleAddToCart = this.handleAddToCart.bind(this);
+    this.handleSearch = this.handleSearch.bind(this);
+    this.search = this.search.bind(this);
+  }
+
+  search() {
+    const clone = this.state.allItems;
+    // Extremely strict search, could be optimized to be more broad..
+    const res = clone.filter(item => {
+      return item.itemname === this.state.searchInput;
+    });
+    this.state.searchRes = res;
+  }
+
+  handleSearch(input) {
+    this.state.searchInput = input;
   }
 
   componentDidMount() {
@@ -147,7 +164,12 @@ class App extends Component {
     return (
       <BrowserRouter>
         <div>
-          <NavBar authenticated={this.state.authenticated} logout={this.logout}/>
+          <NavBar 
+          authenticated={this.state.authenticated} 
+          logout={this.logout}
+          passItems={this.state.allItems}
+          passHandleInput={this.handleSearch}
+          passSearch={this.search} />
           <Switch>
             <Route exact path='/' component={() => (<Home passItems={this.state.allItems} />)} />
             <Route exact path='/men' component={() => (
@@ -158,6 +180,7 @@ class App extends Component {
             <Route exact path='/wardrobe' component={() => (<Dashboard sqlUser={this.state.sqlUser} passItems={this.state.allItems}/>)} />
             <Route exact path='/login' component={() => (<Login authenticated={this.state.authenticated} login={this.authWithEmailPassword} signUp={this.signUp}/>)} />
             <Route exact path='/item/:item_id' component={Item} />
+            <Route exact path='/search' component={() => (<SearchResult passRes={this.state.searchRes} />)} />
             <Route render={function() {
 								return <p> Not Found </p>
 							}} />

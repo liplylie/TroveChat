@@ -14,15 +14,6 @@ class Item extends Component {
     }
   }
 
-  componentWillMount() {
-    const script = document.createElement("script");
-    script.type = "text/javascript";
-    script.src = "path/to/instafeed.min.js";
-    script.async = true;
-
-    document.body.appendChild(script);
-  }
-
   render() {
     return (
       <div>
@@ -58,7 +49,6 @@ class Item extends Component {
         <div>
           <button type="button">Rent</button>
         </div>
-        <div id="instafeed"></div>
       </div>
     )
   }
