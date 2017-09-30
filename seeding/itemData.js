@@ -8,7 +8,7 @@ module.exports = [
     price: 4200.01,
     size: 'Medium',
     sex: 'M',
-    tag: 'jacket bomber wool red gucci',
+    tag: '["jacket", "bomber", "wool", "red", "gucci"]',
     status: 'Available'
   },
   {
@@ -19,7 +19,7 @@ module.exports = [
     price: 2690.99,
     size: 'Medium',
     sex: 'M',
-    tag: 'jacket lightweight varsity floral black',
+    tag: '["jacket", "lightweight", "varsity", "floral", "black"]',
     status: 'Available'
   },
   {
@@ -30,18 +30,18 @@ module.exports = [
     price: 690.00,
     size: 'Small',
     sex: 'M',
-    tag: 'cotton t-shirt jersey pocket cheap',
+    tag: '["cotton", "t-shirt", "jersey", "pocket", "cheap"]',
     status: 'Available'
   },
   {
     rentee_id: 1,
     itemname: 'BLACK T-SHIRT WITH MULTICOLOR PATCHES',
     image: 'https://images.www.fendi.com/images/hbc/h94/8835962437662/FY0682A5CFF0QA1_01_MediumSize#product-medium',
-    brand: 'Fendi Roma',
+    brand: '[Fendi Roma]',
     price: 550.00,
     size: 'Medium',
     sex: 'M',
-    tag: 't-shirt black',
+    tag: '["t-shirt", "black", "swag", "patches"]',
     status: 'Available'
   },
   {
@@ -52,7 +52,7 @@ module.exports = [
     price: 4100.00,
     size: 'Large',
     sex: 'M',
-    tag: 'coat parka cotton hoodie cold',
+    tag: '["coat", "parka", "cotton", "hoodie", "cold"]',
     status: 'Available'
   },
   {
@@ -63,7 +63,7 @@ module.exports = [
     price: 550.00,
     size: 'Large',
     sex: 'M',
-    tag: 't-shirt white gucci relaxed',
+    tag: '["t-shirt", "white", "gucci", "relaxed"]',
     status: 'Available'
   },
   {
@@ -74,7 +74,7 @@ module.exports = [
     price: 1195.00,
     size: 'Medium',
     sex: 'M',
-    tag: 'jacket bomber brown',
+    tag: '["jacket", "bomber", "brown", "G-1", "classic"]',
     status: 'Available'
   },
 
@@ -86,7 +86,7 @@ module.exports = [
     price: 3980.00,
     size: '38',
     sex: 'F',
-    tag: 'lace dress jeweled ruffle',
+    tag: '["lace", "dress", "jeweled", "ruffle"]',
     status: 'Available'
   },
   {
@@ -97,7 +97,7 @@ module.exports = [
     price: 3900.00,
     size: 'Small',
     sex: 'F',
-    tag: 'dress unlined a-line back-zip',
+    tag: '["dress", "unlined", "a-line", "back-zip"]',
     status: 'Available'
   },
   {
@@ -108,7 +108,7 @@ module.exports = [
     price: 1800.00,
     size: '36',
     sex: 'F',
-    tag: 'butterfly dress floral ruffle print',
+    tag: '["butterfly", "dress", "floral", "ruffle", "print"]',
     status: 'Available'
   },
   {
@@ -119,7 +119,7 @@ module.exports = [
     price: 3190.00,
     size: '36',
     sex: 'F',
-    tag: 'dress one-shoulder black lace',
+    tag: '["dress", "one-shoulder", "black", "lace"]',
     status: 'Available'
   },
   {
@@ -130,7 +130,7 @@ module.exports = [
     price: 4990.00,
     size: '38',
     sex: 'F',
-    tag: 'wool silk overcoat',
+    tag: '["wool", "silk", "overcoat"]',
     status: 'Available'
   },
   {
@@ -141,7 +141,7 @@ module.exports = [
     price: 1410.00,
     size: '34',
     sex: 'F',
-    tag: 'graphic shirt print chain',
+    tag: '["graphic", "shirt", "print", "chain"]',
     status: 'Available'
   },
   {
@@ -152,10 +152,43 @@ module.exports = [
     price: 1160.00,
     size: 'Small',
     sex: 'F',
-    tag: 'long-sleeve black print ',
+    tag: '["long-sleeve", "black", "print"]',
+    status: 'Available'
+  },
+  {
+    rentee_id: 2,
+    itemname: 'BI-COLOR ARGYLE KNIT SWEATER',
+    image: 'http://www.versace.com/dw/image/v2/ABAO_PRD/on/demandware.static/-/Sites-ver-master-catalog/default/dw77f62367/original/90_A77910-A223437_A2411_10_Bi-ColorArgyleKnitSweater-Knitwear-versace-online-store_0_1.png?sw=748&sh=1050&sm=fit',
+    brand: 'Versace',
+    price: 1525.00,
+    size: '38',
+    sex: 'F',
+    tag: '["double-knit", "bi-color", "crew-neck"]',
     status: 'Available'
   },
 
+  {
+    rentee_id: 3,
+    itemname: 'JP COLLAGE NYLON BLOUSON',
+    image: 'http://www.versace.com/dw/image/v2/ABAO_PRD/on/demandware.static/-/Sites-ver-master-catalog/default/dw4ff21ec0/original/90_A76870-A222347_A757_10_JPCollageNylonBlouson-Jacketsandcoats-versace-online-store_0_0.png?sw=1440&sh=2000&sm=fit',
+    brand: 'Versace',
+    price: 1975.00,
+    size: '48',
+    sex: 'M',
+    tag: '["jacket", "print", "bluette", "hooded", "colorful"]',
+    status: 'Available'
+  },
+  {
+    rentee_id: 3,
+    itemname: 'VERSACE LOGO HOODED BOMBER',
+    image: 'http://www.versace.com/dw/image/v2/ABAO_PRD/on/demandware.static/-/Sites-ver-master-catalog/default/dw06399942/original/90_A77032-A222348_A008_10_VersaceLogoHoodedBomber-Jacketsandcoats-versace-online-store_0_1.png?sw=748&sh=1050&sm=fit',
+    brand: 'Versace',
+    price: 2850.00,
+    size: '48',
+    sex: 'M',
+    tag: '["jacket", "bomber", "hooded", "colorful", "leather"]',
+    status: 'Available'
+  },
   {
     rentee_id: 3,
     itemname: 'REGULAR PRINTED SHIRT',
@@ -164,7 +197,7 @@ module.exports = [
     price: 835.00,
     size: 'Medium',
     sex: 'M',
-    tag: 'shirt print',
+    tag: '["shirt", "print"]',
     status: 'Available'
   },
   {
@@ -175,7 +208,7 @@ module.exports = [
     price: 2700.00,
     size: 'Medium',
     sex: 'M',
-    tag: 'jacket lightweight varsity',
+    tag: '["jacket", "lightweight", "varsity"]',
     status: 'Available'
   },
   {
@@ -186,7 +219,7 @@ module.exports = [
     price: 4810.00,
     size: 'Small',
     sex: 'M',
-    tag: 'tan bomber jacket',
+    tag: '["tan", "bomber", "jacket"]',
     status: 'Available'
   },
   {
@@ -197,7 +230,7 @@ module.exports = [
     price: 640.00,
     size: 'Medium',
     sex: 'M',
-    tag: 't-shirt white short-sleeves',
+    tag: '["t-shirt", "white", "short-sleeves"]',
     status: 'Available'
   },
   {
@@ -208,7 +241,7 @@ module.exports = [
     price: 550.00,
     size: 'Medium',
     sex: 'M',
-    tag: 'polo shirt',
+    tag: '["polo", "shirt"]',
     status: 'Available'
   },
   {
@@ -219,7 +252,7 @@ module.exports = [
     price: 1690.00,
     size: 'Large',
     sex: 'M',
-    tag: 'sweater wool knit',
+    tag: '["sweater", "wool", "knit"]',
     status: 'Available'
   },
   {
@@ -230,7 +263,7 @@ module.exports = [
     price: 120.00,
     size: 'Medium',
     sex: 'M',
-    tag: 'black hoodie',
+    tag: '["black", "hoodie"]',
     status: 'Available'
   },
   
