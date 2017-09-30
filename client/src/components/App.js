@@ -201,7 +201,12 @@ class App extends Component {
             <Route exact path='/item/:item_id' component={Item} />
             <Route exact path='/search' component={() => (<SearchResult passRes={this.state.searchRes} />)} />
             <Route render={function() {
-								return <p> Not Found </p>
+								return (
+                  <div className='fourofour-section'>
+                    <p className='fourofour-status'>404</p>
+                    <p className='fourofour-description'>PAGE NOT FOUND!</p>
+                  </div>
+                  )
 							}} />
           </Switch>
           <Footer />

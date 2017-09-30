@@ -72,16 +72,16 @@ class NavBar extends Component {
             {/* Check if user logged in */}
             {!this.props.authenticated ?
               <NavLink exact activeClassName="active"  className="nav-link login" to='/login'>
-                  LOGIN / REGISTER
+              <i className="fa fa-user-o cart-icon" aria-hidden="true"></i>LOGIN / REGISTER
               </NavLink>
               :
               (
                 <div className='navbar-nav'>
                   <NavLink exact activeClassName="active"  className="nav-link" to='/account' >
-                    ACCOUNT
+                  <i className="fa fa-suitcase cart-icon" aria-hidden="true"></i>ACCOUNT
                   </NavLink>
                     <a onClick={() => this.showCart()}>
-                      <img className="cart-icon" src={require('../../style/bag.jpg')} />
+                      <i className="fa fa-shopping-cart cart-icon" aria-hidden="true"></i>CART
                     </a>
                     <div className={this.state.viewCart ? "cart active" : "cart"}>
                       <Scroll>
@@ -92,7 +92,7 @@ class NavBar extends Component {
                       </div>
                     </div>
                   <NavLink exact activeClassName="active"  className="nav-link logout" to='/' onClick={() => this.props.logout()}>
-                    LOGOUT
+                  <i className="fa fa-user cart-icon" aria-hidden="true"></i>LOGOUT
                   </NavLink>
                 </div>
               )

@@ -89,7 +89,7 @@ hr {
 }
 
 .cart-icon {
-  width: 50px;
+  width: 20px;
   height: auto;
 }
 
@@ -417,6 +417,32 @@ hr {
   border-radius: 20px;
 }
 
+.upload-input {
+  padding-bottom: 10px;
+}
+
+.upload-input input {
+  border: 0px solid rgba(0,0,0,.15);
+  border-bottom: 1px solid rgba(0,0,0,.15);
+  border-radius: 0px;
+}
+
+.upload-input input:focus {
+  border-color:rgba(0,0,0,.15)
+}
+
+.upload-btn {
+  margin-right: 5px;
+  margin-left: 5px;
+  background-color: #cdb287;
+  border-color: #cdb287;
+}
+
+.upload-btn:hover {
+  background-color: #5f5037;
+  border-color: #5f5037;
+}
+
 .tag-input input {
   display: block;
   width: 100%;
@@ -427,9 +453,15 @@ hr {
   background-color: #fff;
   background-image: none;
   background-clip: padding-box;
-  border: 1px solid rgba(0,0,0,.15);
-  border-radius: .25rem;
+  /* border: 1px solid rgba(0,0,0,.15); */
+  border: 0px solid rgba(0,0,0,.15);
+  border-bottom: 1px solid rgba(0,0,0,.15);
+  /* border-radius: .25rem; */
   transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+
+.tag-input input:focus {
+  outline: none;
 }
 
 .single-item {
@@ -451,6 +483,241 @@ hr {
   background: #5f5037;
   color: white;
   cursor: pointer;
+}
+
+/* ------ Item ------*/
+
+.item-btn-color {
+  background: #cdb287;
+  color: white;
+  cursor: pointer;
+}
+
+.item-btn-color:hover {
+  background: #5f5037;
+  color: white;
+  cursor: pointer;
+}
+
+.item-image-section {
+  width: 500px;
+  max-width: 500px;
+  min-width: 500px;
+  /* margin-right: auto; */
+  margin-left: auto;
+  padding: 40px 20px 40px 20px;
+}
+
+.item-image-section img{
+  display: block; 
+  max-width: 100%;
+}
+
+.item-info-section {
+  width: 500px;
+  max-width: 500px;
+  min-width: 500px;
+  margin-right: auto;
+  /* margin-left: auto; */
+  padding: 40px 20px 40px 20px;
+}
+
+.item-brand {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.item-title {
+  font-size: 18px;
+  color: #717171;
+  padding-bottom: 10px;
+}
+
+.item-price {
+  font-size: 18px;
+  padding-bottom: 40px;
+}
+
+.item-size {
+  padding-bottom: 20px;
+  color: #757575;
+}
+
+.item-size span{
+  box-sizing: border-box;
+  border: 1px solid #cacccd;
+  padding: 7px 10px;
+}
+
+.item-calendar {
+  padding-bottom: 20px;
+}
+
+.item-tags {
+  padding-bottom: 20px;
+  margin:0;
+	padding:0;
+	/* position:absolute; */
+	right:24px;
+	bottom:-12px;
+	list-style:none;
+}
+
+.item-tags li, .item-tags a{
+	float:left;
+	height:24px;
+	line-height:24px;
+	position:relative;
+	font-size:11px;
+}
+  
+.item-tags a{
+  margin-left:10px;
+  padding:0 10px 0 12px;
+  background:#34afdf;
+  color:#fff;
+  -moz-border-radius-bottomright:4px;
+  -webkit-border-bottom-right-radius:4px;	
+  border-bottom-right-radius:4px;
+  -moz-border-radius-topright:4px;
+  -webkit-border-top-right-radius:4px;	
+  border-top-right-radius:4px;	
+} 
+
+.item-tags a:before{
+  content:"";
+  float:left;
+  position:absolute;
+  top:0;
+  left:-12px;
+  width:0;
+  height:0;
+  border-color:transparent #34afdf transparent transparent;
+  border-style:solid;
+  border-width:12px 12px 12px 0;		
+}
+
+.item-tags a:after{
+  content:"";
+  position:absolute;
+  top:10px;
+  left:0;
+  float:left;
+  width:4px;
+  height:4px;
+  -moz-border-radius:2px;
+  -webkit-border-radius:2px;
+  border-radius:2px;
+  background:#fff;
+  /* -moz-box-shadow:-1px -1px 2px #004977;
+  -webkit-box-shadow:-1px -1px 2px #004977;
+  box-shadow:-1px -1px 2px #004977; */
+}
+
+.item-btn {
+  padding-top: 20px;
+  margin-top: 20px;
+}
+
+@media (max-width: 969px) { 
+  .item-image-section { 
+    margin-right: auto;
+  }
+
+  .item-info-section { 
+    margin-left: auto;
+  }
+}
+
+
+/* ------ Calender ------*/
+
+.DateInput {
+  width: 217px;
+  text-align: center;
+  padding: 0px;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.DateInput input{
+  cursor: pointer;
+}
+
+.DateInput__display-text--focused {
+  background:#cdb287;
+  border-color: #cdb287;
+  color: white;
+}
+
+.CalendarDay--selected-start {
+  background:#cdb287;
+  border: 1px double #cdb287;
+  color: white;
+}
+
+.CalendarDay--selected-end {
+  background:#cdb287;
+  border: 1px double #cdb287;
+  color: white;
+}
+
+.CalendarDay--selected-span {
+  background:#EED2A8;
+  border: 1px double #EED2A8;
+  color: white;
+}
+
+.CalendarDay--selected-span:active {
+  background:#EED2A8;
+  border: 1px double #EED2A8;
+  color: white;
+}
+
+.CalendarDay--selected-span.CalendarDay--hovered {
+  background:#cdb287;
+  border: 1px double #cdb287;
+  /* color: white; */
+}
+
+.CalendarDay--hovered-span {
+  background:#EED2A8;
+  border: 1px double #EED2A8;
+  color: white;
+}
+
+.CalendarDay--hovered-span:active {
+  background:#EED2A8;
+  border: 1px double #EED2A8;
+  color: white;
+}
+
+.CalendarDay--after-hovered-start {
+  background:#EED2A8;
+  border: 1px double #EED2A8;
+  color: white;
+}
+
+.CalendarDay--selected-start:active {
+  background: #5f5037;
+}
+
+.CalendarDay--selected-end:active {
+  background: #5f5037;
+}
+
+.CalendarDay--selected {
+  background:#5f5037;
+  border: 1px double #5f5037;
+  color: white;
+}
+
+.DayPickerKeyboardShortcuts__show--bottom-right {
+  border-right: 33px solid #cdb287;
+}
+
+.DayPickerKeyboardShortcuts__show--bottom-right:hover {
+  border-right: 33px solid #5f5037;
 }
 
 /* ------ Footer ------*/
@@ -499,4 +766,28 @@ hr {
   font-size: 32px;
   padding: 20px 20px 10px 0px;
   color: #323232;
+}
+
+/* ------ 404 ------*/
+
+.fourofour-status {
+  text-align: center;
+  font-size: 160px;
+  font-weight: bold;
+  padding-top: 10%;
+  text-shadow: 2px 2px 8px white;
+}
+
+.fourofour-description {
+  text-align: center;
+  font-size: 60px;
+  font-weight: bold;
+  text-shadow: 2px 2px 8px white;
+}
+
+.fourofour-section {
+  background-image: url('./Landing1.jpeg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding-bottom: 15%;
 }
