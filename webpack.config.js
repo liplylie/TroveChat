@@ -33,6 +33,4 @@ webpackConfig.module.loaders.push({
   options: {}  
 });
 
-
-
 module.exports = webpackConfig;
