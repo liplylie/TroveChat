@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { DateRangePicker, SingleDatePicker, DayPickerRangeController } from 'react-dates';
+import { BrowserRouter, Route, Link } from 'react-router-dom';
+import axios from 'axios';
 
 class Item extends Component {
   constructor(props) {
@@ -10,8 +12,26 @@ class Item extends Component {
       focusedInput: null,
       minimumNights: 7,
       daySize: 30,
-      itemInfo: this.props.location.params.itemInfo
+      itemInfo: this.props.location.params.itemInfo,
+      userInfo: this.props.location.params.checkUser,
+      owner: ''
     }
+    this.fetchUser = this.fetchUser.bind(this);
+  }
+
+  componentDidMount() {
+    this.fetchUser();
+    this.state.userInfo(this.state.itemInfo.rentee_id);
+  }
+
+  fetchUser() {
+    axios.get(`/api/user/owner/${this.state.itemInfo.rentee_id}`)
+    .then(user => {
+      this.setState({ owner: user.data.userName });
+    })
+    .catch(err => {
+      console.log('User fetch err:', err);
+    })
   }
 
   render() {
@@ -35,6 +55,11 @@ class Item extends Component {
             <div className='item-title'>
               <span> {this.state.itemInfo.itemname} </span>
             </div>
+            <Link to='/userwardrobe'>
+              <div>
+                By: {this.state.owner}
+              </div>
+            </Link>
             <hr className="col-md-12"></hr>
             <div className='item-price'>
               <span> ${this.state.itemInfo.price} </span>

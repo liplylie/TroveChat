@@ -12,6 +12,7 @@ import Wardrobe from './Wardrobe';
 import firebase, {auth} from '../firebase';
 import Item from './Item';
 import SearchResult from './SearchResult';
+import UserWardrobe from './UserWardrobe';
 
 class App extends Component {
   constructor(props) {
@@ -25,7 +26,8 @@ class App extends Component {
       user: null,
       sqlUser: null,
       searchInput: '',
-      searchRes: []
+      searchRes: [],
+      checkThisUser: null
     }
     this.fetch = this.fetch.bind(this);
     this.authWithEmailPassword = this.authWithEmailPassword.bind(this);
@@ -35,6 +37,12 @@ class App extends Component {
     this.handleSearch = this.handleSearch.bind(this);
     this.search = this.search.bind(this);
     this.removeFromCart = this.removeFromCart.bind(this);
+    this.handleCheckUser = this.handleCheckUser.bind(this);
+  }
+
+  handleCheckUser(num) {
+    this.state.checkThisUser = num;
+    console.log('CheckUSER:', this.state.checkThisUser);
   }
 
   search() {
@@ -203,15 +211,24 @@ class App extends Component {
           <Switch>
             <Route exact path='/' component={() => (<Home passItems={this.state.allItems} />)} />
             <Route exact path='/men' component={() => (
-              <Men passItems={this.state.allItems} addToCart={this.handleAddToCart}/>)} />
+              <Men 
+              passItems={this.state.allItems} 
+              addToCart={this.handleAddToCart}
+              checkUser={this.handleCheckUser} />)} />
             <Route exact path='/women' component={() => (
-              <Women passItems={this.state.allItems} addToCart={this.handleAddToCart}/>)} />
+              <Women 
+              passItems={this.state.allItems} 
+              addToCart={this.handleAddToCart}
+              checkUser={this.handleCheckUser} />)} />
             <Route exact path='/account' component={() => (<Dashboard sqlUser={this.state.sqlUser} passItems={this.state.allItems}/>)} />
             <Route exact path='/wardrobe' component={() => (<Dashboard sqlUser={this.state.sqlUser} passItems={this.state.allItems}/>)} />
             <Route exact path='/login' component={() => (<Login authenticated={this.state.authenticated} login={this.authWithEmailPassword} signUp={this.signUp}/>)} />
             <Route exact path='/item/:item_id' component={Item} />
             <Route exact path='/search' component={() => (
               <SearchResult passRes={this.state.searchRes} />)} />
+            <Route exact path='/userwardrobe' component={() => <UserWardrobe 
+            passItems={this.state.allItems}
+            getThisUser={this.state.checkThisUser} />} />
             <Route render={function() {
 								return (
                   <div className='fourofour-section'>
