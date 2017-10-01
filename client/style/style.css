@@ -99,8 +99,9 @@ hr {
 
 .cart {
   display: none;
-  border: 2px solid;
+  /* border: 2px solid; */
   background-color: #F8E4B7;
+  border-radius: 5px;
 }
 
 .cart.active {
@@ -109,14 +110,23 @@ hr {
   position: absolute;
   top: 65px;
   right: 20px;
-  width: 460px;
-  height: 400px;
+  /* width: 460px;
+  height: 400px; */
 }
 
-.cart-items {
+/* .cart-items {
   height: 300px;
   width: 450px;
   width: 100%
+} */
+
+.cart-single-items {
+	margin-bottom: 10px;
+	padding: 0.5em;
+	background: #FFFFFF;
+	border: 1px solid #DCDCDC;
+	box-shadow: 0 2px 3px 0 rgba(225,225,225,0.50);
+	border-radius: 4px;
 }
 
 .item-image {
@@ -141,6 +151,9 @@ hr {
   cursor: not-allowed;
 }
 
+.StripeCheckout {
+  background-color: #cdb287;
+}
 
 
 /* ------ Feature ------*/
@@ -436,10 +449,15 @@ hr {
 }
 
 .upload-btn {
+  padding-bottom: 20px;
   margin-right: 5px;
   margin-left: 5px;
   background-color: #cdb287;
   border-color: #cdb287;
+}
+
+.upload-btn-section {
+  padding-bottom: 40px;
 }
 
 .upload-btn:hover {
@@ -583,6 +601,7 @@ hr {
 }
 
 .item-tags li, .item-tags a{
+  padding-right: 5px;
 	float:left;
 	height:24px;
 	line-height:24px;

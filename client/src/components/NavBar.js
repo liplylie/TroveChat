@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { NavLink, Route, Link } from 'react-router-dom';
-import Scroll from './Scroll';
 import Checkout from './Checkout';
+import Scroll from './Scroll';
 import moment from 'moment';
 
 class NavBar extends Component {
@@ -33,7 +33,7 @@ class NavBar extends Component {
     console.log('this is state in navbar: ', this.state);
     let cartItems = this.state.cart.map(item => {
       return (
-        <li className="cart-item" key={item.id}>
+        <li className="cart-item cart-single-items" key={item.id}>
           <img className="item-image" src={item.image}/>
           <div className="item-info"> 
             <p>{item.itemname}</p>
@@ -70,7 +70,7 @@ class NavBar extends Component {
             <form className="form-inline my-2 my-lg-0 search-section">
               <input className="form-control mr-sm-2 input-sm" type="text" placeholder="Search"
               onChange = { (e) => {this.props.passHandleInput(e.target.value) }}></input>
-              <NavLink exact activeClassName="active"  className="nav-link" to='/search'
+              <NavLink exact activeClassName="active" to='/search'
               onClick = { () => {this.props.passSearch()}} >
               <button className="btn btn-outline-success my-2 my-sm-0 btn-sm nav-btn-color nav-btn-section" type="submit"
               onClick = { () => {this.search() }} ><i className="material-icons">search</i></button>
@@ -87,17 +87,22 @@ class NavBar extends Component {
                   <NavLink exact activeClassName="active"  className="nav-link" to='/account' >
                   <i className="fa fa-suitcase cart-icon" aria-hidden="true"></i>ACCOUNT
                   </NavLink>
+                  <NavLink exact activeClassName="active"  className="nav-link logout" to='/' onClick={() => this.props.logout()}>
+                  <i className="fa fa-user cart-icon" aria-hidden="true"></i>LOGOUT
+                  </NavLink>
                     <a className='nav-link' onClick={() => this.showCart()}>
                       <i className="fa fa-shopping-cart cart-icon" aria-hidden="true"></i>CART
                     </a>
                     <div className={this.state.viewCart ? "cart active" : "cart"}>
-                      <Scroll>
-                        {items}
-                      </Scroll>
+                      <div className='col-md-4'>
+                        <div className='col-md-11'> 
+                          <Scroll>
+                            {items}
+                          </Scroll>
+                        </div>
+                      </div>
                       <div className="checkout">
                         <p className={this.state.cart.length > 0 ? "checkout-btn" : "checkout-btn-disabled"}>
-                          {/* {console.log('cart stuff', this.state)} */}
-                          {/* {console.log('date diff', moment(this.state.cart.endDate))} */}
                           <Checkout
                             label={'Give me yo money'}
                             name={'Hey there, hottie'}
@@ -107,9 +112,6 @@ class NavBar extends Component {
                         </p>
                       </div>
                     </div>
-                  <NavLink exact activeClassName="active"  className="nav-link logout" to='/' onClick={() => this.props.logout()}>
-                  <i className="fa fa-user cart-icon" aria-hidden="true"></i>LOGOUT
-                  </NavLink>
                 </div>
               )
             }

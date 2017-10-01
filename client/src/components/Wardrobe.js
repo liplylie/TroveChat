@@ -13,14 +13,14 @@ class Wardrobe extends Component {
 
   render() {
     return (
-      <div className='list-section'>
+      <div>
+        <div className='upload-btn-section'><button className="btn wardrobe-btn-color" type="button" onClick={this.openModal.bind(this)}> Add to Wardrobe </button> </div>
         <div className='row'>
           {this.props.passItems.map(item => 
             { if(item.rentee_id === this.props.passUser.id) {
               return <WardrobeItem passItem={item} key={item.id} /> }
             }
           ).reverse()}
-          <div><button className="btn wardrobe-btn-color" type="button" onClick={this.openModal.bind(this)}>Upload </button> </div>
         </div>
       </div>
     );
