@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { DateRangePicker, SingleDatePicker, DayPickerRangeController } from 'react-dates';
 import { BrowserRouter, Route, Link } from 'react-router-dom';
 import axios from 'axios';
+import moment from 'moment'
 
 class Item extends Component {
   constructor(props) {
@@ -51,7 +52,7 @@ class Item extends Component {
       })
     })
     .catch(err => {
-      console.log(err);
+      console.log('an error occured', err);
     })
   }
 
@@ -63,6 +64,17 @@ class Item extends Component {
         <li key={i}><a href="#"> {tag} </a></li>
       )
     });
+
+    let badDates = this.state.blockedDates;
+    console.log('ehhhhh', this.state.blockedDates)
+    const isDayBlocked = function(day) {
+      for (var i = 0; i < badDates.length; i += 2) {
+        if (moment(day).isBetween(badDates[i], badDates[i + 1], 'day', '[]')) {
+          return true;
+        }
+      }
+      return false;
+    }
 
     return (
         <div className='row'>
@@ -91,6 +103,7 @@ class Item extends Component {
             
             <div className='item-calendar'>
               <DateRangePicker
+                isDayBlocked={isDayBlocked}
                 daySize={this.state.daySize}
                 minimumNights={this.state.minimumNights}
                 startDate={this.state.startDate} 
