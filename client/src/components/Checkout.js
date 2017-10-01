@@ -14,7 +14,6 @@ const successPayment = data => {
 };
 
 const errorPayment = data => {
-  console.log('error!!!!!',data)
   alert('Payment Error');
 };
 
@@ -32,7 +31,7 @@ const postTrx = function (data, renterId) {
       console.log('posting trx successful')
     })
     .catch((err) => {
-      console.log('err', err)
+      console.log('posting trx err', err)
     })
   })
 }

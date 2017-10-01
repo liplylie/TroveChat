@@ -66,7 +66,6 @@ class Item extends Component {
     });
 
     let badDates = this.state.blockedDates;
-    console.log('ehhhhh', this.state.blockedDates)
     const isDayBlocked = function(day) {
       for (var i = 0; i < badDates.length; i += 2) {
         if (moment(day).isBetween(badDates[i], badDates[i + 1], 'day', '[]')) {
