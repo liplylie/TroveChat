@@ -27,7 +27,8 @@ class App extends Component {
       sqlUser: null,
       searchInput: '',
       searchRes: [],
-      checkThisUser: null
+      checkThisUser: null,
+      userId: null
     }
     this.fetch = this.fetch.bind(this);
     this.authWithEmailPassword = this.authWithEmailPassword.bind(this);
@@ -75,7 +76,8 @@ class App extends Component {
           this.setState({
             authenticated: true,
             user: user,
-            sqlUser: data
+            sqlUser: data,
+            userId: data.id
           })
         })
       } else {
@@ -207,7 +209,8 @@ class App extends Component {
           passHandleInput={this.handleSearch}
           passSearch={this.search}
           cart={this.state.cart} 
-          remove={this.removeFromCart} />
+          remove={this.removeFromCart} 
+          renterId = {this.state.userId} />
           <Switch>
             <Route exact path='/' component={() => (
               <Home 
