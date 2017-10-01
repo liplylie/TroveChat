@@ -6,7 +6,7 @@ class HomeFeatureItem extends Component {
   render() {
     return (
       <div className='col-md-4 wow fadeIn animated'>
-        <Link to={{pathname: `/item/${this.props.featureItem.id}`, params: {itemInfo: this.props.featureItem, addToCart: this.props.addToCart}}}>
+        <Link to={{pathname: `/item/${this.props.featureItem.id}`, params: {itemInfo: this.props.featureItem, addToCart: this.props.addToCart, checkUser: this.props.checkUser}}}>
           <div className='feature-section-wrap'>
             <div className='feature-section-picture'>
               <img src={this.props.featureItem.image}></img>

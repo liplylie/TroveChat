@@ -51,7 +51,10 @@ class Home extends Component {
         <div className='row'>
           {!this.props.passItems ? <Loading /> : this.props.passItems.map((featureItem) => {
             if(featureItem.id < 7) {
-              return <HomeFeatureItem featureItem={featureItem} key={featureItem.id} />
+              return <HomeFeatureItem 
+              featureItem={featureItem} 
+              key={featureItem.id} 
+              checkUser={this.props.checkUser} />
             }
           }).reverse()}
         </div>

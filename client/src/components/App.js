@@ -209,7 +209,10 @@ class App extends Component {
           cart={this.state.cart} 
           remove={this.removeFromCart} />
           <Switch>
-            <Route exact path='/' component={() => (<Home passItems={this.state.allItems} />)} />
+            <Route exact path='/' component={() => (
+              <Home 
+              passItems={this.state.allItems}
+              checkUser={this.handleCheckUser} />)} />
             <Route exact path='/men' component={() => (
               <Men 
               passItems={this.state.allItems} 
@@ -226,9 +229,10 @@ class App extends Component {
             <Route exact path='/item/:item_id' component={Item} />
             <Route exact path='/search' component={() => (
               <SearchResult passRes={this.state.searchRes} />)} />
-            <Route exact path='/userwardrobe' component={() => <UserWardrobe 
-            passItems={this.state.allItems}
-            getThisUser={this.state.checkThisUser} />} />
+            <Route exact path='/userwardrobe' component={() => (
+              <UserWardrobe 
+              passItems={this.state.allItems}
+              getThisUser={this.state.checkThisUser} />)} />
             <Route render={function() {
 								return (
                   <div className='fourofour-section'>
