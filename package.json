@@ -45,6 +45,8 @@
     "babel-preset-react": "^6.24.1",
     "dotenv": "^4.0.0",
     "file-loader": "^0.11.2",
+    "firebase-tools": "^3.12.0",
+    "html-webpack-plugin": "^2.30.1",
     "nodemon": "^1.12.1"
   }
 }
