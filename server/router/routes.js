@@ -14,6 +14,9 @@ router.route('/user')
 router.route('/user/:userEmail')
   .get(userCtrl.getUser);
 
+router.route('/user/owner/:rentee_id')
+  .get(userCtrl.getUserById);
+
 router.route('/women/payment')
   .get(paymentCtrl.getMsg)
   .post(paymentCtrl.postCharge)

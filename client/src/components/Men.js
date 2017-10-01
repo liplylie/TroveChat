@@ -16,7 +16,11 @@ class Men extends Component {
         <div className='row'>
           {!this.props.passItems ? <Loading /> : this.props.passItems.map(item => 
             { if(item.sex === 'M') {
-              return <MenItem passItem={item} addToCart={this.props.addToCart} key={item.id} />}
+              return <MenItem 
+              passItem={item} 
+              addToCart={this.props.addToCart} 
+              checkUser={this.props.checkUser}
+              key={item.id} />}
             }
           ).reverse()}
         </div>
