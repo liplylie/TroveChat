@@ -26,4 +26,7 @@ router.route('/item/payment')
 router.route('/renttrx')
   .post(rentTrxCtrl.addTrx)
 
+router.route('/renttrx/item/:item_id')
+  .get(rentTrxCtrl.getDates)
+
 module.exports = router;

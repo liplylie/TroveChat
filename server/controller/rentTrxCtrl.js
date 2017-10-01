@@ -16,5 +16,20 @@ module.exports = {
       console.log('trx post err',err)
       res.status(404).send(err)
     });
+  },
+  
+  getDates: (req, res) => {
+    Rent_trx.findAll({
+      where: {
+        item_id: req.params.item_id}
+      }
+    )
+    .then(data => {
+      console.log('getDates', data)
+      res.status(201).send(data)      
+    })
+    .catch(err => {
+      console.log('get dates err', err)
+    }) 
   }
 }

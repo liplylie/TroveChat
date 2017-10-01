@@ -14,12 +14,14 @@ class Item extends Component {
       daySize: 30,
       itemInfo: this.props.location.params.itemInfo,
       userInfo: this.props.location.params.checkUser,
-      owner: ''
+      owner: '',
+      blockedDates: []
     }
     this.fetchUser = this.fetchUser.bind(this);
   }
 
   componentDidMount() {
+    this.fetchDates();
     this.fetchUser();
     this.state.userInfo(this.state.itemInfo.rentee_id);
   }
@@ -31,6 +33,25 @@ class Item extends Component {
     })
     .catch(err => {
       console.log('User fetch err:', err);
+    })
+  }
+  
+  fetchDates() {
+    var blockedDates = [];
+    axios.get(`/api/renttrx/item/${this.state.itemInfo.id}`)
+    .then(({data}) => data.forEach(item => {
+    //   console.log('items', item)
+    // }))
+      blockedDates.push(item.startDate);
+      blockedDates.push(item.endDate);
+    }))
+    .then(() => {
+      this.setState({
+        blockedDates: blockedDates
+      })
+    })
+    .catch(err => {
+      console.log(err);
     })
   }
 
@@ -68,7 +89,6 @@ class Item extends Component {
               <span> {this.state.itemInfo.size} </span>
             </div>
             
-            {/* get user's id in here too */}
             <div className='item-calendar'>
               <DateRangePicker
                 daySize={this.state.daySize}
