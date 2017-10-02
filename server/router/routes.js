@@ -2,6 +2,8 @@ const router = require('express').Router();
 const itemCtrl = require('../controller/itemCtrl');
 const userCtrl = require('../controller/userCtrl');
 const paymentCtrl = require('../controller/paymentCtrl')
+const rentTrxCtrl = require('../controller/rentTrxCtrl');
+
 
 
 router.route('/')
@@ -17,8 +19,14 @@ router.route('/user/:userEmail')
 router.route('/user/owner/:rentee_id')
   .get(userCtrl.getUserById);
 
-router.route('/women/payment')
+router.route('/item/payment')
   .get(paymentCtrl.getMsg)
   .post(paymentCtrl.postCharge)
+
+router.route('/renttrx')
+  .post(rentTrxCtrl.addTrx)
+
+router.route('/renttrx/item/:item_id')
+  .get(rentTrxCtrl.getDates)
 
 module.exports = router;

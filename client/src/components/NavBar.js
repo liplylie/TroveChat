@@ -102,14 +102,17 @@ class NavBar extends Component {
                         </div>
                       </div>
                       <div className="checkout">
-                        <p className={this.state.cart.length > 0 ? "checkout-btn" : "checkout-btn-disabled"}>
+                        <div className={this.state.cart.length > 0 ? "checkout-btn" : "checkout-btn-disabled"}>
+                          {console.log('renter id in navbar', this.props.renterId)}
                           <Checkout
+                            renterId = {this.props.renterId}
+                            cart = {this.state.cart}
                             label={'Give me yo money'}
                             name={'Hey there, hottie'}
                             description={'Trove'}
                             amount={this.totalPrice(this.state.cart)} //in dollars
                           />
-                        </p>
+                        </div>
                       </div>
                     </div>
                 </div>
