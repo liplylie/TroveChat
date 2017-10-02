@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { DateRangePicker, SingleDatePicker, DayPickerRangeController } from 'react-dates';
 import { BrowserRouter, Route, Link } from 'react-router-dom';
 import axios from 'axios';
+import moment from 'moment'
 
 class Item extends Component {
   constructor(props) {
@@ -14,12 +15,14 @@ class Item extends Component {
       daySize: 30,
       itemInfo: this.props.location.params.itemInfo,
       userInfo: this.props.location.params.checkUser,
-      owner: ''
+      owner: '',
+      blockedDates: []
     }
     this.fetchUser = this.fetchUser.bind(this);
   }
 
   componentDidMount() {
+    this.fetchDates();
     this.fetchUser();
     this.state.userInfo(this.state.itemInfo.rentee_id);
   }
@@ -33,6 +36,25 @@ class Item extends Component {
       console.log('User fetch err:', err);
     })
   }
+  
+  fetchDates() {
+    var blockedDates = [];
+    axios.get(`/api/renttrx/item/${this.state.itemInfo.id}`)
+    .then(({data}) => data.forEach(item => {
+    //   console.log('items', item)
+    // }))
+      blockedDates.push(item.startDate);
+      blockedDates.push(item.endDate);
+    }))
+    .then(() => {
+      this.setState({
+        blockedDates: blockedDates
+      })
+    })
+    .catch(err => {
+      console.log('an error occured', err);
+    })
+  }
 
   render() {
     let allTags = JSON.parse(this.state.itemInfo.tag);
@@ -42,6 +64,16 @@ class Item extends Component {
         <li key={i}><a href="#"> {tag} </a></li>
       )
     });
+
+    let badDates = this.state.blockedDates;
+    const isDayBlocked = function(day) {
+      for (var i = 0; i < badDates.length; i += 2) {
+        if (moment(day).isBetween(badDates[i], badDates[i + 1], 'day', '[]')) {
+          return true;
+        }
+      }
+      return false;
+    }
 
     return (
         <div className='row'>
@@ -67,9 +99,9 @@ class Item extends Component {
               <span> {this.state.itemInfo.size} </span>
             </div>
             
-            {/* get user's id in here too */}
             <div className='item-calendar'>
               <DateRangePicker
+                isDayBlocked={isDayBlocked}
                 daySize={this.state.daySize}
                 minimumNights={this.state.minimumNights}
                 startDate={this.state.startDate} 

@@ -14,13 +14,30 @@ const successPayment = data => {
 };
 
 const errorPayment = data => {
-  console.log('error!!!!!',data)
   alert('Payment Error');
 };
 
-const onToken = (amount, description) => token =>
-  // console.log('in onToken')
-  axios.post('/api/women/payment',
+const postTrx = function (data, renterId) {
+  data.forEach(item => {
+  axios.post('/api/renttrx',
+    {
+      renteeId: item.rentee_id,
+      renterId: renterId,
+      startDate: item.startDate,
+      endDate: item.endDate,
+      item_id: item.id,
+    })
+    .then((data) => {
+      console.log('posting trx successful')
+    })
+    .catch((err) => {
+      console.log('posting trx err', err)
+    })
+  })
+}
+
+const onToken = (amount, description, cart, renterId) => token =>
+  axios.post('/api/item/payment',
     {
       description,
       source: token.id,
@@ -28,16 +45,17 @@ const onToken = (amount, description) => token =>
       amount: fromDolToCent(amount)
     })
     .then(successPayment)
+    .then(postTrx(cart, renterId))
     .catch(errorPayment);
-
-const Checkout = ({ label, name, description, amount, length }) =>
-  <StripeCheckout
+    
+const Checkout = ({ cart, label, name, description, amount, renterId, length }) =>
+  <StripeCheckout 
     label={label}
     image="https://i.imgur.com/NP3wjfn.png"
     name={name}
     description={description}
     amount={fromDolToCent(amount)}
-    token={onToken(amount, description)}
+    token={onToken(amount, description, cart, renterId)}
     currency={CURRENCY}
     billingAddress={true}
     shippingAddress={true}

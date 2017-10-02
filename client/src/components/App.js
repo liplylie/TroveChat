@@ -29,6 +29,8 @@ class App extends Component {
       searchRes: [],
       checkThisUser: null,
       viewCart: JSON.parse(localStorage.getItem('viewCart')) || false,
+      userId: null
+
     }
     this.fetch = this.fetch.bind(this);
     this.authWithEmailPassword = this.authWithEmailPassword.bind(this);
@@ -77,7 +79,8 @@ class App extends Component {
           this.setState({
             authenticated: true,
             user: user,
-            sqlUser: data
+            sqlUser: data,
+            userId: data.id
           })
         })
       } else {
@@ -229,6 +232,7 @@ class App extends Component {
             remove={this.removeFromCart} 
             showCart={this.showCart}
             showCartState={this.state.viewCart}
+            renterId = {this.state.userId} />
             />
           </div>
           <div onClick={() => this.hideCart()}>
