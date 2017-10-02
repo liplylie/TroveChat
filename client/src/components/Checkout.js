@@ -47,11 +47,11 @@ const onToken = (amount, description, cart, renterId) => token =>
     .then(successPayment)
     .then(postTrx(cart, renterId))
     .catch(errorPayment);
-
     
-const Checkout = ({ cart, label, name, description, amount, renterId }) =>
+const Checkout = ({ cart, label, name, description, amount, renterId, length }) =>
   <StripeCheckout 
     label={label}
+    image="https://i.imgur.com/NP3wjfn.png"
     name={name}
     description={description}
     amount={fromDolToCent(amount)}
@@ -60,6 +60,10 @@ const Checkout = ({ cart, label, name, description, amount, renterId }) =>
     billingAddress={true}
     shippingAddress={true}
     stripeKey={'pk_test_BtldIkOgEzoxf2fN7T8fxsMO'}
-  />
+  >
+  <button className={length>0 ? 'btn btn-primary checkout-btn' : "btn btn-primary checkout-btn checkout-btn-disabled"}>
+    Check Out
+  </button>
+  </StripeCheckout>
 
 export default Checkout;

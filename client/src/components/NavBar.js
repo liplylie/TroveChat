@@ -1,18 +1,15 @@
 import React, { Component } from 'react';
 import { NavLink, Route, Link } from 'react-router-dom';
 import Checkout from './Checkout';
-import Scroll from './Scroll';
+import { Scrollbars } from 'react-custom-scrollbars'
 import moment from 'moment';
 
 class NavBar extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      viewCart: false,
       cart: this.props.cart
     }
-
-    this.showCart = this.showCart.bind(this);
   }
 
   totalPrice(cart) {
@@ -20,32 +17,11 @@ class NavBar extends Component {
     for (var i = 0; i < cart.length; i++) {
       totalPrice += cart[i].price;
     }
-    return totalPrice;
-  }
-
-  showCart(e) {
-    this.setState({
-      viewCart: !this.state.viewCart
-    })
+    return Math.floor(totalPrice * 0.07);
   }
 
   render() {
-    console.log('this is state in navbar: ', this.state);
-    let cartItems = this.state.cart.map(item => {
-      return (
-        <li className="cart-item cart-single-items" key={item.id}>
-          <img className="item-image" src={item.image}/>
-          <div className="item-info"> 
-            <p>{item.itemname}</p>
-            <p>{item.brand}</p>
-            <p>{item.price}</p>
-          </div>
-          <button id="checkout" type="button" onClick={() => this.props.remove(item.id)}>x</button>
-        </li>
-      )
-    });
-    let items = <ul className="cart-items">{cartItems}</ul>
-
+    // console.log('this is nav cart: ', this.props)
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-black">
           <NavLink id='bg-logo' exact className="navbar-brand" to='/' >
@@ -90,29 +66,43 @@ class NavBar extends Component {
                   <NavLink exact activeClassName="active"  className="nav-link logout" to='/' onClick={() => this.props.logout()}>
                   <i className="fa fa-user cart-icon" aria-hidden="true"></i>LOGOUT
                   </NavLink>
-                    <a className='nav-link' onClick={() => this.showCart()}>
-                      <i className="fa fa-shopping-cart cart-icon" aria-hidden="true"></i>CART
+                    <a className='nav-link' onClick={() => this.state.cart.length > 0 ? this.props.showCart() : null}>
+                      <i className="fa fa-shopping-cart cart-icon" aria-hidden="true"></i>CART {this.state.cart.length}
                     </a>
-                    <div className={this.state.viewCart ? "cart active" : "cart"}>
-                      <div className='col-md-4'>
-                        <div className='col-md-11'> 
-                          <Scroll>
-                            {items}
-                          </Scroll>
-                        </div>
+                    <div className={this.props.showCartState ? "cart cart-active" : "cart"}>
+                      <div className='col-md-12 cart-section'>
+                        <Scrollbars autoHeight autoHeightMin={0} autoHeightMax={400} style={{ width: 460}} >
+                          {this.state.cart.map((item, i) => {
+                            return (
+                              <div className="cart-single-items" key={`cart-item-${i}`}>
+                                <div className='row'>
+                                  <div className='col-sm-3'>
+                                    <img className="item-image" src={item.image}/>
+                                  </div>
+                                  <div className='col-sm-8'>
+                                    <div className='cart-item-name'>{item.itemname}</div>
+                                    <div className='cart-item-brand'>{item.brand}</div>
+                                    <div className='cart-item-price'>${Math.floor(item.price * 0.07)}</div>
+                                  </div>
+                                  <div className='col-sm-1'>
+                                    <button id="checkout" className='btn cart-remove-btn' type="button" onClick={() => this.props.remove(item.id)}>X</button>
+                                  </div>
+                                </div>
+                              </div>
+                            )
+                          })}
+                        </Scrollbars>
                       </div>
                       <div className="checkout">
-                        <div className={this.state.cart.length > 0 ? "checkout-btn" : "checkout-btn-disabled"}>
-                          {console.log('renter id in navbar', this.props.renterId)}
+                        <p>
                           <Checkout
-                            renterId = {this.props.renterId}
-                            cart = {this.state.cart}
-                            label={'Give me yo money'}
+                            label={'Check Out'}
                             name={'Hey there, hottie'}
                             description={'Trove'}
                             amount={this.totalPrice(this.state.cart)} //in dollars
+                            length={this.state.cart.length}
                           />
-                        </div>
+                        </p>
                       </div>
                     </div>
                 </div>

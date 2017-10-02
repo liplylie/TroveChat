@@ -15,22 +15,22 @@ class Home extends Component {
         </ol>
         <div className="carousel-inner" role="listbox">
           <div className="carousel-item active">
-            <img className="d-block img-fluid" src={require('../../style/YSL.jpg')} alt="First slide"></img>
+            <img className="d-block img-fluid image-size" src={require('../../style/YSL.jpg')} alt="First slide"></img>
             <div className="carousel-caption d-none d-md-block">
             </div>
           </div>
           <div className="carousel-item">
-            <img className="d-block img-fluid" src={require('../../style/vuitton-supreme1.jpg')} alt="Second slide"></img>
+            <img className="d-block img-fluid image-size" src={require('../../style/vuitton-supreme1.jpg')} alt="Second slide"></img>
             <div className="carousel-caption d-none d-md-block">
             </div>
           </div>
           <div className="carousel-item">
-            <img className="d-block img-fluid" src={require('../../style/masthead_01-1600w.jpg')} alt="Third slide"></img>
+            <img className="d-block img-fluid image-size" src={require('../../style/masthead_01-1600w.jpg')} alt="Third slide"></img>
             <div className="carousel-caption d-none d-md-block">
             </div>
           </div>
           <div className="carousel-item">
-            <img className="d-block img-fluid" src={require('../../style/prada-mens-ss18-fashion-show.jpg')} alt="Fourth slide"></img>
+            <img className="d-block img-fluid image-size" src={require('../../style/prada-mens-ss18-fashion-show.jpg')} alt="Fourth slide"></img>
             <div className="carousel-caption d-none d-md-block">
             </div>
           </div>
