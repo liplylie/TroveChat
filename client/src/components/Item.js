@@ -87,7 +87,7 @@ class Item extends Component {
             <div className='item-title'>
               <span> {this.state.itemInfo.itemname} </span>
             </div>
-            <Link to='/userwardrobe'>
+            <Link className='item-user' to='/userwardrobe'>
               By: {this.state.owner}
             </Link>
             <hr className="col-md-12"></hr>

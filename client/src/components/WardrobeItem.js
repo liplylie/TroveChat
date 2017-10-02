@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Link } from 'react-router-dom';
 
 class WardrobeItem extends Component {
   render() {
+    console.log('this is Wardrobe; ', this.props.passItem)
     return (
       <div className='col-md-3 wow fadeIn animated'>
           <div className='list-section-wrap'>
@@ -14,11 +15,12 @@ class WardrobeItem extends Component {
               <div>
                 {this.props.passItem.brand}
               </div>
-              <div>
+              <div className='list-item-name'>
                 {this.props.passItem.itemname}
               </div>
-              <div>
-                ${this.props.passItem.price}
+               <div>
+                <span className='list-price-retail line-through'> ${this.props.passItem.price} </span>
+                <span className='list-price-rental'> ${Math.floor(this.props.passItem.price * 0.07)} </span>
               </div>
             </div>
           </div>

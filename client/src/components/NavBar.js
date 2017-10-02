@@ -11,6 +11,11 @@ class NavBar extends Component {
       cart: this.props.cart
     }
   }
+  
+  // componentDidMount() {
+  //   this.setState
+  // }
+  
 
   totalPrice(cart) {
     var totalPrice = 0;
@@ -21,7 +26,7 @@ class NavBar extends Component {
   }
 
   render() {
-    // console.log('this is nav cart: ', this.props)
+    console.log('this is nav cart: ', this.props)
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-black">
           <NavLink id='bg-logo' exact className="navbar-brand" to='/' >
@@ -33,12 +38,12 @@ class NavBar extends Component {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav mr-auto">
               <li className="nav-item">
-              <NavLink exact activeClassName="active" className="nav-link" to='/men' >
+              <NavLink exact activeClassName="active" className="nav-link nav-title" to='/men' >
                 MEN
               </NavLink>
               </li>
               <li className="nav-item">
-              <NavLink exact activeClassName="active" className="nav-link" to='/women' >
+              <NavLink exact activeClassName="active" className="nav-link nav-title" to='/women' >
                 WOMEN
               </NavLink>
               </li>
@@ -49,25 +54,25 @@ class NavBar extends Component {
               <NavLink exact activeClassName="active" to='/search'
               onClick = { () => {this.props.passSearch()}} >
               <button className="btn btn-outline-success my-2 my-sm-0 btn-sm nav-btn-color nav-btn-section" type="submit"
-              onClick = { () => {this.search() }} ><i className="material-icons">search</i></button>
+              onClick = { () => {this.search() }} ><i className="material-icons nav-search-btn">search</i></button>
               </NavLink>
             </form>
             {/* Check if user logged in */}
             {!this.props.authenticated ?
-              <NavLink exact activeClassName="active"  className="nav-link login" to='/login'>
+              <NavLink exact activeClassName="active"  className="nav-link nav-title login" to='/login'>
               <i className="fa fa-user-o cart-icon" aria-hidden="true"></i>LOGIN / REGISTER
               </NavLink>
               :
               (
                 <div className='navbar-nav'>
-                  <NavLink exact activeClassName="active"  className="nav-link" to='/account' >
+                  <NavLink exact activeClassName="active"  className="nav-link nav-title" to='/account' >
                   <i className="fa fa-suitcase cart-icon" aria-hidden="true"></i>ACCOUNT
                   </NavLink>
-                  <NavLink exact activeClassName="active"  className="nav-link logout" to='/' onClick={() => this.props.logout()}>
+                  <NavLink exact activeClassName="active"  className="nav-link nav-title logout" to='/' onClick={() => this.props.logout()}>
                   <i className="fa fa-user cart-icon" aria-hidden="true"></i>LOGOUT
                   </NavLink>
-                    <a className='nav-link' onClick={() => this.state.cart.length > 0 ? this.props.showCart() : null}>
-                      <i className="fa fa-shopping-cart cart-icon" aria-hidden="true"></i>CART {this.state.cart.length}
+                    <a className='nav-link nav-title' onClick={() => this.state.cart.length > 0 ? this.props.showCart() : null}>
+                      <i className="fa fa-shopping-cart cart-icon" aria-hidden="true"></i>{this.state.cart.length}
                     </a>
                     <div className={this.props.showCartState ? "cart cart-active" : "cart"}>
                       <div className='col-md-12 cart-section'>

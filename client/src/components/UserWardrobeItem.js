@@ -12,12 +12,13 @@ class UserWardrobeItem extends Component {
             <div>
               {this.props.passItem.brand}
             </div>
-            <div>
-              {this.props.passItem.itemname}
-            </div>
-            <div>
-              ${this.props.passItem.price}
-            </div>
+            <div className='list-item-name'>
+                {this.props.passItem.itemname}
+              </div>
+             <div>
+                <span className='list-price-retail line-through'> ${this.props.passItem.price} </span>
+                <span className='list-price-rental'> ${Math.floor(this.props.passItem.price * 0.07)} </span>
+              </div>
           </div>
         </div>
       </div>
