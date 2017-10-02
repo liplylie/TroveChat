@@ -6,12 +6,20 @@ import { BrowserRouter, Route, Link } from 'react-router-dom';
 class MenItem extends Component {
   constructor() {
     super();
+    this.state = {
+      previous: null
+    }
+  }
+
+  componentDidMount() {
+    this.state.previous = this.props.passItem;
+    // console.log('Previous:', this.state.previous);
   }
 
   render() {
     return (
       <div className='col-md-3 wow fadeIn animated'>
-        <Link to={{pathname: `/item/${this.props.passItem.id}`, params: {itemInfo: this.props.passItem, addToCart: this.props.addToCart, checkUser: this.props.checkUser}}}>
+        <Link to={{pathname: `/item/${this.props.passItem.id}`, params: {itemInfo: this.props.passItem, addToCart: this.props.addToCart, checkUser: this.props.checkUser, prevItemInfo: this.state.previous}}}>
           <div className='list-section-wrap'>
             <div className='list-section-picture'>
                 <img src={this.props.passItem.image} ></img>

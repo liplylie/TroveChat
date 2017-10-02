@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { Modal, ModalManager, Effect } from 'react-dynamic-modal';
 import Upload from './Upload';
 import Loading from './Loading';
-import UserWardrobeItem from './UserWardrobeItem';
+import WardrobeItem from './WardrobeItem';
 
 class Wardrobe extends Component {
 
@@ -18,7 +18,7 @@ class Wardrobe extends Component {
         <div className='row'>
           {this.props.passItems.map(item => 
             { if(item.rentee_id === this.props.passUser.id) {
-              return <User passItem={item} key={item.id} /> }
+              return <WardrobeItem passItem={item} key={item.id} /> }
             }
           ).reverse()}
         </div>
