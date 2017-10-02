@@ -905,8 +905,9 @@ hr {
 }
 
 .fourofour-section {
-  background-image: url('./Landing1.jpg');
-  background-size: cover;
-  background-repeat: no-repeat;
+  background-image: url('./mark1.jpg'), url('./mark3.jpg'), url('./mark2.jpg');
+  background-repeat: no-repeat, no-repeat, no-repeat;
+  background-size: contain, contain, contain;
+  background-position: left, center, right;
   padding-bottom: 15%;
 }
