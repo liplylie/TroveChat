@@ -19,16 +19,32 @@ module.exports = {
   },
   
   getDates: (req, res) => {
+    console.log('in getDates')
     Rent_trx.findAll({
       where: {
-        item_id: req.params.item_id}
+        item_id: req.params.item_id
       }
-    )
+    })
     .then(data => {
       res.status(201).send(data)      
     })
     .catch(err => {
       console.log('get dates err', err)
     }) 
+  },
+
+  getRenter: (req, res) => {
+    console.log('WITHIN GETRENTER')
+    Rent_trx.findAll({
+      where: {
+        renterId: req.params.renter_id
+      }
+    })
+    .then(data => {
+      res.status(201).send(data)
+    })
+    .catch(err => {
+      console.log('getRentee err', err)
+    })
   }
 }
