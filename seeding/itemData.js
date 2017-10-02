@@ -260,7 +260,7 @@ module.exports = [
     itemname: 'TECHNICAL JERSEY SWEATSHIRT',
     image: 'https://i.imgur.com/G3R0Xim.jpg',
     brand: 'Gucci',
-    price: 120.00,
+    price: 1200.00,
     size: 'Medium',
     sex: 'M',
     tag: '["black", "hoodie"]',
