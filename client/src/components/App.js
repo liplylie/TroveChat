@@ -27,7 +27,8 @@ class App extends Component {
       sqlUser: null,
       searchInput: '',
       searchRes: [],
-      checkThisUser: null
+      checkThisUser: null,
+      viewCart: JSON.parse(localStorage.getItem('viewCart')) || false,
     }
     this.fetch = this.fetch.bind(this);
     this.authWithEmailPassword = this.authWithEmailPassword.bind(this);
@@ -38,6 +39,8 @@ class App extends Component {
     this.search = this.search.bind(this);
     this.removeFromCart = this.removeFromCart.bind(this);
     this.handleCheckUser = this.handleCheckUser.bind(this);
+
+    this.showCart = this.showCart.bind(this);
   }
 
   handleCheckUser(num) {
@@ -46,7 +49,6 @@ class App extends Component {
   }
 
   search() {
-
     const res = [];
     const clone = this.state.allItems;
     const split = this.state.searchInput.split(' ');
@@ -189,25 +191,47 @@ class App extends Component {
     let removeItemIndex = currCart.findIndex((item => item.id === id)) 
     currCart.splice(removeItemIndex, 1);
     this.setState({
-      cart: currCart
+      cart: currCart,
     },() => {
       localStorage.setItem('cart', JSON.stringify(this.state.cart))
     });
   }
 
+  showCart(e) {
+    this.setState({
+      viewCart: !this.state.viewCart
+    })
+  }
+
+  hideCart(e) {
+    if (this.state.viewCart === true) {
+      this.setState({
+        viewCart: false
+      },() => {
+        localStorage.setItem('viewCart', JSON.stringify(this.state.viewCart))
+      })
+    }
+  }
+
   render() {
-    console.log('this is state in render: ', this.state);
+    console.log('this is state in render: ', this.state.viewCart);
     return (
       <BrowserRouter>
         <div>
-          <NavBar 
-          authenticated={this.state.authenticated} 
-          logout={this.logout}
-          passItems={this.state.allItems}
-          passHandleInput={this.handleSearch}
-          passSearch={this.search}
-          cart={this.state.cart} 
-          remove={this.removeFromCart} />
+          <div>
+            <NavBar 
+            authenticated={this.state.authenticated} 
+            logout={this.logout}
+            passItems={this.state.allItems}
+            passHandleInput={this.handleSearch}
+            passSearch={this.search}
+            cart={this.state.cart} 
+            remove={this.removeFromCart} 
+            showCart={this.showCart}
+            showCartState={this.state.viewCart}
+            />
+          </div>
+          <div onClick={() => this.hideCart()}>
           <Switch>
             <Route exact path='/' component={() => (
               <Home 
@@ -242,7 +266,10 @@ class App extends Component {
                   )
 							}} />
           </Switch>
-          <Footer />
+          </div>
+          <div onClick={() => this.hideCart()}>
+            <Footer />
+          </div>
         </div>
       </BrowserRouter>
     );

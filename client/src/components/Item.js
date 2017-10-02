@@ -56,13 +56,12 @@ class Item extends Component {
               <span> {this.state.itemInfo.itemname} </span>
             </div>
             <Link to='/userwardrobe'>
-              <div>
-                By: {this.state.owner}
-              </div>
+              By: {this.state.owner}
             </Link>
             <hr className="col-md-12"></hr>
             <div className='item-price'>
-              <span> ${this.state.itemInfo.price} </span>
+              <span className='line-through list-price-retail'> ${this.state.itemInfo.price} </span>
+              <span> ${Math.floor(this.state.itemInfo.price * 0.07)} </span>
             </div>
             <div className='item-size'>
               <span> {this.state.itemInfo.size} </span>

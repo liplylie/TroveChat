@@ -30,9 +30,10 @@ const onToken = (amount, description) => token =>
     .then(successPayment)
     .catch(errorPayment);
 
-const Checkout = ({ label, name, description, amount }) =>
+const Checkout = ({ label, name, description, amount, length }) =>
   <StripeCheckout
     label={label}
+    image="https://i.imgur.com/NP3wjfn.png"
     name={name}
     description={description}
     amount={fromDolToCent(amount)}
@@ -41,6 +42,10 @@ const Checkout = ({ label, name, description, amount }) =>
     billingAddress={true}
     shippingAddress={true}
     stripeKey={'pk_test_BtldIkOgEzoxf2fN7T8fxsMO'}
-  />
+  >
+  <button className={length>0 ? 'btn btn-primary checkout-btn' : "btn btn-primary checkout-btn checkout-btn-disabled"}>
+    Check Out
+  </button>
+  </StripeCheckout>
 
 export default Checkout;
