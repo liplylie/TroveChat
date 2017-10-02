@@ -49,6 +49,10 @@ hr {
   background-color: black;
 } */
 
+.nav-title {
+  font-size: 14px;
+}
+
 .navbar-dark .navbar-nav .nav-link {
   color: white;
 }
@@ -62,7 +66,7 @@ hr {
 }
 
 .input-sm {
-  padding: .3rem .75rem;
+  padding: .2rem .75rem;
   background-color: #242424;
   color: #515151;
 }
@@ -70,6 +74,10 @@ hr {
 .input-sm:focus {
   background-color: #242424;
   color: lightgray;
+}
+
+.nav-search-btn {
+  font-size: 18px;
 }
 
 .nav-btn-color {
@@ -526,7 +534,7 @@ hr {
 }
 
 .upload-btn {
-  padding-bottom: 20px;
+  /* padding-bottom: 20px; */
   margin-right: 5px;
   margin-left: 5px;
   background-color: #cdb287;
@@ -555,6 +563,14 @@ hr {
 .upload-btn:visited {
   background-color: #5f5037;
   border-color: #5f5037;
+}
+
+.ReactTags__tag {
+  margin-right: 10px;
+  background-color: grey;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
 }
 
 .tag-input input {
@@ -636,6 +652,10 @@ hr {
   padding: 40px 20px 40px 20px;
 }
 
+.item-user {
+  color: #cdb287;
+}
+
 .item-brand {
   font-size: 22px;
   font-weight: bold;
@@ -689,7 +709,7 @@ hr {
 .item-tags a{
   margin-left:10px;
   padding:0 10px 0 12px;
-  background:#34afdf;
+  background:darkgray;
   color:#fff;
   -moz-border-radius-bottomright:4px;
   -webkit-border-bottom-right-radius:4px;	
@@ -707,7 +727,7 @@ hr {
   left:-12px;
   width:0;
   height:0;
-  border-color:transparent #34afdf transparent transparent;
+  border-color:transparent darkgray transparent transparent;
   border-style:solid;
   border-width:12px 12px 12px 0;		
 }
@@ -838,11 +858,11 @@ hr {
 /* ------ Footer ------*/
 
 .footer {
-  padding: 35px 36px 40px 36px;
+  padding: 25px 36px 15px 36px;
 }
 
 .footer-section {
-  padding-bottom: 30px;
+  padding-bottom: 10px;
 }
 
 .footer-title {
@@ -851,7 +871,7 @@ hr {
 
 .footer-list {
   padding-top: 20px;
-  padding-bottom: 20px;
+  /* padding-bottom: 20px; */
   color: #717171;
 }
 

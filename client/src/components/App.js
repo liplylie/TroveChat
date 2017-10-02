@@ -122,7 +122,8 @@ class App extends Component {
         this.setState({
           authenticated: false,
           user: null,
-          sqlUser: null
+          sqlUser: null,
+          cart: localStorage.setItem('cart', JSON.stringify([]))
         })
         console.log('state on logout: ', this.state);        
       })
@@ -178,14 +179,22 @@ class App extends Component {
     if (start === null || end === null) {
       alert('Please specify rent dates!');
     } else {
-      currCart.push(item);
-      this.setState({
-        cart: currCart
-      },() => {
-        localStorage.setItem('cart', JSON.stringify(this.state.cart))
-      });
+      if(currCart) {
+        for (var i = 0; i < JSON.parse(localStorage.getItem('cart')).length; i++) {
+          if (item.id === JSON.parse(localStorage.getItem('cart'))[i].id) {
+            return alert('You already have this item in your cart')
+          } 
+        }
+        currCart.push(item); 
+        this.setState({
+          cart: currCart
+        },() => {
+          localStorage.setItem('cart', JSON.stringify(this.state.cart))
+        });
+      }
     }
-    console.log('cart after adding item: ', this.state.cart);
+    console.log('check cart localStorage: ', JSON.parse(localStorage.getItem('cart')))
+    // console.log('cart after adding item: ', this.state.cart);
   }
 
   removeFromCart(id) {
@@ -217,7 +226,7 @@ class App extends Component {
   }
 
   render() {
-    console.log('this is state in render: ', this.state.viewCart);
+    console.log('this is state in render: ', this.state.cart);
     return (
       <BrowserRouter>
         <div>
