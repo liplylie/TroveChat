@@ -233,7 +233,6 @@ class App extends Component {
             showCart={this.showCart}
             showCartState={this.state.viewCart}
             renterId = {this.state.userId} />
-            />
           </div>
           <div onClick={() => this.hideCart()}>
           <Switch>

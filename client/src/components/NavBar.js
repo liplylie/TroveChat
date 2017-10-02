@@ -96,6 +96,8 @@ class NavBar extends Component {
                       <div className="checkout">
                         <p>
                           <Checkout
+                            renterId={this.props.renterId}
+                            cart={this.state.cart}
                             label={'Check Out'}
                             name={'Hey there, hottie'}
                             description={'Trove'}
