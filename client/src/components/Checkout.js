@@ -10,11 +10,11 @@ const CURRENCY = 'USD';
 const fromDolToCent = amount => amount * 100;
 
 const successPayment = data => {
-  alert('Payment Successful');
+  console.log('Payment Successful');
 };
 
 const errorPayment = data => {
-  alert('Payment Error');
+  console.log('Payment Error');
 };
 
 const postTrx = function (data, renterId) {
