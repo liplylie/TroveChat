@@ -36,7 +36,7 @@ const postTrx = function (data, renterId) {
   })
 }
 
-const onToken = (amount, description, cart, renterId) => token =>
+const onToken = (amount, description, cart, renterId, emptyCart) => token =>
   axios.post('/api/item/payment',
     {
       description,
@@ -46,16 +46,17 @@ const onToken = (amount, description, cart, renterId) => token =>
     })
     .then(successPayment)
     .then(postTrx(cart, renterId))
+    .then(() => emptyCart())
     .catch(errorPayment);
     
-const Checkout = ({ cart, label, name, description, amount, renterId, length }) =>
+const Checkout = ({ cart, label, name, description, amount, renterId, length, emptyCart }) =>
   <StripeCheckout 
     label={label}
     image="https://i.imgur.com/NP3wjfn.png"
     name={name}
     description={description}
     amount={fromDolToCent(amount)}
-    token={onToken(amount, description, cart, renterId)}
+    token={onToken(amount, description, cart, renterId, emptyCart)}
     currency={CURRENCY}
     billingAddress={true}
     shippingAddress={true}
