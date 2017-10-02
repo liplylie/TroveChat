@@ -10,6 +10,7 @@ class NavBar extends Component {
     this.state = {
       cart: this.props.cart
     }
+    this.emptyCart = this.emptyCart.bind(this);
   }
   
   // componentDidMount() {
@@ -23,6 +24,12 @@ class NavBar extends Component {
       totalPrice += cart[i].price;
     }
     return Math.floor(totalPrice * 0.07);
+  }
+
+  emptyCart() {
+    this.setState({
+      cart: []
+    });
   }
 
   render() {
@@ -68,7 +75,7 @@ class NavBar extends Component {
                   <NavLink exact activeClassName="active"  className="nav-link nav-title" to='/account' >
                   <i className="fa fa-suitcase cart-icon" aria-hidden="true"></i>ACCOUNT
                   </NavLink>
-                  <NavLink exact activeClassName="active"  className="nav-link nav-title logout" to='/' onClick={() => this.props.logout()}>
+                  <NavLink exact activeClassName="active"  className="nav-link nav-title logout" to='/' onClick={() => {this.emptyCart(); this.props.logout() }} >
                   <i className="fa fa-user cart-icon" aria-hidden="true"></i>LOGOUT
                   </NavLink>
                     <a className='nav-link nav-title' onClick={() => this.state.cart.length > 0 ? this.props.showCart() : null}>
@@ -101,6 +108,7 @@ class NavBar extends Component {
                       <div className="checkout">
                         <p>
                           <Checkout
+                            emptyCart={this.emptyCart}
                             renterId={this.props.renterId}
                             cart={this.state.cart}
                             label={'Check Out'}

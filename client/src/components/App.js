@@ -225,6 +225,7 @@ class App extends Component {
     }
   }
 
+
   render() {
     console.log('this is state in render: ', this.state.cart);
     return (
@@ -251,11 +252,13 @@ class App extends Component {
               checkUser={this.handleCheckUser} />)} />
             <Route exact path='/men' component={() => (
               <Men 
+              emptyCart={this.emptyCart}
               passItems={this.state.allItems} 
               addToCart={this.handleAddToCart}
               checkUser={this.handleCheckUser} />)} />
             <Route exact path='/women' component={() => (
               <Women 
+              emptyCart={this.emptyCart}
               passItems={this.state.allItems} 
               addToCart={this.handleAddToCart}
               checkUser={this.handleCheckUser} />)} />
