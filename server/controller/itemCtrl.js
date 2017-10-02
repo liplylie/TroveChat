@@ -29,5 +29,18 @@ module.exports = {
       res.status(404).send(err);
     });
   },
+  getItem: (req, res) => {
+    Item.findAll({
+      where: {
+        id: req.params.id
+      }
+    })
+    .then(data => {
+      res.status(201).send(data)
+    })
+    .catch(err => {
+      console.log('getItem err', err)
+    })
+  }
   
 }

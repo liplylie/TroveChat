@@ -4,11 +4,12 @@ const userCtrl = require('../controller/userCtrl');
 const paymentCtrl = require('../controller/paymentCtrl')
 const rentTrxCtrl = require('../controller/rentTrxCtrl');
 
-
-
 router.route('/')
   .get(itemCtrl.fetchAll)
   .post(itemCtrl.create);
+  
+router.route('/item/:id')
+  .get(itemCtrl.getItem);
 
 router.route('/user')
   .post(userCtrl.addUser);
@@ -28,5 +29,8 @@ router.route('/renttrx')
 
 router.route('/renttrx/item/:item_id')
   .get(rentTrxCtrl.getDates)
+  
+router.route('/renttrx/renter/:renter_id')
+  .get(rentTrxCtrl.getRenter)
 
 module.exports = router;

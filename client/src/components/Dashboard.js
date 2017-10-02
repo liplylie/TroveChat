@@ -3,6 +3,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter, NavLink, Route, Link } from 'react-router-dom';
 import Wardrobe from './Wardrobe';
+import Archive from './Archive';
 import AccountInfo from './AccountInfo';
 import Loading from './Loading';
 
@@ -24,6 +25,9 @@ class Dashboard extends Component {
                 <NavLink exact activeClassName="active" className="dashboard-link" to='/wardrobe' >
                   Wardrobe
                 </NavLink>
+                <NavLink exact activeClassName="active" className="dashboard-link" to='/archive' >
+                  Archive
+                </NavLink>
               </div>
             </div>
           </div>
@@ -36,6 +40,7 @@ class Dashboard extends Component {
                 {!this.props.sqlUser ? <Loading /> : <Route exact path='/account' component={() => (<AccountInfo sqlUser={this.props.sqlUser} />)} /> }
                 {!this.props.sqlUser || !this.props.passItems ? <Loading /> : <Route path='/wardrobe' component={() => (<Wardrobe passUser={this.props.sqlUser}
                   passItems={this.props.passItems} />)} />}
+                {!this.props.sqlUser ? <Loading /> : <Route exact path='/archive' component={() => (<Archive sqlUser={this.props.sqlUser} />)} /> }                  
               </div>
             </div>
           </div>
