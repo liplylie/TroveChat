@@ -276,7 +276,7 @@ class App extends Component {
               <UserWardrobe 
               passItems={this.state.allItems}
               getThisUser={this.state.checkThisUser} />)} />
-            <Route exact path='/chat' component={()=>(<Chat/>)} />
+            <Route exact path='/chat' render={()=>(<Chat user={this.state.sqlUser.userName} getThisUser={this.state.checkThisUser}/>)} />
 
             <Route render={function() {
 								return (

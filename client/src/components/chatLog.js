@@ -11,7 +11,7 @@ const Chatlog = (props) => {
       <p className="chatMessage" > 
         <span className="userInChat"> 
         </span> 
-        {" "} {props.msg}
+        {props.user} {": "} {props.msg}
       </p>
     </div>
   );
