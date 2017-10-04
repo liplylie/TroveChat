@@ -93,7 +93,7 @@ Item.hasOne(Rent_trx, {foreignKey: {name: 'item_id'}, onDelete:'CASCADE'})
 
 db.sync();
 
-// // Seeding
+// Seeding
 // db.sync({force: true})
 // .then(() => seed(User, userData, "User"))
 // .then(() => seed(Item, itemData, "Item"))

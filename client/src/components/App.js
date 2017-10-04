@@ -13,6 +13,7 @@ import firebase, {auth} from '../firebase';
 import Item from './Item';
 import SearchResult from './SearchResult';
 import UserWardrobe from './UserWardrobe';
+import Chat from './chat';
 
 class App extends Component {
   constructor(props) {
@@ -76,6 +77,7 @@ class App extends Component {
         console.log(user.email);
         axios.get(`/api/user/${user.email}`)
         .then(({data}) => {
+          console.log(data, 'data')
           this.setState({
             authenticated: true,
             user: user,
@@ -164,6 +166,7 @@ class App extends Component {
   fetch() {
     axios.get('/api')
     .then(items => {
+      console.log(items, 'items bro')
       this.setState({ allItems: items.data });
     })
     .catch(err => {
@@ -273,6 +276,8 @@ class App extends Component {
               <UserWardrobe 
               passItems={this.state.allItems}
               getThisUser={this.state.checkThisUser} />)} />
+            <Route exact path='/chat' component={()=>(<Chat/>)} />
+
             <Route render={function() {
 								return (
                   <div className='fourofour-section'>
