@@ -13,6 +13,7 @@ import firebase, {auth} from '../firebase';
 import Item from './Item';
 import SearchResult from './SearchResult';
 import UserWardrobe from './UserWardrobe';
+import ChatList from './chatList';
 import Chat from './chat';
 
 class App extends Component {
@@ -30,7 +31,8 @@ class App extends Component {
       searchRes: [],
       checkThisUser: null,
       viewCart: JSON.parse(localStorage.getItem('viewCart')) || false,
-      userId: null
+      userId: null,
+      chatList: []
 
     }
     this.fetch = this.fetch.bind(this);
@@ -72,6 +74,7 @@ class App extends Component {
 
   componentDidMount() {
     this.fetch();
+
     auth.onAuthStateChanged((user) => {
       if(user) {
         console.log(user.email);
@@ -231,6 +234,7 @@ class App extends Component {
 
   render() {
     console.log('this is state in render: ', this.state.cart);
+     console.log(this.state.chatList, 'app chatlist')
     return (
       <BrowserRouter>
         <div>
@@ -268,15 +272,18 @@ class App extends Component {
             <Route exact path='/account' component={() => (<Dashboard sqlUser={this.state.sqlUser} passItems={this.state.allItems}/>)} />
             <Route exact path='/wardrobe' component={() => (<Dashboard sqlUser={this.state.sqlUser} passItems={this.state.allItems}/>)} />
             <Route exact path='/archive' component={() => (<Dashboard sqlUser={this.state.sqlUser} passItems={this.state.allItems}/>)} />
+            <Route exact path='/chatList' component={()=>(<Dashboard sqlUser={this.state.sqlUser} chatList={this.state.chatList}/>)}/>
             <Route exact path='/login' component={() => (<Login authenticated={this.state.authenticated} login={this.authWithEmailPassword} signUp={this.signUp}/>)} />
             <Route exact path='/item/:item_id' component={Item} />
             <Route exact path='/search' component={() => (
               <SearchResult passRes={this.state.searchRes} />)} />
             <Route exact path='/userwardrobe' component={() => (
               <UserWardrobe 
+              chatList={this.state.chatList}
               passItems={this.state.allItems}
               getThisUser={this.state.checkThisUser} />)} />
             <Route exact path='/chat' render={()=>(<Chat user={this.state.sqlUser.userName} getThisUser={this.state.checkThisUser}/>)} />
+            
 
             <Route render={function() {
 								return (

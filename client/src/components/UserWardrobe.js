@@ -32,7 +32,9 @@ class UserWardrobe extends Component {
   }
 
   handleClick(){
-    console.log('here')
+    // push to this.state.chatlist
+    this.props.chatList.push(this.state.name)
+    console.log(this.props.chatList, 'chatList')
   }
 
   render() {
