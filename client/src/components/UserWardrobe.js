@@ -3,20 +3,29 @@ import Chat from './chat.js'
 import UserWardrobeItem from './UserWardrobeItem';
 import axios from 'axios';
 import { NavLink, Route, Link } from 'react-router-dom';
+import io from 'socket.io-client';
 
 class UserWardrobe extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: ''
+      name: '',
     }
     this.fetch = this.fetch.bind(this);
-    this.handleClick = this.handleClick.bind(this)
+    this.handleClick = this.handleClick.bind(this);
+    //this.handleSocket = this. handleSocket.bind(this);
   }
 
   componentDidMount() {
     this.fetch();
+    var socket = io.connect('http://localhost:3000');
+    socket.on('connection', console.log('connected on socket'));
+
   }
+
+  // handleSocket(data){
+  //   console.log(data, 'socket works bro')
+  // }
 
   fetch() {
     axios.get(`/api/user/owner/${this.props.getThisUser}`)

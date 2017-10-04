@@ -3,13 +3,15 @@ const parser = require('body-parser');
 const morgan = require('morgan');
 const path = require('path');
 const db = require('../db/db');
-require('../db/model/dataModel')
-const route = require('../server/router/routes')
+require('../db/model/dataModel');
+const route = require('../server/router/routes');
+const app = express();
+const socket = require('socket.io');
+
 
 const PORT = 3000;
 
-const app = express()
-.use(parser.json())
+app.use(parser.json())
 .use(parser.urlencoded({extended: true}))
 .use(morgan('dev'))
 .use('/api', route)
@@ -17,6 +19,14 @@ const app = express()
 .get('/*', function (req, res) {
   res.sendFile(path.join(__dirname, '../client/static', 'index.html'));
 })
-.listen(PORT, function(){
+const server = app.listen(PORT, function(){
   console.log(`Listening on port ${PORT}`)
 })
+
+const io = socket(server);
+
+io.on('connection', (socket) => {
+	console.log(socket.id, 'socketid')
+	console.log('connected in socket io jijijijojoijoijoij')
+})
+
