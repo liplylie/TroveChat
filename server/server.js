@@ -27,6 +27,10 @@ const io = socket(server);
 
 io.on('connection', (socket) => {
 	console.log(socket.id, 'socketid')
-	console.log('connected in socket io jijijijojoijoijoij')
+	console.log('connected in socket io jijijijojoijoijoij');
+	socket.on('chat message', (chat) =>{
+		console.log(chat,'chat')
+		io.emit('chat message', chat)
+	})
 })
 
