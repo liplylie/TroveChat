@@ -282,7 +282,7 @@ class App extends Component {
               chatList={this.state.chatList}
               passItems={this.state.allItems}
               getThisUser={this.state.checkThisUser} />)} />
-            <Route exact path='/chat' render={()=>(<Chat user={this.state.sqlUser.userName} getThisUser={this.state.checkThisUser}/>)} />
+            <Route exact path='/chat' render={()=>(<Chat user={this.state.sqlUser.userName} email={this.state.sqlUser.userEmail} getThisUser={this.state.checkThisUser}/>)} />
             
 
             <Route render={function() {

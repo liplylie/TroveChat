@@ -24,13 +24,31 @@ const server = app.listen(PORT, function(){
 })
 
 const io = socket(server);
+var roomID;
+var flag = false;
+var privateFlag = false;
 
 io.on('connection', (socket) => {
-	console.log(socket.id, 'socketid')
-	console.log('connected in socket io jijijijojoijoijoij');
-	socket.on('chat message', (chat) =>{
-		console.log(chat,'chat')
-		io.emit('chat message', chat)
-	})
+
+
+	socket.on('subscribe', function(room) {
+    console.log('joining room', room);
+    if (!flag){
+    	roomID = room;
+    	flag = true;
+    }
+    console.log(roomID, 'roomID')
+    	io.emit('private room', roomID);
+
+    socket.join(room);
+	});
+
+	socket.on('send message', function(data) {
+	    console.log('sending room post', data);
+	    io.sockets.in(data.room).emit('conversation private post', {
+	    		user: data.user,
+	        message: data.message,
+	    });
+	});
 })
 

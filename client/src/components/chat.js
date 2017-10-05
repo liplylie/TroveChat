@@ -14,20 +14,25 @@ export default class Chat extends Component{
 			sellerEmail: "",
 		}
 		this.message = '';
-		this.chatMessage = this.chatMessage.bind(this);
+		this.roomID;
 		this.handleChat = this.handleChat.bind(this);
 		this.handleText = this.handleText.bind(this);
 		this.handleEnterKey = this.handleEnterKey.bind(this);
 		this.fetch = this.fetch.bind(this)
 	}
 
-	  componentDidMount() {
+	 componentDidMount() {
 	  this.fetch();
     this.socket = io.connect('http://localhost:3000');
-    this.socket.on('connection', console.log('connected on socket'));
-    this.socket.on('chat message', this.chatMessage);
+ 		this.roomID = this.props.email;
+    this.socket.emit('subscribe', this.roomID);
+    var context = this;
+    this.socket.on('conversation private post', function(text) {
+    	context.setState({
+      	text: [...context.state.text, text],
+			});
+    });
   }
-
 
 	fetch() {
     axios.get(`/api/user/owner/${this.props.getThisUser}`)
@@ -39,20 +44,16 @@ export default class Chat extends Component{
       console.log('User fetch err:', err);
     })
   }
-  chatMessage(text) {
-  	console.log(text, 'text')
-    this.setState({
-      text: [...this.state.text, text],
-    });
-  }
 
   handleChat() {
     const usermsg = {
     	user: this.props.user,
       message: this.message,
+      room: this.roomID,
     };
-    this.socket.emit('chat message', usermsg);
+    this.socket.emit('send message', usermsg);
     document.getElementById('m').value = null;
+
   }
 
   handleText(e) {

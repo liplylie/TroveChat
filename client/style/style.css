@@ -931,3 +931,13 @@ hr {
   background-position: left, center, right;
   padding-bottom: 15%;
 }
+
+.roomNames {
+  color: blue;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.roomNames:hover{
+  color: darkblue;
+}
