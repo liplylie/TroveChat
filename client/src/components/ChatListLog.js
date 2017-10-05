@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Chatlog = (props) => {
+const ChatListLog = (props) => {
 
   console.log(props, 'chatlog props bro')
   if (!props.msg){
@@ -24,4 +24,4 @@ const Chatlog = (props) => {
   }
 };
 
-export default Chatlog;
+export default ChatListLog;

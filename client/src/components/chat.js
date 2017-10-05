@@ -47,10 +47,11 @@ export default class Chat extends Component{
   }
 
   handleChat() {
-    // const usermsg = {
-    //   message: this.message,
-    // };
-    this.socket.emit('chat message', this.message);
+    const usermsg = {
+    	user: this.props.user,
+      message: this.message,
+    };
+    this.socket.emit('chat message', usermsg);
     document.getElementById('m').value = null;
   }
 
@@ -70,7 +71,7 @@ export default class Chat extends Component{
 			<div>
 			{this.state.name} 
 			{this.state.text.map((msg,i) => {
-              return (<ChatLog key={i} msg={msg} user={this.props.user} sellerName={this.state.name} sellerEmail={this.state.sellerEmail}/>);
+              return (<ChatLog key={i} msg={msg.message} user={msg.user} sellerName={this.state.name} sellerEmail={this.state.sellerEmail}/>);
           })}
 			<div id="form">
           <input id="m" onChange={this.handleText} onKeyDown={this.handleEnterKey} />
