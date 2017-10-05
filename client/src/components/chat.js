@@ -10,8 +10,9 @@ export default class Chat extends Component{
 		console.log(props, 'chat props')
 		this.state = {
 			text: [''],
-			name: "",
-			sellerEmail: "",
+			name: '',
+			sellerEmail: '',
+			onlineStatus: ''
 		}
 		this.message = '';
 		this.roomID;
@@ -38,7 +39,10 @@ export default class Chat extends Component{
     axios.get(`/api/user/owner/${this.props.getThisUser}`)
     .then(user => {
     	console.log(user, 'user fetch')
-      this.setState({ name: user.data.userName, sellerEmail: user.data.userEmail });
+      this.setState({
+        name: user.data.userName, 
+      	sellerEmail: user.data.userEmail 
+      });
     })
     .catch(err => {
       console.log('User fetch err:', err);
@@ -53,7 +57,6 @@ export default class Chat extends Component{
     };
     this.socket.emit('send message', usermsg);
     document.getElementById('m').value = null;
-
   }
 
   handleText(e) {
@@ -74,12 +77,9 @@ export default class Chat extends Component{
 			{this.state.text.map((msg,i) => {
               return (<ChatLog key={i} msg={msg.message} user={msg.user} sellerName={this.state.name} sellerEmail={this.state.sellerEmail}/>);
           })}
-			<div id="form">
+			  <div id="form">
           <input id="m" onChange={this.handleText} onKeyDown={this.handleEnterKey} />
-          <button id ="chatButton"onClick={()=>{
-            this.handleChat(); 
-            }
-          }>Send</button>
+          <button id ="chatButton"onClick={()=>{this.handleChat()}}>Send</button>
         </div>
         Send {this.state.name} an email at <a href={`mailto:${this.state.sellerEmail}`}> {this.state.sellerEmail}</a>
 			</div>

@@ -940,4 +940,5 @@ hr {
 
 .roomNames:hover{
   color: darkblue;
+  cursor: pointer;
 }

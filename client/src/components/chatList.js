@@ -1,16 +1,16 @@
 import React, {Component} from 'react';
-import ChatListLog from './ChatListLog'
-import io from 'socket.io-client'
+import ChatListLog from './ChatListLog';
+import io from 'socket.io-client';
 
 class ChatList extends Component{
   constructor(props){
     super(props)
     this.state = {
       text: [''],
-      message: '',
+      start: '',
+      rooms: [''],
     }
     this.roomID;
-    this.chatMessage = this.chatMessage.bind(this);
     this.handlePrivateRoom = this.handlePrivateRoom.bind(this);
     this.handleChat = this.handleChat.bind(this);
     this.joinChatWithUser = this.joinChatWithUser.bind(this);
@@ -29,26 +29,19 @@ class ChatList extends Component{
     });
   }
 
-  chatMessage(text){
-    console.log(text , 'chat data from chatlist');
-    this.setState({
-       text: [...this.state.text, text]
-    })
-  }
 
   handlePrivateRoom(room){
     console.log(room, 'room bro')
     this.roomID = room;
     this.setState({
-      message: `chat with ${this.roomID}`
+      rooms: [...this.state.rooms, room]
     })  
+    console.log(this.state.rooms, 'rooms bro')
   }
 
-  joinChatWithUser(e){
-    console.log(e.target.innerHTML, 'roomName')
-    let roomName = e.target.innerHTML.split(" ")[2];
-    console.log(roomName, ' look here bro')
-    this.socket.emit('subscribe', roomName);
+  joinChatWithUser(room){
+    console.log(room, 'room')
+    this.socket.emit('seller subscribe', room);
   }
 
   handleChat() {
@@ -67,10 +60,12 @@ class ChatList extends Component{
     return (
       <div > 
       {"Chat"}
-      <div className="roomNames" onClick={this.joinChatWithUser} >{this.state.message}</div>
+      {this.state.rooms.map((room,i) => {
+        return (<div key={i} className="roomNames" onClick={()=>{this.joinChatWithUser(room)}} >{room}</div>);
+      })}
       {this.state.text.map((msg,i) => {
-              return (<ChatListLog key={i} msg={msg.message} user={msg.user} sellerName={this.state.name} sellerEmail={this.state.sellerEmail}/>);
-          })}
+        return (<ChatListLog key={i} msg={msg.message} user={msg.user} sellerName={this.state.name} sellerEmail={this.state.sellerEmail}/>);
+      })}
       </div>
     )
   }

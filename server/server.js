@@ -25,21 +25,20 @@ const server = app.listen(PORT, function(){
 
 const io = socket(server);
 var roomID;
-var flag = false;
-var privateFlag = false;
 
 io.on('connection', (socket) => {
 
 
 	socket.on('subscribe', function(room) {
     console.log('joining room', room);
-    if (!flag){
-    	roomID = room;
-    	flag = true;
-    }
+  	roomID = room;
     console.log(roomID, 'roomID')
-    	io.emit('private room', roomID);
+    io.emit('private room', roomID);
+    socket.join(room);
+	});
 
+	socket.on('seller subscribe', function(room) {
+    console.log('seller joining room', room);
     socket.join(room);
 	});
 

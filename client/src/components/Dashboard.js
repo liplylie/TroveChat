@@ -30,7 +30,7 @@ class Dashboard extends Component {
                   Archive
                 </NavLink>
                 <NavLink exact activeClassName="active" className="dashboard-link" to='/chatList' >
-                  ChatList
+                  Chats
                 </NavLink>
               </div>
             </div>
