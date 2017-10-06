@@ -13,6 +13,7 @@ export default class Chat extends Component{
 			sellerName: '',
 			sellerEmail: '',
 			onlineStatus: 'is offline',
+			chatStatusColor: 'chatStatusColorRed',
 		}
 		this.message = '';
 		this.roomID;
@@ -27,10 +28,11 @@ export default class Chat extends Component{
 	  this.fetch();
     this.socket = io.connect('http://localhost:3000');
  		this.roomID = this.props.email;
-    this.socket.emit('subscribe', this.roomID);
+
     this.socket.on('seller joined', this.changeOnlineStatus);
     var context = this;
     this.socket.on('conversation private post', function(text) {
+    	console.log(text, 'text from private chat')
     	context.setState({
       	text: [...context.state.text, text],
 			});
@@ -45,6 +47,8 @@ export default class Chat extends Component{
         sellerName: user.data.userName, 
       	sellerEmail: user.data.userEmail 
       });
+     	this.subscribeEmit = `${this.roomID} ${this.state.sellerEmail}`;
+    	this.socket.emit('subscribe', this.subscribeEmit);
     	this.socket.emit('confirm seller', this.state.sellerName);
     })
     .catch(err => {
@@ -56,7 +60,7 @@ export default class Chat extends Component{
     const usermsg = {
     	user: this.props.user,
       message: this.message,
-      room: this.roomID,
+      room: this.subscribeEmit,
     };
     this.socket.emit('send message', usermsg);
     document.getElementById('m').value = null;
@@ -76,13 +80,14 @@ export default class Chat extends Component{
   changeOnlineStatus(){
   	this.setState({
   		onlineStatus: 'is online',
+  		chatStatusColor: 'chatStatusColorBlue',
   	})
   }
 
 	render(){
 		return(
 			<div>
-			<div>{this.state.sellerName} {this.state.onlineStatus}</div>
+			<div className={this.state.chatStatusColor}>{this.state.sellerName} {this.state.onlineStatus}</div>
 			{this.state.text.map((msg,i) => {
               return (<ChatLog key={i} msg={msg.message} user={msg.user} sellerName={this.state.sellerName} sellerEmail={this.state.sellerEmail}/>);
           })}

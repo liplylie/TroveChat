@@ -28,14 +28,12 @@ var roomID;
 let sellerHolder;
 
 io.on('connection', (socket) => {
-
 	//buyers
-
 	socket.on('subscribe', function(room) {
     console.log('joining room', room);
   	roomID = room;
     console.log(roomID, 'roomID')
-    socket.join(room);
+    socket.join(roomID);
 	});
 
 	socket.on('confirm seller', (seller)=>{
@@ -65,5 +63,10 @@ io.on('connection', (socket) => {
 	        message: data.message,
 	    });
 	});
+
+	socket.on('disconnect', ()=>{
+		// var rooms = io.sockets.manager.roomClients[socket.id];
+		// console.log(rooms, 'left rooms')
+	})
 })
 

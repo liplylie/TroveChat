@@ -942,3 +942,11 @@ hr {
   color: darkblue;
   cursor: pointer;
 }
+
+.chatStatusColorRed{
+  color: red;
+}
+
+.chatStatusColorBlue{
+  color: blue;
+}

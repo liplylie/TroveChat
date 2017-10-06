@@ -9,6 +9,7 @@ class ChatList extends Component{
       text: [''],
       start: '',
       rooms: [''],
+      chatStatus: 'no Chats',
     }
     this.roomID;
     this.handlePrivateRoom = this.handlePrivateRoom.bind(this);
@@ -37,15 +38,17 @@ class ChatList extends Component{
     console.log(room, 'room bro')
     this.roomID = room;
     this.setState({
-      rooms: [...this.state.rooms, room],
+      rooms: [...this.state.rooms, room.split(" ")[0]],
+      chatStatus: 'chats from: '
 
     })  
     console.log(this.state.rooms, 'rooms bro')
   }
 
   joinChatWithUser(room){
-    console.log(room, 'room')
-    this.socket.emit('seller subscribe', room);
+    console.log(room, 'room single')
+    console.log(this.roomID, 'joinChatWithUser room')
+    this.socket.emit('seller subscribe', this.roomID);
     alert(`chat opened with ${room}`)
   }
 
@@ -76,7 +79,7 @@ class ChatList extends Component{
  render(){
       return (
         <div > 
-          {"Chat"}
+          {this.state.chatStatus}
           {this.state.rooms.map((room,i) => {
             return (<div key={i} className="roomNames" onClick={()=>{this.joinChatWithUser(room)}} >{room}</div>);
           })}
