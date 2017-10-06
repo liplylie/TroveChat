@@ -10,7 +10,7 @@ export default class Chat extends Component{
 		console.log(props, 'chat props')
 		this.state = {
 			text: [''],
-			name: '',
+			sellerName: '',
 			sellerEmail: '',
 			onlineStatus: 'is offline',
 		}
@@ -28,8 +28,8 @@ export default class Chat extends Component{
     this.socket = io.connect('http://localhost:3000');
  		this.roomID = this.props.email;
     this.socket.emit('subscribe', this.roomID);
+    this.socket.on('seller joined', this.changeOnlineStatus);
     var context = this;
-    this.socket.on('seller joined', this.changeOnlineStatus)
     this.socket.on('conversation private post', function(text) {
     	context.setState({
       	text: [...context.state.text, text],
@@ -42,9 +42,10 @@ export default class Chat extends Component{
     .then(user => {
     	console.log(user, 'user fetch')
       this.setState({
-        name: user.data.userName, 
+        sellerName: user.data.userName, 
       	sellerEmail: user.data.userEmail 
       });
+    	this.socket.emit('confirm seller', this.state.sellerName);
     })
     .catch(err => {
       console.log('User fetch err:', err);
@@ -81,15 +82,15 @@ export default class Chat extends Component{
 	render(){
 		return(
 			<div>
-			<div>{this.state.name} {this.state.onlineStatus}</div>
+			<div>{this.state.sellerName} {this.state.onlineStatus}</div>
 			{this.state.text.map((msg,i) => {
-              return (<ChatLog key={i} msg={msg.message} user={msg.user} sellerName={this.state.name} sellerEmail={this.state.sellerEmail}/>);
+              return (<ChatLog key={i} msg={msg.message} user={msg.user} sellerName={this.state.sellerName} sellerEmail={this.state.sellerEmail}/>);
           })}
 			  <div id="form">
           <input id="m" onChange={this.handleText} onKeyDown={this.handleEnterKey} />
           <button id ="chatButton"onClick={()=>{this.handleChat()}}>Send</button>
         </div>
-        Send {this.state.name} an email at <a href={`mailto:${this.state.sellerEmail}`}> {this.state.sellerEmail}</a>
+        Send {this.state.sellerName} an email at <a href={`mailto:${this.state.sellerEmail}`}> {this.state.sellerEmail}</a>
 			</div>
 			)
 	}

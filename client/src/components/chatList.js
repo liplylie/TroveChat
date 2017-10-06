@@ -19,6 +19,7 @@ class ChatList extends Component{
 
   componentDidMount(){
     this.socket = io.connect('http://localhost:3000');
+    this.socket.emit('seller name', this.props.sqlUser.userName)
     this.socket.on('private room', this.handlePrivateRoom);
     var context = this;
     this.socket.on('conversation private post', function(text) {

@@ -25,20 +25,42 @@ const server = app.listen(PORT, function(){
 
 const io = socket(server);
 var roomID;
+let sellerHolder;
 
 io.on('connection', (socket) => {
 
+	//buyers
 
 	socket.on('subscribe', function(room) {
     console.log('joining room', room);
   	roomID = room;
     console.log(roomID, 'roomID')
-    io.emit('private room', roomID);
     socket.join(room);
+    //io.emit('private room', roomID);
+    // need on listener to start private room
+    // if seller username === username sent by listener
+    	// io.emit private room roomID
 	});
+
+	
+
+	socket.on('confirm seller', (seller)=>{
+		console.log(seller, 'confirm seller')
+		sellerHolder = seller;
+		
+	})
+	// sellers
+	socket.on('seller name', (sellerName)=>{
+		console.log('sellername', sellerName)
+		socket.join(sellerName)
+		if (sellerName === sellerHolder){
+				io.sockets.in(sellerName).emit('private room', roomID)
+		}
+	})
 
 	socket.on('seller subscribe', function(room) {
     console.log('seller joining room', room);
+
     io.emit('seller joined', true);
     socket.join(room);
 	});
