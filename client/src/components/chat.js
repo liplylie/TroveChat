@@ -12,13 +12,14 @@ export default class Chat extends Component{
 			text: [''],
 			name: '',
 			sellerEmail: '',
-			onlineStatus: ''
+			onlineStatus: 'is offline',
 		}
 		this.message = '';
 		this.roomID;
 		this.handleChat = this.handleChat.bind(this);
 		this.handleText = this.handleText.bind(this);
 		this.handleEnterKey = this.handleEnterKey.bind(this);
+		this.changeOnlineStatus = this.changeOnlineStatus.bind(this);
 		this.fetch = this.fetch.bind(this)
 	}
 
@@ -28,6 +29,7 @@ export default class Chat extends Component{
  		this.roomID = this.props.email;
     this.socket.emit('subscribe', this.roomID);
     var context = this;
+    this.socket.on('seller joined', this.changeOnlineStatus)
     this.socket.on('conversation private post', function(text) {
     	context.setState({
       	text: [...context.state.text, text],
@@ -70,10 +72,16 @@ export default class Chat extends Component{
     }
   }
 
+  changeOnlineStatus(){
+  	this.setState({
+  		onlineStatus: 'is online',
+  	})
+  }
+
 	render(){
 		return(
 			<div>
-			{this.state.name} 
+			<div>{this.state.name} {this.state.onlineStatus}</div>
 			{this.state.text.map((msg,i) => {
               return (<ChatLog key={i} msg={msg.message} user={msg.user} sellerName={this.state.name} sellerEmail={this.state.sellerEmail}/>);
           })}

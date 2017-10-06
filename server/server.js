@@ -39,6 +39,7 @@ io.on('connection', (socket) => {
 
 	socket.on('seller subscribe', function(room) {
     console.log('seller joining room', room);
+    io.emit('seller joined', true);
     socket.join(room);
 	});
 
