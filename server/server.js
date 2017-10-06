@@ -36,13 +36,7 @@ io.on('connection', (socket) => {
   	roomID = room;
     console.log(roomID, 'roomID')
     socket.join(room);
-    //io.emit('private room', roomID);
-    // need on listener to start private room
-    // if seller username === username sent by listener
-    	// io.emit private room roomID
 	});
-
-	
 
 	socket.on('confirm seller', (seller)=>{
 		console.log(seller, 'confirm seller')
@@ -60,7 +54,6 @@ io.on('connection', (socket) => {
 
 	socket.on('seller subscribe', function(room) {
     console.log('seller joining room', room);
-
     io.emit('seller joined', true);
     socket.join(room);
 	});

@@ -14,6 +14,8 @@ class ChatList extends Component{
     this.handlePrivateRoom = this.handlePrivateRoom.bind(this);
     this.handleChat = this.handleChat.bind(this);
     this.joinChatWithUser = this.joinChatWithUser.bind(this);
+    this.handleText = this.handleText.bind(this);
+    this.handleEnterKey = this.handleEnterKey.bind(this);
     console.log(props, 'chatlist props')
   }
 
@@ -35,7 +37,8 @@ class ChatList extends Component{
     console.log(room, 'room bro')
     this.roomID = room;
     this.setState({
-      rooms: [...this.state.rooms, room]
+      rooms: [...this.state.rooms, room],
+
     })  
     console.log(this.state.rooms, 'rooms bro')
   }
@@ -43,11 +46,12 @@ class ChatList extends Component{
   joinChatWithUser(room){
     console.log(room, 'room')
     this.socket.emit('seller subscribe', room);
+    alert(`chat opened with ${room}`)
   }
 
   handleChat() {
     const usermsg = {
-      user: this.props.user,
+      user: this.props.sqlUser.userName,
       message: this.message,
       room: this.roomID,
     };
@@ -57,19 +61,35 @@ class ChatList extends Component{
   }
 
 
- render(){
-    return (
-      <div > 
-      {"Chat"}
-      {this.state.rooms.map((room,i) => {
-        return (<div key={i} className="roomNames" onClick={()=>{this.joinChatWithUser(room)}} >{room}</div>);
-      })}
-      {this.state.text.map((msg,i) => {
-        return (<ChatListLog key={i} msg={msg.message} user={msg.user} sellerName={this.state.name} sellerEmail={this.state.sellerEmail}/>);
-      })}
-      </div>
-    )
+  handleEnterKey(event){
+    if (event.keyCode === 13){
+      document.getElementById('chatButton').click();
+    }
   }
+
+  handleText(e) {
+    console.log(e.target.value)
+    this.message = e.target.value;
+  }
+
+
+ render(){
+      return (
+        <div > 
+          {"Chat"}
+          {this.state.rooms.map((room,i) => {
+            return (<div key={i} className="roomNames" onClick={()=>{this.joinChatWithUser(room)}} >{room}</div>);
+          })}
+          {this.state.text.map((msg,i) => {
+            return (<ChatListLog key={i} msg={msg.message} user={msg.user} sellerName={this.state.name} sellerEmail={this.state.sellerEmail}/>);
+          })}
+          <div id="form">
+            <input id="m" onChange={this.handleText} onKeyDown={this.handleEnterKey} />
+            <button id ="chatButton"onClick={()=>{this.handleChat()}}>Send</button>
+          </div>
+        </div>
+      )    
+    } 
 };
 
 export default ChatList;
