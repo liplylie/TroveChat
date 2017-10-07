@@ -103,9 +103,11 @@ export default class Chat extends Component{
               return (<ChatLog key={i} self={this.props.user} msg={msg.message} user={msg.user} sellerName={this.state.sellerName} sellerEmail={this.state.sellerEmail}/>);
           })}
       </div>
-			  <div id="form" style={{flex:1}}>
-          <input id="m" onChange={this.handleText} onKeyDown={this.handleEnterKey} />
+      <div style={{minWidth:400, marginTop: 5}}>
+			  <div id="form">
+          <input id="m" style={{minWidth:335}} onChange={this.handleText} onKeyDown={this.handleEnterKey} />
           <button className="btn item-btn-color" onClick={()=>{this.handleChat()}}>Send</button>
+        </div>
         </div>
         Send {this.state.sellerName} an email at <a href={`mailto:${this.state.sellerEmail}`}> {this.state.sellerEmail}</a>
 			</div>

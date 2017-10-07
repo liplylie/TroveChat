@@ -41,7 +41,7 @@ class ChatList extends Component{
     this.roomID = room;
     this.setState({
       rooms: [...this.state.rooms, room.split(" ")[0]],
-      chatStatus: 'chats from: '
+      chatStatus: 'Chats From: '
 
     })  
     console.log(this.state.rooms, 'rooms bro')
@@ -100,9 +100,11 @@ class ChatList extends Component{
             return (<ChatListLog key={i} self={this.props.sqlUser.userName} msg={msg.message} user={msg.user} sellerName={this.state.name} sellerEmail={this.state.sellerEmail}/>);
           })}
           </div>
+          <div style={{minWidth:400, marginTop: 5}} >
           <div id="form">
-            <input id="m" onChange={this.handleText} onKeyDown={this.handleEnterKey} />
+            <input id="m" style={{minWidth:335}} onChange={this.handleText} onKeyDown={this.handleEnterKey} />
             <button className="btn item-btn-color" onClick={()=>{this.handleChat()}}>Send</button>
+          </div>
           </div>
         </div>
       )    
