@@ -15,6 +15,7 @@ module.exports = {
   },
   createChat: (req, res) => {
     AddChat.create({
+      sentBy: req.body.sentBy,
 		  roomID: req.body.roomID,
 			buyerID: req.body.buyerID,
       sellerName: req.body.sellerName,

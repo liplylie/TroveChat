@@ -62,6 +62,7 @@ io.on('connection', (socket) => {
     	console.log('no chat from user')
     	console.log('creating new chat')
     	axios.post('http://localhost:3000/api/addChat/createChat', {
+        sentBy: '',
         roomID: roomID,
         buyerID: roomID.split(" ")[0],
         sellerName: sellerName,
@@ -121,6 +122,7 @@ io.on('connection', (socket) => {
 	    console.log('sending room post', data);
       dataMessage = data.message;
       axios.post('http://localhost:3000/api/addChat/createChat', {
+        sentBy: data.user,
         roomID: roomID,
         buyerID: roomID.split(" ")[0],
         sellerName: sellerName,

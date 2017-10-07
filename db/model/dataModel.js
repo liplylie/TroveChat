@@ -83,6 +83,10 @@ const Rent_trx = db.define('Rent_trx', {
 })
 
 const AddChat = db.define('AddChat', {
+  sentBy: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
   roomID: {
     type: Sequelize.STRING,
     allowNull: false
