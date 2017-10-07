@@ -19,7 +19,7 @@ module.exports = {
 			buyerID: req.body.buyerID,
       sellerName: req.body.sellerName,
 			sellerID: req.body.sellerID,
-			message: ''
+			message: req.body.message
     })
     .then((data) => {
       res.status(201).send(data)

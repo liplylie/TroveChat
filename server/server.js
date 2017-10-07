@@ -29,6 +29,8 @@ var roomID;
 var sellerName;
 let sellerHolder;
 let flag = false;
+let dataMessage;
+let sellerFlag = false;
 
 io.on('connection', (socket) => {
 	//buyers
@@ -96,19 +98,47 @@ io.on('connection', (socket) => {
     console.log('seller joining room', room);
     io.emit('seller joined', true);
     socket.join(room);
+     axios.post('http://localhost:3000/api/addChat/checkChat', {roomID:room})
+    .then(chat=>{
+      // if exist, send back chat
+      console.log(chat.data, 'api add chat ')
+     
+
+      //io.emit('stored chat from database', chat)
+       if (!sellerFlag) {
+        for ( var i = 0; i < chat.data.length; i++){
+          io.emit('seller saved messages', chat.data[i])
+        }
+        sellerFlag = true;
+      }
+    })
 	});
 
+
 	socket.on('send message', function(data) {
+      flag = false;
+      sellerFlag = false;
 	    console.log('sending room post', data);
+      dataMessage = data.message;
+      axios.post('http://localhost:3000/api/addChat/createChat', {
+        roomID: roomID,
+        buyerID: roomID.split(" ")[0],
+        sellerName: sellerName,
+        sellerID: roomID.split(" ")[1],
+        message: dataMessage
+      })
+      .then(data=>{
+        console.log(data, 'data from adding chat to database')
+      })
+      .catch(err=>{
+        console.log(err, 'failed creating chat')
+      })
 	    io.sockets.in(data.room).emit('conversation private post', {
 	    		user: data.user,
 	        message: data.message,
 	    });
 	});
 
-	socket.on('disconnect', ()=>{
-		// var rooms = io.sockets.manager.roomClients[socket.id];
-		// console.log(rooms, 'left rooms')
-	})
+	
 })
 

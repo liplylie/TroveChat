@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import ChatListLog from './ChatListLog';
 import io from 'socket.io-client';
+import axios from 'axios'
 
 class ChatList extends Component{
   constructor(props){
@@ -17,6 +18,7 @@ class ChatList extends Component{
     this.joinChatWithUser = this.joinChatWithUser.bind(this);
     this.handleText = this.handleText.bind(this);
     this.handleEnterKey = this.handleEnterKey.bind(this);
+    this.handleSavedMessages = this.handleSavedMessages.bind(this);
     console.log(props, 'chatlist props')
   }
 
@@ -50,6 +52,7 @@ class ChatList extends Component{
     console.log(this.roomID, 'joinChatWithUser room')
     this.socket.emit('seller subscribe', this.roomID);
     alert(`chat opened with ${room}`)
+    this.socket.on('seller saved messages', this.handleSavedMessages)
   }
 
   handleChat() {
@@ -61,6 +64,15 @@ class ChatList extends Component{
    
     this.socket.emit('send message', usermsg);
     document.getElementById('m').value = null;
+  }
+
+  handleSavedMessages(messages){
+    console.log(messages,'saved messages')
+    let text = {user: messages.sellerName, message: messages.message}
+    console.log(text, 'text from saved')
+    this.setState({
+      text: [...this.state.text, text],
+    })
   }
 
 

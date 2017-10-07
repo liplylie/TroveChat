@@ -59,7 +59,7 @@ export default class Chat extends Component{
 
   handleSavedMessages(messages){
     console.log(messages,'saved messages')
-    let text = {user: messages.sellerID, message: messages.sellerID}
+    let text = {user: messages.sellerName, message: messages.message}
     console.log(text, 'text from saved')
     this.setState({
       text: [...this.state.text, text],
