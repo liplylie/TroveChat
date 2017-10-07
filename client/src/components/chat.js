@@ -98,7 +98,7 @@ export default class Chat extends Component{
 		return(
 			<div>
 			<div className={this.state.chatStatusColor}>{this.state.sellerName} {this.state.onlineStatus}</div>
-      <div style={{display: 'flex', flexDirection: 'column', backgroundColor: '#cdb287'}}>
+      <div style={{display: 'flex', flexDirection: 'column', backgroundColor: '#cdb287', maxWidth:'400'}}>
 			{this.state.text.map((msg,i) => {
               return (<ChatLog key={i} self={this.props.user} msg={msg.message} user={msg.user} sellerName={this.state.sellerName} sellerEmail={this.state.sellerEmail}/>);
           })}

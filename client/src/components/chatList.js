@@ -95,9 +95,11 @@ class ChatList extends Component{
           {this.state.rooms.map((room,i) => {
             return (<div key={i} className="roomNames" onClick={()=>{this.joinChatWithUser(room)}} >{room}</div>);
           })}
+          <div style={{display: 'flex', flexDirection: 'column', backgroundColor: '#cdb287', maxWidth:'400'}}>
           {this.state.text.map((msg,i) => {
-            return (<ChatListLog key={i} msg={msg.message} user={msg.user} sellerName={this.state.name} sellerEmail={this.state.sellerEmail}/>);
+            return (<ChatListLog key={i} self={this.props.sqlUser.userName} msg={msg.message} user={msg.user} sellerName={this.state.name} sellerEmail={this.state.sellerEmail}/>);
           })}
+          </div>
           <div id="form">
             <input id="m" onChange={this.handleText} onKeyDown={this.handleEnterKey} />
             <button className="btn item-btn-color" onClick={()=>{this.handleChat()}}>Send</button>
