@@ -10,7 +10,7 @@ class ChatList extends Component{
       text: [''],
       start: '',
       rooms: [''],
-      chatStatus: 'no Chats',
+      chatStatus: 'No Chats',
     }
     this.roomID;
     this.handlePrivateRoom = this.handlePrivateRoom.bind(this);
@@ -91,7 +91,7 @@ class ChatList extends Component{
  render(){
       return (
         <div > 
-          {this.state.chatStatus}
+          <span className={"chat-status"}>{this.state.chatStatus}</span>
           {this.state.rooms.map((room,i) => {
             return (<div key={i} className="roomNames" onClick={()=>{this.joinChatWithUser(room)}} >{room}</div>);
           })}
@@ -100,7 +100,7 @@ class ChatList extends Component{
           })}
           <div id="form">
             <input id="m" onChange={this.handleText} onKeyDown={this.handleEnterKey} />
-            <button id ="chatButton"onClick={()=>{this.handleChat()}}>Send</button>
+            <button className="btn item-btn-color" onClick={()=>{this.handleChat()}}>Send</button>
           </div>
         </div>
       )    

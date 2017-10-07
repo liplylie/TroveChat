@@ -103,7 +103,7 @@ export default class Chat extends Component{
           })}
 			  <div id="form">
           <input id="m" onChange={this.handleText} onKeyDown={this.handleEnterKey} />
-          <button id ="chatButton"onClick={()=>{this.handleChat()}}>Send</button>
+          <button className="btn item-btn-color" onClick={()=>{this.handleChat()}}>Send</button>
         </div>
         Send {this.state.sellerName} an email at <a href={`mailto:${this.state.sellerEmail}`}> {this.state.sellerEmail}</a>
 			</div>

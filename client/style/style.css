@@ -950,3 +950,10 @@ hr {
 .chatStatusColorBlue{
   color: blue;
 }
+
+.chat-status{
+  font-weight: bold;
+  font-size: 18px;
+  color: #4a4a4a;
+  padding-bottom: 10px;
+}

@@ -43,7 +43,7 @@ class UserWardrobe extends Component {
       <div className='list-section-title'>
           <span>{this.state.name}</span>
           <Link to="/chat">
-            <button id="startChat" onClick={()=>{this.handleClick()}} > message: {this.state.name}</button>
+            <button className="btn btn-block item-btn-color" onClick={()=>{this.handleClick()}} > Message {this.state.name}</button>
           </Link>
         </div>
         <div className='row'>
