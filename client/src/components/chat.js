@@ -48,7 +48,7 @@ export default class Chat extends Component{
         sellerName: user.data.userName, 
       	sellerEmail: user.data.userEmail 
       });
-     	this.subscribeEmit = `${this.roomID} ${this.state.sellerEmail}`;
+     	this.subscribeEmit = {roomID:`${this.roomID} ${this.state.sellerEmail}`, sellerName: `${this.state.sellerName}`};
     	this.socket.emit('subscribe', this.subscribeEmit);
     	this.socket.emit('confirm seller', this.state.sellerName);
     })
@@ -59,13 +59,18 @@ export default class Chat extends Component{
 
   handleSavedMessages(messages){
     console.log(messages,'saved messages')
+    let text = {user: messages.sellerID, message: messages.sellerID}
+    console.log(text, 'text from saved')
+    this.setState({
+      text: [...this.state.text, text],
+    })
   }
 
   handleChat() {
     const usermsg = {
     	user: this.props.user,
       message: this.message,
-      room: this.subscribeEmit,
+      room: this.subscribeEmit.roomID,
     };
     this.socket.emit('send message', usermsg);
     document.getElementById('m').value = null;

@@ -91,6 +91,10 @@ const AddChat = db.define('AddChat', {
     type: Sequelize.STRING,
     allowNull: false
   },
+  sellerName:{
+    type: Sequelize.STRING,
+    allowNull: false
+  },
   sellerID: {
     type: Sequelize.STRING,
     allowNull: false

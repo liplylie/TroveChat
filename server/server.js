@@ -26,15 +26,18 @@ const server = app.listen(PORT, function(){
 
 const io = socket(server);
 var roomID;
+var sellerName;
 let sellerHolder;
 let flag = false;
 
 io.on('connection', (socket) => {
 	//buyers
 	socket.on('subscribe', function(room) {
-    console.log('joining room', room);
-  	roomID = room;
+    console.log('joining room', room.roomID);
+  	roomID = room.roomID;
+    sellerName = room.sellerName
     console.log(roomID, 'roomID')
+    console.log(sellerName, 'sellerName')
     socket.join(roomID);
     // check to see if chat already exists
     axios.post('http://localhost:3000/api/addChat/checkChat', {roomID:roomID})
@@ -45,7 +48,9 @@ io.on('connection', (socket) => {
 
     	//io.emit('stored chat from database', chat)
        if (!flag) {
-        io.emit('saved messages', chat.data)
+        for ( var i = 0; i < chat.data.length; i++){
+          io.emit('saved messages', chat.data[i])
+        }
         flag = true;
       }
     })
@@ -57,6 +62,7 @@ io.on('connection', (socket) => {
     	axios.post('http://localhost:3000/api/addChat/createChat', {
         roomID: roomID,
         buyerID: roomID.split(" ")[0],
+        sellerName: sellerName,
         sellerID: roomID.split(" ")[1],
         message: ''
       })
