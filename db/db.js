@@ -2,7 +2,8 @@ const Sequelize = require('sequelize');
 require('dotenv').config();
 require('dotenv').load();
 
-const db = new Sequelize(process.env.DATABASE_URL, {dialect: "postgres"})
+let jordanSQL = 'postgres://xuvmptqz:kihdiQFu_84xlrZw3al-Jb96Tijm-LWl@elmer.db.elephantsql.com:5432/xuvmptqz'
+const db = new Sequelize(jordanSQL, {dialect: "postgres"})
 
 db.authenticate()
 .then(() => {

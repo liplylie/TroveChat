@@ -3,6 +3,8 @@ const itemCtrl = require('../controller/itemCtrl');
 const userCtrl = require('../controller/userCtrl');
 const paymentCtrl = require('../controller/paymentCtrl')
 const rentTrxCtrl = require('../controller/rentTrxCtrl');
+const addChatCtrl = require('../controller/addChatCtrl');
+
 
 router.route('/')
   .get(itemCtrl.fetchAll)
@@ -32,5 +34,13 @@ router.route('/renttrx/item/:item_id')
   
 router.route('/renttrx/renter/:renter_id')
   .get(rentTrxCtrl.getRenter)
+
+router.route('/addChat/checkChat')
+  .post(addChatCtrl.checkChat)
+  
+router.route('/addChat/createChat')
+  .post(addChatCtrl.createChat)
+
+
 
 module.exports = router;

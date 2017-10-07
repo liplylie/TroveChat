@@ -82,6 +82,25 @@ const Rent_trx = db.define('Rent_trx', {
   timestamps: false
 })
 
+const AddChat = db.define('AddChat', {
+  roomID: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
+  buyerID: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
+  sellerID: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
+  message: {
+    type: Sequelize.STRING,
+    allowNull: false
+  }
+})
+
 User.hasMany(Item, { foreignKey: { name: 'rentee_id' }, onDelete: 'CASCADE' })
 Item.belongsTo(User, { foreignKey: { name: 'rentee_id' }, onDelete: 'CASCADE' })
 
@@ -105,6 +124,7 @@ db.sync();
 module.exports = {
   User,
   Item,
-  Rent_trx
+  Rent_trx,
+  AddChat
 }
 

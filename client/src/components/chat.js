@@ -21,6 +21,7 @@ export default class Chat extends Component{
 		this.handleText = this.handleText.bind(this);
 		this.handleEnterKey = this.handleEnterKey.bind(this);
 		this.changeOnlineStatus = this.changeOnlineStatus.bind(this);
+    this.handleSavedMessages = this.handleSavedMessages.bind(this);
 		this.fetch = this.fetch.bind(this)
 	}
 
@@ -28,7 +29,7 @@ export default class Chat extends Component{
 	  this.fetch();
     this.socket = io.connect('http://localhost:3000');
  		this.roomID = this.props.email;
-
+    this.socket.on('saved messages', this.handleSavedMessages)
     this.socket.on('seller joined', this.changeOnlineStatus);
     var context = this;
     this.socket.on('conversation private post', function(text) {
@@ -54,6 +55,10 @@ export default class Chat extends Component{
     .catch(err => {
       console.log('User fetch err:', err);
     })
+  }
+
+  handleSavedMessages(messages){
+    console.log(messages,'saved messages')
   }
 
   handleChat() {
