@@ -98,10 +98,12 @@ export default class Chat extends Component{
 		return(
 			<div>
 			<div className={this.state.chatStatusColor}>{this.state.sellerName} {this.state.onlineStatus}</div>
+      <div style={{display: 'flex', flexDirection: 'column', backgroundColor: '#cdb287'}}>
 			{this.state.text.map((msg,i) => {
-              return (<ChatLog key={i} msg={msg.message} user={msg.user} sellerName={this.state.sellerName} sellerEmail={this.state.sellerEmail}/>);
+              return (<ChatLog key={i} self={this.props.user} msg={msg.message} user={msg.user} sellerName={this.state.sellerName} sellerEmail={this.state.sellerEmail}/>);
           })}
-			  <div id="form">
+      </div>
+			  <div id="form" style={{flex:1}}>
           <input id="m" onChange={this.handleText} onKeyDown={this.handleEnterKey} />
           <button className="btn item-btn-color" onClick={()=>{this.handleChat()}}>Send</button>
         </div>
