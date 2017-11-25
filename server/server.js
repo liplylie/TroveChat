@@ -59,15 +59,14 @@ io.on('connection', (socket) => {
     .catch(err=>{
     	// if not, create new chat 
     	console.log(err, 'err from getRequest')
-    	console.log('no chat from user')
-    	console.log('creating new chat')
+  
     	axios.post('http://localhost:3000/api/addChat/createChat', {
         sentBy: '',
         roomID: roomID,
         buyerID: roomID.split(" ")[0],
         sellerName: sellerName,
         sellerID: roomID.split(" ")[1],
-        message: ''
+        message: ''0
       })
       .then(data=>{
       	console.log(data, 'data from creating chat')
