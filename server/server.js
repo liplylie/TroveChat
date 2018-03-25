@@ -66,7 +66,7 @@ io.on('connection', (socket) => {
         buyerID: roomID.split(" ")[0],
         sellerName: sellerName,
         sellerID: roomID.split(" ")[1],
-        message: ''0
+        message: ''
       })
       .then(data=>{
       	console.log(data, 'data from creating chat')

@@ -1,5 +1,5 @@
 import firebase from 'firebase'
-import secret from '../../../sensitive.json'
+import secret from '../../sensitive.json'
 
 // Initialize Firebase
 const config = {
